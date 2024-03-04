@@ -210,6 +210,7 @@ class FlightCard extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class Tag extends StatelessWidget {
   String? label;
   Widget? avatar;
