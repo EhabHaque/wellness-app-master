@@ -16,7 +16,7 @@ void main() {
 
 ThemeData appTheme = ThemeData(
     primaryColor: Colors.purple,
-    /* Colors.tealAccent,*/
+    /* Colors.tealAccent,*/ 
     secondaryHeaderColor: Colors.blue /* Colors.teal*/
     // fontFamily:
     );
@@ -128,11 +128,10 @@ class HomeScreen extends StatelessWidget {
                       fit: BoxFit.scaleDown,
                       child: SizedBox(
                         height: 50,
-                        width: 50,
+                        width: 50,     
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            onPrimary: Colors.white,
+                            foregroundColor: Colors.white, shape: StadiumBorder(),
                           ),
                           child: Image.asset('assets/images/gmail.png'),
                           onPressed: () async {
@@ -155,8 +154,7 @@ class HomeScreen extends StatelessWidget {
                         width: w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            onPrimary: Colors.white,
+                            foregroundColor: Colors.white, shape: StadiumBorder(),
                           ),
                           child: Image.asset('assets/images/instagram.png'),
                           onPressed: () async {
@@ -177,8 +175,7 @@ class HomeScreen extends StatelessWidget {
                         width: w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            onPrimary: Colors.white,
+                            foregroundColor: Colors.white, shape: StadiumBorder(),
                           ),
                           child: Image.asset('assets/images/telegram.png'),
                           onPressed: () async {
@@ -199,8 +196,7 @@ class HomeScreen extends StatelessWidget {
                         width: w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            onPrimary: Colors.white,
+                            foregroundColor: Colors.white, shape: StadiumBorder(),
                           ),
                           child: Image.asset('assets/images/whatsapp.png'),
                           onPressed: () async {
