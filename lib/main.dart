@@ -15,9 +15,9 @@ void main() {
 }
 
 ThemeData appTheme = ThemeData(
-    primaryColor: Colors.purple,
+    primaryColor: Colors.teal,
     /* Colors.tealAccent,*/ 
-    secondaryHeaderColor: Colors.blue /* Colors.teal*/
+    secondaryHeaderColor: Colors.red /* Colors.teal*/
     // fontFamily:
     );
 
