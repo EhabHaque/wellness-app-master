@@ -10,7 +10,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     home: BottomNav(),
     theme: appTheme,
-    title: "Flutter Project",
+    title: "YFS Wellness Center",
   ));
 }
 
@@ -44,7 +44,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.home,
           color: Colors.black,
         ),
-        label: "Explore"));
+        label: "Resources"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.favorite,
@@ -64,7 +64,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.local_offer,
           color: Colors.black,
         ),
-        label: "Deals"));
+        label: "Events"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.notifications,
@@ -134,11 +134,11 @@ class HomeScreen extends StatelessWidget {
                             foregroundColor: Colors.white,
                             shape: StadiumBorder(),
                           ),
-                          child: Image.asset('assets/images/gmail.png'),
+                          child: Image.asset('assets/images/pinterest.png'),
                           onPressed: () async {
                             Uri url = Uri.parse(
-                                'mailto:hasanmahani08@gmail.com?subject=I am using your flutter project so');
-                            // const url = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=hasanmahani08@gmail.com&su=I+am+using+MIN+pa08+so&ui=2&tf=1';
+                                'https://www.pinterest.ca/YFSWellness/');
+                            // const url = 'https://www.pinterest.ca/YFSWellness/';
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                             } else {
@@ -160,9 +160,9 @@ class HomeScreen extends StatelessWidget {
                           ),
                           child: Image.asset('assets/images/instagram.png'),
                           onPressed: () async {
-                            const url = 'https://www.instagram.com/hasanm108/';
-                            if (await canLaunch(url)) {
-                              await launch(url);
+                            Uri url = Uri.parse('https://www.instagram.com/yfswellness');
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
                             } else {
                               throw 'Could not launch $url';
                             }
@@ -180,11 +180,11 @@ class HomeScreen extends StatelessWidget {
                             foregroundColor: Colors.white,
                             shape: StadiumBorder(),
                           ),
-                          child: Image.asset('assets/images/telegram.png'),
+                          child: Image.asset('assets/images/twitter.png'), // Change to twitter asset
                           onPressed: () async {
-                            const url = 'https://t.me/hasanm08';
-                            if (await canLaunch(url)) {
-                              await launch(url);
+                            Uri url = Uri.parse('https://twitter.com/yfslocal68?lang=en');
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
                             } else {
                               throw 'Could not launch $url';
                             }
@@ -202,11 +202,11 @@ class HomeScreen extends StatelessWidget {
                             foregroundColor: Colors.white,
                             shape: StadiumBorder(),
                           ),
-                          child: Image.asset('assets/images/whatsapp.png'),
+                          child: Image.asset('assets/images/spotify.png'),
                           onPressed: () async {
-                            const url = 'https://wa.me/+989910187797';
-                            if (await canLaunch(url)) {
-                              await launch(url);
+                            Uri url = Uri.parse('https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=73bd19c342cc472c');
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
                             } else {
                               throw 'Could not launch $url';
                             }
