@@ -15,11 +15,11 @@ void main() {
 }
 
 ThemeData appTheme = ThemeData(
-    primaryColor: Colors.teal,
-    /* Colors.tealAccent,*/ 
-    secondaryHeaderColor: Colors.red /* Colors.teal*/
-    // fontFamily:
-    );
+  primaryColor: Color.fromRGBO(11, 76, 48, 0.573),
+  /* Colors.tealAccent,*/
+  //secondaryHeaderColor: Colors.red /* Colors.teal*/
+  // fontFamily:
+);
 
 int sel = 0;
 double? width;
@@ -36,8 +36,14 @@ class _BottomNavState extends State<BottomNav> {
   List<BottomNavigationBarItem> createItems() {
     List<BottomNavigationBarItem> items = [];
     items.add(BottomNavigationBarItem(
-        activeIcon: Image.asset('assets/images/YFSWellnessCenter.png'),
-        icon: Image.asset('assets/images/YFSWellnessCenter.png'),
+        activeIcon: Icon(
+          Icons.home,
+          color: appTheme.primaryColor,
+        ),
+        icon: Icon(
+          Icons.home,
+          color: Colors.black,
+        ),
         label: "Home"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
@@ -114,7 +120,7 @@ class HomeScreen extends StatelessWidget {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text("More Info :"),
+                title: Text("Socials:"),
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -154,7 +160,8 @@ class HomeScreen extends StatelessWidget {
                           ),
                           child: Image.asset('assets/images/instagram.png'),
                           onPressed: () async {
-                            Uri url = Uri.parse('https://www.instagram.com/yfswellness');
+                            Uri url = Uri.parse(
+                                'https://www.instagram.com/yfswellness');
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                             } else {
@@ -174,9 +181,11 @@ class HomeScreen extends StatelessWidget {
                             foregroundColor: Colors.white,
                             shape: StadiumBorder(),
                           ),
-                          child: Image.asset('assets/images/twitter.png'), // Change to twitter asset
+                          child: Image.asset(
+                              'assets/images/twitter.png'), // Change to twitter asset
                           onPressed: () async {
-                            Uri url = Uri.parse('https://twitter.com/yfslocal68?lang=en');
+                            Uri url = Uri.parse(
+                                'https://twitter.com/yfslocal68?lang=en');
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                             } else {
@@ -198,7 +207,8 @@ class HomeScreen extends StatelessWidget {
                           ),
                           child: Image.asset('assets/images/spotify.png'),
                           onPressed: () async {
-                            Uri url = Uri.parse('https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=73bd19c342cc472c');
+                            Uri url = Uri.parse(
+                                'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=73bd19c342cc472c');
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                             } else {
