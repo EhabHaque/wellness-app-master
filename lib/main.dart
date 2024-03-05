@@ -128,15 +128,16 @@ class HomeScreen extends StatelessWidget {
                       fit: BoxFit.scaleDown,
                       child: SizedBox(
                         height: 50,
-                        width: 50,     
+                        width: 50,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white, shape: StadiumBorder(),
+                            foregroundColor: Colors.white,
+                            shape: StadiumBorder(),
                           ),
                           child: Image.asset('assets/images/gmail.png'),
                           onPressed: () async {
-                            Uri url =
-                                Uri.parse('mailto:hasanmahani08@gmail.com?subject=I am using your flutter project so');
+                            Uri url = Uri.parse(
+                                'mailto:hasanmahani08@gmail.com?subject=I am using your flutter project so');
                             // const url = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=hasanmahani08@gmail.com&su=I+am+using+MIN+pa08+so&ui=2&tf=1';
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
@@ -154,7 +155,8 @@ class HomeScreen extends StatelessWidget {
                         width: w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white, shape: StadiumBorder(),
+                            foregroundColor: Colors.white,
+                            shape: StadiumBorder(),
                           ),
                           child: Image.asset('assets/images/instagram.png'),
                           onPressed: () async {
@@ -175,7 +177,8 @@ class HomeScreen extends StatelessWidget {
                         width: w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white, shape: StadiumBorder(),
+                            foregroundColor: Colors.white,
+                            shape: StadiumBorder(),
                           ),
                           child: Image.asset('assets/images/telegram.png'),
                           onPressed: () async {
@@ -196,7 +199,8 @@ class HomeScreen extends StatelessWidget {
                         width: w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white, shape: StadiumBorder(),
+                            foregroundColor: Colors.white,
+                            shape: StadiumBorder(),
                           ),
                           child: Image.asset('assets/images/whatsapp.png'),
                           onPressed: () async {
