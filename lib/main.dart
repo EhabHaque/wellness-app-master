@@ -36,32 +36,26 @@ class _BottomNavState extends State<BottomNav> {
   List<BottomNavigationBarItem> createItems() {
     List<BottomNavigationBarItem> items = [];
     items.add(BottomNavigationBarItem(
+        activeIcon: Image.asset('assets/images/YFSWellnessCenter.png'),
+        icon: Image.asset('assets/images/YFSWellnessCenter.png'),
+        label: "Home"));
+    items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.home,
+          Icons.list,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.home,
+          Icons.list,
           color: Colors.black,
         ),
         label: "Resources"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.favorite,
+          Icons.event,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.favorite,
-          color: Colors.black,
-        ),
-        label: "WishList"));
-    items.add(BottomNavigationBarItem(
-        activeIcon: Icon(
-          Icons.local_offer,
-          color: appTheme.primaryColor,
-        ),
-        icon: Icon(
-          Icons.local_offer,
+          Icons.event,
           color: Colors.black,
         ),
         label: "Events"));
