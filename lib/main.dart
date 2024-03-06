@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'Notifications.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
 import 'Deals.dart';
@@ -15,11 +16,11 @@ void main() {
 }
 
 ThemeData appTheme = ThemeData(
-    primaryColor: Colors.teal,
-    /* Colors.tealAccent,*/ 
-    secondaryHeaderColor: Colors.red /* Colors.teal*/
-    // fontFamily:
-    );
+  primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
+  /* Colors.tealAccent,*/
+  //secondaryHeaderColor: Colors.red /* Colors.teal*/
+  // fontFamily:
+);
 
 int sel = 0;
 double? width;
@@ -36,8 +37,14 @@ class _BottomNavState extends State<BottomNav> {
   List<BottomNavigationBarItem> createItems() {
     List<BottomNavigationBarItem> items = [];
     items.add(BottomNavigationBarItem(
-        activeIcon: Image.asset('assets/images/YFSWellnessCenter.png'),
-        icon: Image.asset('assets/images/YFSWellnessCenter.png'),
+        activeIcon: Icon(
+          Icons.home,
+          color: appTheme.primaryColor,
+        ),
+        icon: Icon(
+          Icons.home,
+          color: Colors.black,
+        ),
         label: "Home"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
@@ -114,7 +121,7 @@ class HomeScreen extends StatelessWidget {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text("More Info :"),
+                title: Text("Socials:"),
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -152,9 +159,11 @@ class HomeScreen extends StatelessWidget {
                             foregroundColor: Colors.white,
                             shape: StadiumBorder(),
                           ),
-                          child: Image.asset('assets/images/instagram.png'),
+                          child: Image.asset('assets/images/instagram.png',
+                              fit: BoxFit.cover),
                           onPressed: () async {
-                            Uri url = Uri.parse('https://www.instagram.com/yfswellness');
+                            Uri url = Uri.parse(
+                                'https://www.instagram.com/yfswellness');
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                             } else {
@@ -174,9 +183,11 @@ class HomeScreen extends StatelessWidget {
                             foregroundColor: Colors.white,
                             shape: StadiumBorder(),
                           ),
-                          child: Image.asset('assets/images/twitter.png'), // Change to twitter asset
+                          child: Image.asset(
+                              'assets/images/twitter.png'), // Change to twitter asset
                           onPressed: () async {
-                            Uri url = Uri.parse('https://twitter.com/yfslocal68?lang=en');
+                            Uri url = Uri.parse(
+                                'https://twitter.com/yfslocal68?lang=en');
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                             } else {
@@ -198,7 +209,8 @@ class HomeScreen extends StatelessWidget {
                           ),
                           child: Image.asset('assets/images/spotify.png'),
                           onPressed: () async {
-                            Uri url = Uri.parse('https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=73bd19c342cc472c');
+                            Uri url = Uri.parse(
+                                'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=73bd19c342cc472c');
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                             } else {
@@ -258,155 +270,16 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(
                   height: height! / 16,
                 ),
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.location_on,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: width! * 0.05,
-                      ),
-                      PopupMenuButton(
-                        onSelected: (index) {
-                          setState(() {
-                            selectedloc = int.parse(index.toString());
-                          });
-                        },
-                        child: Row(
-                          children: <Widget>[
-                            Text(
-                              locs[selectedloc],
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16.0,
-                              ),
-                            ),
-                            Icon(
-                              Icons.keyboard_arrow_down,
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                        itemBuilder: (BuildContext context) {
-                          return <PopupMenuItem<int>>[
-                            PopupMenuItem(
-                              child: Text(
-                                locs[0],
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                              value: 0,
-                            ),
-                            PopupMenuItem(
-                              child: Text(
-                                locs[1],
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                              value: 1,
-                            )
-                          ];
-                        },
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.settings,
-                        color: Colors.white,
-                      )
-                    ],
-                  ),
-                ),
                 SizedBox(
-                  height: height! / 16,
+                  height: height! / 7,
                 ),
-                Text(
-                  'Where Would  \n you want to go',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
+                Image.asset(
+                  'assets/images/YFSWellnessCentreLogo.png',
                 ),
                 SizedBox(height: height! * 0.0375),
-                Container(
-                  width: 300,
-                  padding: EdgeInsets.symmetric(horizontal: 32.0),
-                  child: Material(
-                    elevation: 5.0,
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    child: TextField(
-                      controller: c,
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                      cursorColor: appTheme.primaryColor,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 32, vertical: 13),
-                          suffixIcon: Material(
-                            child: InkWell(
-                              child: Icon(
-                                Icons.search,
-                                color: Colors.black,
-                              ),
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return SecondPage(
-                                      fromloc: locs[selectedloc],
-                                      toloc: c.text);
-                                }));
-                              },
-                            ),
-                            elevation: 2.0,
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          )),
-                    ),
-                  ),
-                ),
                 SizedBox(
                   height: height! * 0.025,
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    InkWell(
-                      child: Choice08(
-                          icon: Icons.flight_takeoff,
-                          text: "Flights",
-                          selected: isFlightselected),
-                      onTap: () {
-                        setState(() {
-                          isFlightselected = true;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: width! * 0.055,
-                    ),
-                    InkWell(
-                      child: Choice08(
-                          icon: Icons.hotel,
-                          text: "Hotels",
-                          selected: !isFlightselected),
-                      onTap: () {
-                        setState(() {
-                          isFlightselected = false;
-                        });
-                      },
-                    )
-                  ],
-                )
               ],
             ),
           ),
@@ -502,7 +375,7 @@ var homeDown = Column(
           //   width: width! * 0.05,
           // ),
           Text(
-            "Currently Watched items",
+            "Upcoming Events",
             style: TextStyle(color: Colors.black, fontSize: 16),
           ),
           Spacer(),
