@@ -30,7 +30,7 @@ Future getUserData() async {
   try {
     final data = await databases.listDocuments(
         databaseId: databaseId,
-        collectionId: "64b62c75bf3910dd4925",
+        collectionId: "65e955efeef6f2f2a77f",
         queries: [
           Query.equal("userId", id),
         ]);
@@ -58,7 +58,7 @@ Future<void> createEvent(
   return await databases
       .createDocument(
           databaseId: databaseId,
-          collectionId: "64bb726399a1320b557f",
+          collectionId: "65e955efeef6f2f2a77f",
           documentId: ID.unique(),
           data: {
             "name": name,
@@ -79,7 +79,7 @@ Future<void> createEvent(
 Future getAllEvents() async {
   try {
     final data = await databases.listDocuments(
-        databaseId: databaseId, collectionId: "64bb726399a1320b557f");
+        databaseId: databaseId, collectionId: "65e955efeef6f2f2a77f");
     return data.documents;
   } catch (e) {
     print(e);
@@ -94,7 +94,7 @@ Future rsvpEvent(List participants, String documentId) async {
   try {
     await databases.updateDocument(
         databaseId: databaseId,
-        collectionId: "64bb726399a1320b557f",
+        collectionId: "65e955efeef6f2f2a77f",
         documentId: documentId,
         data: {"participants": participants});
     return true;
@@ -111,7 +111,7 @@ Future manageEvents() async {
   try {
     final data = await databases.listDocuments(
         databaseId: databaseId,
-        collectionId: "64bb726399a1320b557f",
+        collectionId: "65e955efeef6f2f2a77f",
         queries: [Query.equal("createdBy", userId)]);
     return data.documents;
   } catch (e) {
@@ -135,7 +135,7 @@ Future<void> updateEvent(
   return await databases
       .updateDocument(
           databaseId: databaseId,
-          collectionId: "64bb726399a1320b557f",
+          collectionId: "65e955efeef6f2f2a77f",
           documentId: docID,
           data: {
             "name": name,
@@ -158,7 +158,7 @@ Future deleteEvent(String docID) async {
   try {
     final response = await databases.deleteDocument(
         databaseId: databaseId,
-        collectionId: "64bb726399a1320b557f",
+        collectionId: "65e955efeef6f2f2a77f",
         documentId: docID);
 
     print(response);
@@ -172,7 +172,7 @@ Future getUpcomingEvents() async {
     final now = DateTime.now();
     final response = await databases.listDocuments(
       databaseId: databaseId,
-      collectionId: "64bb726399a1320b557f",
+      collectionId: "65e955efeef6f2f2a77f",
       queries: [
         Query.greaterThan("datetime", now),
       ],
@@ -190,7 +190,7 @@ Future getPastEvents() async {
     final now = DateTime.now();
     final response = await databases.listDocuments(
       databaseId: databaseId,
-      collectionId: "64bb726399a1320b557f",
+      collectionId: "65e955efeef6f2f2a77f",
       queries: [
         Query.lessThan("datetime", now),
       ],
