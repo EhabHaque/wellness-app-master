@@ -7,7 +7,7 @@ class SavedData {
     preferences = await SharedPreferences.getInstance();
   }
 
-  // Save user id on device
+  // Save password on device - IF OTHER USERS ARE MADE TO JOIN, MAKE THIS INTO userID for security reasons. ONLY DOABLE CAUSE manullay adding user form database
 
   static Future<void> saveUserId(String id) async {
     await preferences!.setString("userId", id);
@@ -16,7 +16,7 @@ class SavedData {
   // Get the user Id
 
   static String getUserId() {
-    return preferences!.getString("userId") ?? "";
+    return preferences!.getString("UserID") ??"";
   }
 
 // Save user name

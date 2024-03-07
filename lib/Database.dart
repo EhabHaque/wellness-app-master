@@ -7,8 +7,9 @@ String databaseId = "65e955e072eb7d2905bf";
 
 final Databases databases = Databases(client);
 
-// Save the user data to appwrite database
-Future<void> saveUserData(String name, String email, String userId) async {
+// Save the user data to appwrite database - not creating any new users through the app, implement if needed to create users through app
+
+Future<void> saveUserData(String name, String email, String password) async {
   return await databases
       .createDocument(
           databaseId: databaseId,
@@ -17,7 +18,7 @@ Future<void> saveUserData(String name, String email, String userId) async {
           data: {
             "name": name,
             "email": email,
-            "userId": userId,
+            "password": password,
           })
       .then((value) => print("Document Created"))
       .catchError((e) => print(e));
@@ -135,7 +136,7 @@ Future<void> updateEvent(
   return await databases
       .updateDocument(
           databaseId: databaseId,
-          collectionId: "65e955efeef6f2f2a77f",
+          collectionId: "65ea0edbdc577bb273b1",
           documentId: docID,
           data: {
             "name": name,
@@ -143,10 +144,8 @@ Future<void> updateEvent(
             "image": image,
             "location": location,
             "datetime": datetime,
-            "createdBy": createdBy,
-            "isInPerson": isInPersonOrNot,
+            "isInPerson": isInPersonOrNot, //default is true
             "guests": guest,
-            "sponsers": sponsers
           })
       .then((value) => print("Event Updated"))
       .catchError((e) => print(e));
@@ -158,7 +157,7 @@ Future deleteEvent(String docID) async {
   try {
     final response = await databases.deleteDocument(
         databaseId: databaseId,
-        collectionId: "65e955efeef6f2f2a77f",
+        collectionId: "65ea0edbdc577bb273b1",
         documentId: docID);
 
     print(response);
@@ -172,7 +171,7 @@ Future getUpcomingEvents() async {
     final now = DateTime.now();
     final response = await databases.listDocuments(
       databaseId: databaseId,
-      collectionId: "65e955efeef6f2f2a77f",
+      collectionId: "65ea0edbdc577bb273b1",
       queries: [
         Query.greaterThan("datetime", now),
       ],
@@ -190,7 +189,7 @@ Future getPastEvents() async {
     final now = DateTime.now();
     final response = await databases.listDocuments(
       databaseId: databaseId,
-      collectionId: "65e955efeef6f2f2a77f",
+      collectionId: "65ea0edbdc577bb273b1",
       queries: [
         Query.lessThan("datetime", now),
       ],

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'Notifications.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
-import 'Deals.dart';
+import 'events.dart';
 import 'WishList.dart';
+import 'profile_page.dart';
 
 void main() {
 
@@ -26,7 +27,7 @@ ThemeData appTheme = ThemeData(
 int sel = 0;
 double? width;
 double? height;
-final bodies = [HomeScreen(), WishList(), Deals(), prefix0.Notification()];
+final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification()];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -272,7 +273,7 @@ class _HomeTop extends State<HomeTop> {
                   height: height! / 16,
                 ),
                 Spacer(),
-                IconButton(
+               /* IconButton(
               onPressed: () async {
                 // logoutUser();
                 await Navigator.push(context,
@@ -282,9 +283,9 @@ class _HomeTop extends State<HomeTop> {
               },
               icon: Icon(
                 Icons.account_circle,
-                color: Colors.(white),
-                size: 30,
-              )),
+                color: Colors.white),
+                //size: 30,
+              )), */
                 SizedBox(
                   height: height! / 7,
                 ),
