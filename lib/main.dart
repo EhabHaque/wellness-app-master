@@ -6,14 +6,53 @@ import 'Deals.dart';
 import 'SecondPage.dart';
 import 'WishList.dart';
 
-void main() {
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'Notifications.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize the local notifications plugin
+  await initNotifications();
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: BottomNav(),
     theme: appTheme,
     title: "YFS Wellness Center",
+    onGenerateRoute: (RouteSettings settings) {
+      // Handle notification tap here
+      if (settings.name == '/notification') {
+        // Handle notification tap logic
+        print("Notification tapped with payload: ${settings.arguments}");
+      }
+      // You can add additional route handling here if needed
+    },
   ));
 }
+
+
+// Function to initialize local notifications
+Future<void> initNotifications() async {
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('app_icon'); // Replace 'app_icon' with your app icon name
+
+  final InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+  );
+
+  //await flutterLocalNotificationsPlugin.initialize(
+    //initializationSettings,
+    //onSelectNotification: (String? payload) async {
+      // Handle notification tap here
+      //print("Notification tapped with payload: $payload");
+    //},
+  //);
+}
+
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
@@ -68,14 +107,14 @@ class _BottomNavState extends State<BottomNav> {
         label: "Events"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.notifications,
+          Icons.lock_clock,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.notifications,
+          Icons.lock_clock,
           color: Colors.black,
         ),
-        label: "Notifications"));
+        label: "Pomodoro Timer"));
     return items;
   }
 
