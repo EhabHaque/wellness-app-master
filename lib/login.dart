@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tutvideo/main.dart';
 import 'custom_input_form.dart';
@@ -83,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                           () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Homepage())));
+                                  builder: (context) => HomeScreen())));
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Login Failed Try Again.")));

@@ -3,10 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'Notifications.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
 import 'Deals.dart';
-import 'SecondPage.dart';
 import 'WishList.dart';
 
 void main() {
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: BottomNav(),
@@ -14,6 +14,7 @@ void main() {
     title: "YFS Wellness Center",
   ));
 }
+
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
@@ -270,6 +271,20 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(
                   height: height! / 16,
                 ),
+                Spacer(),
+                IconButton(
+              onPressed: () async {
+                // logoutUser();
+                await Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profile()));
+
+                refresh();
+              },
+              icon: Icon(
+                Icons.account_circle,
+                color: Colors.(white),
+                size: 30,
+              )),
                 SizedBox(
                   height: height! / 7,
                 ),
