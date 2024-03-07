@@ -7,15 +7,14 @@ Client client = Client()
     .setProject('65e8cf7ac9881d2098c3')
     .setSelfSigned(
         status: true); // For self signed certificates, only use for development
-       
 
 // Register User - implement if you need to register users through the app, not needed now as only admins will have to login and they will be set up directly through database
 Account account = Account(client);
 Future<String> createUser(String name, String email, String password) async {
   try {
     final user = await account.create(
-        userId: ID.unique(), email: email, password: password, name: name); 
-    saveUserData( name, email, user.$id); 
+        userId: ID.unique(), email: email, password: password, name: name);
+    saveUserData(name, email, user.$id);
     return "success";
   } on AppwriteException catch (e) {
     return e.message.toString();
@@ -26,7 +25,8 @@ Future<String> createUser(String name, String email, String password) async {
 
 Future loginUser(String email, String password) async {
   try {
-    final user = await account.createEmailSession(email: email, password: password);
+    final user = await account.createEmailPasswordSession(
+        email: email, password: password);
     SavedData.saveUserId(user.userId);
     getUserData();
     return true;
