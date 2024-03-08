@@ -11,9 +11,9 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'Notifications.dart';
 
 import 'wellness_activities.dart';
+import 'snake_game.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize the local notifications plugin
@@ -35,28 +35,27 @@ void main() async{
   ));
 }
 
-
 // Function to initialize local notifications
 Future<void> initNotifications() async {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
   const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_icon'); // Replace 'app_icon' with your app icon name
+      AndroidInitializationSettings(
+          'app_icon'); // Replace 'app_icon' with your app icon name
 
   final InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
   );
 
   //await flutterLocalNotificationsPlugin.initialize(
-    //initializationSettings,
-    //onSelectNotification: (String? payload) async {
-      // Handle notification tap here
-      //print("Notification tapped with payload: $payload");
-    //},
+  //initializationSettings,
+  //onSelectNotification: (String? payload) async {
+  // Handle notification tap here
+  //print("Notification tapped with payload: $payload");
+  //},
   //);
 }
-
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
@@ -68,7 +67,13 @@ ThemeData appTheme = ThemeData(
 int sel = 0;
 double? width;
 double? height;
-final bodies = [HomeScreen(), WishList(), Deals(), prefix0.Notification()];
+final bodies = [
+  HomeScreen(),
+  WishList(),
+  Deals(),
+  prefix0.Notification(),
+  SnakeGame()
+];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -118,7 +123,17 @@ class _BottomNavState extends State<BottomNav> {
           Icons.lock_clock,
           color: Colors.black,
         ),
-        label: "Pomodoro Timer"));
+        label: "Pomodoro"));
+    items.add(BottomNavigationBarItem(
+        activeIcon: Icon(
+          Icons.gamepad,
+          color: appTheme.primaryColor,
+        ),
+        icon: Icon(
+          Icons.gamepad,
+          color: Colors.black,
+        ),
+        label: "Snake"));
     return items;
   }
 
@@ -154,11 +169,16 @@ class HomeScreen extends StatelessWidget {
     height = MediaQuery.of(context).size.longestSide;
     return Scaffold(
       // bottomNavigationBar: /*NavigationTest()*/Navigation(),
-    
+
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: <Widget>[HomeTop(), homeDown, WellnessActivitiesSection(), ContactUsContainer()],
+          children: <Widget>[
+            HomeTop(),
+            homeDown,
+            WellnessActivitiesSection(),
+            ContactUsContainer()
+          ],
           //To add a new widget you have to add it here.
         ),
       ),
@@ -478,8 +498,6 @@ class City extends StatelessWidget {
   }
 }
 
-
-
 class ContactUsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -529,7 +547,9 @@ class ContactUsContainer extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20.0), // Add spacing between buttons and additional information
+          SizedBox(
+              height:
+                  20.0), // Add spacing between buttons and additional information
           Text(
             'Contact Us',
             style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
@@ -550,14 +570,13 @@ class ContactUsContainer extends StatelessWidget {
             'Address: 15 Library Ln, North York, ON M3J 2S5',
             style: TextStyle(fontSize: 16.0),
           ),
-          
+
           // Add more information as needed
         ],
       ),
     );
   }
 }
-
 
 class CircularButton extends StatelessWidget {
   final IconData icon;
@@ -591,7 +610,6 @@ class CircularButton extends StatelessWidget {
 
 /////////////////////-Wellness Activities-//////////////////////////
 
-
 //This part is for the wellness box/widgets
 class WellnessActivitiesSection extends StatelessWidget {
   @override
@@ -616,8 +634,8 @@ class WellnessActivitiesSection extends StatelessWidget {
         Container(
           height: 170, // Adjust the height as needed
           child: ListView.builder(
-            itemBuilder: (context, index) =>
-                WellnessActivityCard(wellnessActivity: wellnessActivities[index]),
+            itemBuilder: (context, index) => WellnessActivityCard(
+                wellnessActivity: wellnessActivities[index]),
             shrinkWrap: true,
             padding: EdgeInsets.all(0.0),
             itemCount: wellnessActivities.length,
@@ -628,7 +646,6 @@ class WellnessActivitiesSection extends StatelessWidget {
     );
   }
 }
-
 
 class WellnessActivityCard extends StatelessWidget {
   final WellnessActivity? wellnessActivity;
@@ -643,7 +660,8 @@ class WellnessActivityCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => WellnessDetailPage(wellnessActivity: wellnessActivity!),
+            builder: (context) =>
+                WellnessDetailPage(wellnessActivity: wellnessActivity!),
           ),
         );
       },
@@ -687,7 +705,8 @@ class WellnessActivityCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
