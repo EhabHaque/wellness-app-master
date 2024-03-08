@@ -5,14 +5,14 @@ import 'database.dart';
 import 'saved_data.dart';
 import 'package:flutter/material.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+class Event extends StatefulWidget {
+  const Event({super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<Event> createState() => _EventState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _EventState extends State<Event> {
   List<Document> events = [];
   @override
   void initState() {
