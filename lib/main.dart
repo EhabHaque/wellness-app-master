@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'Notifications.dart' as prefix0;
@@ -8,6 +9,9 @@ import 'WishList.dart';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'Notifications.dart';
+
+import 'wellness_activities.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -154,7 +158,7 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: <Widget>[HomeTop(), homeDown, ContactUsContainer()],
+          children: <Widget>[HomeTop(), homeDown, WellnessActivitiesSection(), ContactUsContainer()],
           //To add a new widget you have to add it here.
         ),
       ),
@@ -584,3 +588,136 @@ class CircularButton extends StatelessWidget {
     );
   }
 }
+
+/////////////////////-Wellness Activities-//////////////////////////
+
+
+//This part is for the wellness box/widgets
+class WellnessActivitiesSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                "Wellness Activities At York",
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+              // Spacer(), // Remove the spacer if you don't want the VIEW ALL button
+              // Text("VIEW ALL", style: viewallstyle),
+            ],
+          ),
+        ),
+        Container(
+          height: 170, // Adjust the height as needed
+          child: ListView.builder(
+            itemBuilder: (context, index) =>
+                WellnessActivityCard(wellnessActivity: wellnessActivities[index]),
+            shrinkWrap: true,
+            padding: EdgeInsets.all(0.0),
+            itemCount: wellnessActivities.length,
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+class WellnessActivityCard extends StatelessWidget {
+  final WellnessActivity? wellnessActivity;
+
+  WellnessActivityCard({this.wellnessActivity});
+
+  @override
+  Widget build(BuildContext context) {
+    //This part basically detects the gestures to swipe right
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WellnessDetailPage(wellnessActivity: wellnessActivity!),
+          ),
+        );
+      },
+      child: Column(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Container(
+                    height: height! * .137 < 160 ? height! * .137 : 160,
+                    width: width! * .5 < 250 ? width! * .5 : 250,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(wellnessActivity!.image),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  height: 60,
+                  width: width! * .5 < 250 ? width! * .5 : 250,
+                  left: 5,
+                  bottom: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.black, Colors.black12],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              wellnessActivity!.name,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  left: 10,
+                  bottom: 10,
+                  right: 15,
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/////////////Snake Game///////////////////
+
+
+
