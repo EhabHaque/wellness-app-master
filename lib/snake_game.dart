@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class SnakeGame extends StatefulWidget {
@@ -15,27 +14,38 @@ class _SnakeGameState extends State<SnakeGame> {
   int food = 50;
   Direction direction = Direction.right;
   bool isGameOver = false;
+  bool isGameRunning = false;
+  Timer? gameTimer;
 
   @override
   void initState() {
     super.initState();
-    startGame();
   }
 
   void startGame() {
-    const Duration gameSpeed = Duration(milliseconds: 300);
+    if (!isGameRunning) {
+      isGameRunning = true;
+      const Duration gameSpeed = Duration(milliseconds: 300);
 
-    Timer.periodic(gameSpeed, (Timer timer) {
-      if (!isGameOver) {
-        moveSnake();
-        checkCollision();
-        generateFood();
-        setState(() {});
-      } else {
-        timer.cancel();
-        showGameOverDialog();
-      }
-    });
+      gameTimer = Timer.periodic(gameSpeed, (Timer timer) {
+        if (!isGameOver) {
+          moveSnake();
+          checkCollision();
+          generateFood();
+          setState(() {});
+        } else {
+          timer.cancel();
+          showGameOverDialog();
+        }
+      });
+    }
+  }
+
+  void stopGame() {
+    if (isGameRunning) {
+      isGameRunning = false;
+      gameTimer?.cancel();
+    }
   }
 
   void moveSnake() {
@@ -100,12 +110,12 @@ class _SnakeGameState extends State<SnakeGame> {
           title: Text('Game Over'),
           content: Text('You scored ${snake.length - 3} points!'),
           actions: [
-            ElevatedButton(
-              child: Text('Restart'),
+            TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 resetGame();
               },
+              child: Text('OK'),
             ),
           ],
         );
@@ -113,16 +123,14 @@ class _SnakeGameState extends State<SnakeGame> {
     );
   }
 
-
   void resetGame() {
     setState(() {
       snake = [45, 65, 85];
       food = 50;
       direction = Direction.right;
       isGameOver = false;
+      isGameRunning = false;
     });
-
-    startGame();
   }
 
   @override
@@ -131,28 +139,89 @@ class _SnakeGameState extends State<SnakeGame> {
       appBar: AppBar(
         title: Text('Snake Game'),
       ),
-      body: Center(
-        child: AspectRatio(
-          aspectRatio: 1.0,
-          child: Container(
-            color: Colors.black,
-            child: GridView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: gridSize,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AspectRatio(
+            aspectRatio: 1.0,
+            child: Container(
+              color: Colors.black,
+              child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: gridSize,
+                ),
+                itemBuilder: (context, index) {
+                  if (snake.contains(index)) {
+                    return Cell(color: Colors.green);
+                  } else if (index == food) {
+                    return Cell(color: Colors.red);
+                  } else {
+                    return Cell(color: Colors.black);
+                  }
+                },
               ),
-              itemBuilder: (context, index) {
-                if (snake.contains(index)) {
-                  return Cell(color: Colors.green);
-                } else if (index == food) {
-                  return Cell(color: Colors.red);
-                } else {
-                  return Cell(color: Colors.black);
-                }
-              },
             ),
           ),
-        ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  startGame();
+                },
+                child: Text('Start'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  stopGame();
+                },
+                child: Text('End'),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () {
+                  // Handle Up button press
+                  setState(() {
+                    direction = Direction.up;
+                  });
+                },
+                icon: Icon(Icons.arrow_upward),
+              ),
+              IconButton(
+                onPressed: () {
+                  // Handle Down button press
+                  setState(() {
+                    direction = Direction.down;
+                  });
+                },
+                icon: Icon(Icons.arrow_downward),
+              ),
+              IconButton(
+                onPressed: () {
+                  // Handle Left button press
+                  setState(() {
+                    direction = Direction.left;
+                  });
+                },
+                icon: Icon(Icons.arrow_back),
+              ),
+              IconButton(
+                onPressed: () {
+                  // Handle Right button press
+                  setState(() {
+                    direction = Direction.right;
+                  });
+                },
+                icon: Icon(Icons.arrow_forward),
+              ),
+            ],
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -182,5 +251,3 @@ class Cell extends StatelessWidget {
 }
 
 enum Direction { up, down, left, right }
-
-

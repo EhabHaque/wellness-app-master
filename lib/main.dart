@@ -123,14 +123,14 @@ class _BottomNavState extends State<BottomNav> {
           Icons.lock_clock,
           color: Colors.black,
         ),
-        label: "Snake"));
+        label: "Pomodoro"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.lock_clock,
+          Icons.gamepad,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.lock_clock,
+          Icons.gamepad,
           color: Colors.black,
         ),
         label: "Snake"));
