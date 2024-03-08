@@ -3,7 +3,6 @@ import 'main.dart';
 import 'database.dart';
 import 'edit_event_page.dart';
 import 'event_details.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ManageEvents extends StatefulWidget {

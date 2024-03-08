@@ -1,9 +1,7 @@
 import 'package:tutvideo/events.dart';
 
 import 'auth.dart';
-import 'main.dart';
 import 'login.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CheckSessions extends StatefulWidget {

@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:appwrite/models.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
-import 'auth.dart';
 import 'main.dart';
 import 'event_container.dart';
-
 import 'database.dart';
-import 'saved_data.dart';
-
-import 'create_event_page.dart';
-import 'event_details.dart';
-import 'login.dart';
-import 'popular_item.dart';
-import 'profile_page.dart';
-
-import 'package:flutter/material.dart';
 
 class Event extends StatefulWidget {
   const Event({super.key});
@@ -31,7 +19,7 @@ class _EventState extends State<Event> {
 
   @override
   void initState() {
-  //userName = SavedData.getUserName().split(" ")[0];
+    //userName = SavedData.getUserName().split(" ")[0];
     refresh();
     super.initState();
   }
@@ -86,7 +74,7 @@ class _EventState extends State<Event> {
                         fontSize: 32,
                         fontWeight: FontWeight.w600),
                   ),
-                  Text("Expore events around you",
+                  Text("Explore events around you",
                       style: TextStyle(
                           color: appTheme.primaryColor,
                           fontSize: 16,
@@ -111,37 +99,9 @@ class _EventState extends State<Event> {
                           ],
                         ),
                   const SizedBox(height: 16),
-                  Text(
-                    "Popular Events ",
-                    style: TextStyle(
-                      color: appTheme.primaryColor,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                 ],
               ),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Container(
-                color: const Color(0xFF2E2E2E),
-                child: isLoading
-                    ? const SizedBox()
-                    : Column(
-                        children: [
-                          for (int i = 0; i < events.length && i < 5; i++) ...[
-                            PopularItem(
-                              eventData: events[i],
-                              index: i + 1,
-                            ),
-                            const Divider(),
-                          ],
-                        ],
-                      ),
-              )
-            ]),
           ),
           SliverToBoxAdapter(
             child: Padding(
@@ -166,5 +126,3 @@ class _EventState extends State<Event> {
     );
   }
 }
-
-

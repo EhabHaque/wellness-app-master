@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+//import 'package:flutter/widgets.dart';
 import 'saved_data.dart';
-import 'checkSessions.dart';
-import 'login.dart';
 import 'Notifications.dart' as prefix0;
-import 'signup.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'events.dart';
 import 'WishList.dart';
-import 'profile_page.dart';
 
 void main() async {
- WidgetsFlutterBinding.ensureInitialized;
- await SavedData.init();
+  WidgetsFlutterBinding.ensureInitialized;
+  await SavedData.init();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: BottomNav(),
@@ -20,7 +16,6 @@ void main() async {
     title: "YFS Wellness Center",
   ));
 }
-
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
@@ -278,7 +273,7 @@ class _HomeTop extends State<HomeTop> {
                   height: height! / 16,
                 ),
                 Spacer(),
-               /* IconButton(
+                /* IconButton(
               onPressed: () async {
                 // logoutUser();
                 await Navigator.push(context,
