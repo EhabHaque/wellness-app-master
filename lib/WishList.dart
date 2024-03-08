@@ -18,9 +18,10 @@ class ResourcesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Resources'),
-      ),
+        appBar: AppBar(
+          title: Text('Resources'),
+        ),
+        /*
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
@@ -72,7 +73,66 @@ class ResourcesPage extends StatelessWidget {
           return ResourceButton(resourceName, resourceContent);
         },
       ),
-    );
+    */
+        body: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 2,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[100],
+              child: const Text("Mental Health"),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[200],
+              child: const Text('Physical Health'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[300],
+              child: const Text('Sexual Violence'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[400],
+              child: const Text('Harm Reduction'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[500],
+              child: const Text('Housing'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[600],
+              child: const Text('Academic'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[700],
+              child: const Text('Financial'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[800],
+              child: const Text('Employment'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[900],
+              child: const Text('Video'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.teal[900],
+              child: const Text('Other'),
+            ),
+          ],
+        ));
   }
 }
 
@@ -89,7 +149,8 @@ class ResourceButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ResourceDetailPage(resourceName, resourceContent),
+            builder: (context) =>
+                ResourceDetailPage(resourceName, resourceContent),
           ),
         );
       },
@@ -118,7 +179,7 @@ class ResourceDetailPage extends StatelessWidget {
           ),
         ],
       ),
-         body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -140,5 +201,4 @@ class ResourceDetailPage extends StatelessWidget {
       ),
     );
   }
-  
 }
