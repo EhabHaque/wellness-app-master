@@ -9,7 +9,6 @@ final Databases databases = Databases(client);
 
 // Save the user data to appwrite database - not creating any new users through the app, implement if needed to create users through app
 
-
 // Create new events
 
 Future<void> createEvent(
