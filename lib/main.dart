@@ -148,131 +148,14 @@ class HomeScreen extends StatelessWidget {
 
     width = MediaQuery.of(context).size.shortestSide;
     height = MediaQuery.of(context).size.longestSide;
-    double h = 50;
-    double w = 50;
     return Scaffold(
       // bottomNavigationBar: /*NavigationTest()*/Navigation(),
-      floatingActionButton: FloatingActionButton(
-        elevation: 0,
-        hoverElevation: 0,
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text("Socials:"),
-                content: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: SizedBox(
-                        height: 50,
-                        width: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shape: StadiumBorder(),
-                          ),
-                          child: Image.asset('assets/images/pinterest.png'),
-                          onPressed: () async {
-                            Uri url = Uri.parse(
-                                'https://www.pinterest.ca/YFSWellness/');
-                            // const url = 'https://www.pinterest.ca/YFSWellness/';
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: SizedBox(
-                        height: h,
-                        width: w,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shape: StadiumBorder(),
-                          ),
-                          child: Image.asset('assets/images/instagram.png',
-                              fit: BoxFit.cover),
-                          onPressed: () async {
-                            Uri url = Uri.parse(
-                                'https://www.instagram.com/yfswellness');
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: SizedBox(
-                        height: h,
-                        width: w,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shape: StadiumBorder(),
-                          ),
-                          child: Image.asset(
-                              'assets/images/twitter.png'), // Change to twitter asset
-                          onPressed: () async {
-                            Uri url = Uri.parse(
-                                'https://twitter.com/yfslocal68?lang=en');
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: SizedBox(
-                        height: h,
-                        width: w,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shape: StadiumBorder(),
-                          ),
-                          child: Image.asset('assets/images/spotify.png'),
-                          onPressed: () async {
-                            Uri url = Uri.parse(
-                                'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=73bd19c342cc472c');
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
-        },
-        child: Icon(Icons.info_outline),
-        backgroundColor: appTheme.primaryColor.withOpacity(.5),
-      ),
-
+    
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: <Widget>[HomeTop(), homeDown, homeDown],
+          children: <Widget>[HomeTop(), homeDown, ContactUsContainer()],
+          //To add a new widget you have to add it here.
         ),
       ),
     );
@@ -587,6 +470,117 @@ class City extends StatelessWidget {
           ],
         )
       ],
+    );
+  }
+}
+
+
+
+class ContactUsContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 20.0),
+      color: Colors.white, // Background color
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Pinterest button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Twitter button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Spotify button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Instagram button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Instagram button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+            ],
+          ),
+          SizedBox(height: 20.0), // Add spacing between buttons and additional information
+          Text(
+            'Contact Us',
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            'Email: wellness@yfs.ca',
+            style: TextStyle(fontSize: 16.0),
+          ),
+          Text(
+            'Phone: (416)-736-2100 x44872',
+            style: TextStyle(fontSize: 16.0),
+          ),
+          Text(
+            'York University, Second Student Centre Rm:341',
+            style: TextStyle(fontSize: 16.0),
+          ),
+          Text(
+            'Address: 15 Library Ln, North York, ON M3J 2S5',
+            style: TextStyle(fontSize: 16.0),
+          ),
+          
+          // Add more information as needed
+        ],
+      ),
+    );
+  }
+}
+
+
+class CircularButton extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onPressed;
+
+  CircularButton({required this.icon, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPressed,
+      borderRadius: BorderRadius.circular(30.0),
+      child: Container(
+        height: 45.0,
+        width: 45.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.blue, // Customize button color
+        ),
+        child: Center(
+          child: Icon(
+            icon,
+            color: Colors.white, // Customize icon color
+            size: 30.0,
+          ),
+        ),
+      ),
     );
   }
 }
