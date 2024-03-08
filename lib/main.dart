@@ -7,7 +7,7 @@ import 'events.dart';
 import 'WishList.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized;
+  WidgetsFlutterBinding.ensureInitialized();
   await SavedData.init();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
