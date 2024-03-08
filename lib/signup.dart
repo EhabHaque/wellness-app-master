@@ -2,7 +2,6 @@ import 'auth.dart';
 import 'main.dart';
 import 'custom_input_form.dart';
 import 'login.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});

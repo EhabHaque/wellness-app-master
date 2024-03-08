@@ -25,13 +25,13 @@ class Event extends StatefulWidget {
 }
 
 class _EventState extends State<Event> {
-  String userName = "User";
+  //String userName = "User";
   List<Document> events = [];
   bool isLoading = true;
 
   @override
   void initState() {
-    userName = SavedData.getUserName().split(" ")[0];
+  //userName = SavedData.getUserName().split(" ")[0];
     refresh();
     super.initState();
   }
@@ -52,7 +52,7 @@ class _EventState extends State<Event> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.transparent,
         actions: [
@@ -70,7 +70,7 @@ class _EventState extends State<Event> {
                 size: 30,
               ))
         ],
-      ),
+      ),*/
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -80,13 +80,13 @@ class _EventState extends State<Event> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Hi ${userName} 👋",
+                    "Hi",
                     style: TextStyle(
                         color: appTheme.primaryColor,
                         fontSize: 32,
                         fontWeight: FontWeight.w600),
                   ),
-                  Text("Expore event around you",
+                  Text("Expore events around you",
                       style: TextStyle(
                           color: appTheme.primaryColor,
                           fontSize: 16,
@@ -162,18 +162,6 @@ class _EventState extends State<Event> {
                   (context, index) => EventContainer(data: events[index]),
                   childCount: events.length)),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await Navigator.push(context,
-              MaterialPageRoute(builder: (context) => CreateEventPage()));
-          refresh();
-        },
-        child: Icon(
-          Icons.add,
-          color: Colors.black,
-        ),
-        backgroundColor: appTheme.primaryColor,
       ),
     );
   }

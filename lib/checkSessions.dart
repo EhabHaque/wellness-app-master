@@ -1,3 +1,5 @@
+import 'package:tutvideo/events.dart';
+
 import 'auth.dart';
 import 'main.dart';
 import 'login.dart';
@@ -17,7 +19,7 @@ class _CheckSessionsState extends State<CheckSessions> {
     checkSessions().then((value) {
       if (value) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Homepage()));
+            context, MaterialPageRoute(builder: (context) => Event()));
       } else {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginPage()));
