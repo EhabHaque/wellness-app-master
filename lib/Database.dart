@@ -59,7 +59,7 @@ Future<void> createEvent(
   return await databases
       .createDocument(
           databaseId: databaseId,
-          collectionId: "65e955efeef6f2f2a77f",
+          collectionId: "65ea0edbdc577bb273b1",
           documentId: ID.unique(),
           data: {
             "name": name,
@@ -70,7 +70,6 @@ Future<void> createEvent(
             "createdBy": createdBy,
             "isInPerson": isInPersonOrNot,
             "guests": guest,
-            "sponsers": sponsers
           })
       .then((value) => print("Event Created"))
       .catchError((e) => print(e));
@@ -80,7 +79,7 @@ Future<void> createEvent(
 Future getAllEvents() async {
   try {
     final data = await databases.listDocuments(
-        databaseId: databaseId, collectionId: "65e955efeef6f2f2a77f");
+        databaseId: databaseId, collectionId: "65ea0edbdc577bb273b1");
     return data.documents;
   } catch (e) {
     print(e);
