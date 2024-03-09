@@ -1,4 +1,5 @@
 import 'package:appwrite/models.dart';
+import 'package:tutvideo/event_container.dart';
 import 'auth.dart';
 import 'main.dart';
 import 'database.dart';
@@ -30,16 +31,12 @@ class _EventState extends State<Event> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.transparent,
-        
-      ),
+ 
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Text(
-              "Hi 👋",
+              "Events",
               style: TextStyle(
                   color: appTheme.primaryColor,
                   fontSize: 32,
@@ -48,22 +45,7 @@ class _EventState extends State<Event> {
           ),
           SliverList(
               delegate: SliverChildBuilderDelegate(
-                  (context, index) => ListTile(
-                        leading: Text(
-                          "${index + 1}",
-                          style: TextStyle(color: appTheme.primaryColor, fontSize: 20),
-                        ),
-                        title: Text(
-                          events[index].data["name"],
-                          style: TextStyle(color: appTheme.primaryColor, fontSize: 20),
-                        ),
-                        subtitle: Text(
-                          events[index].data["location"],
-                          style: TextStyle(
-                            color: appTheme.primaryColor,
-                          ),
-                        ),
-                      ),
+                  (context, index) => EventContainer(data: events[index]),
                   childCount: events.length))
         ],
       ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 //import 'package:flutter/widgets.dart';
 import 'saved_data.dart';
@@ -18,6 +19,7 @@ void main() async {
   await SavedData.init();
   // Initialize the local notifications plugin
   await initNotifications();
+  HttpOverrides.global = MyHttpOverrides();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: BottomNav(),
@@ -212,19 +214,6 @@ class _HomeTop extends State<HomeTop> {
                   height: height! / 16,
                 ),
                 Spacer(),
-                /* IconButton(
-              onPressed: () async {
-                // logoutUser();
-                await Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));
-
-                refresh();
-              },
-              icon: Icon(
-                Icons.account_circle,
-                color: Colors.white),
-                //size: 30,
-              )), */
                 SizedBox(
                   height: height! / 7,
                 ),
@@ -315,17 +304,24 @@ class _Choice08State extends State<Choice08>
   }
 }
 
+
 var viewallstyle =
     TextStyle(fontSize: 14, color: appTheme.primaryColor //Colors.teal
         );
-var homeDown = Column(
+class homeDown extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context) {
+    
+return Column(
   children: <Widget>[
     Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
+        
+        children: <Widget> [
           // SizedBox(
           //   width: width! * 0.05,
           // ),
@@ -333,8 +329,15 @@ var homeDown = Column(
             "Upcoming Events",
             style: TextStyle(color: Colors.black, fontSize: 16),
           ),
-          Spacer(),
-          Text("VIEW ALL", style: viewallstyle)
+          Spacer(), GestureDetector(
+      onTap: () {
+        // Navigate to the events page
+        Navigator.push( context,MaterialPageRoute(builder: (context) => Event(), 
+          ),
+        );
+      },
+          child: Text("VIEW ALL", style: viewallstyle),
+          )
         ],
       ),
     ),
@@ -352,7 +355,7 @@ var homeDown = Column(
           scrollDirection: Axis.horizontal),
     ),
   ],
-);
+);}}
 List<City> cities = [
   City(
     image: "assets/images/Kerman.png",
@@ -747,5 +750,13 @@ class WellnessActivityCard extends StatelessWidget {
 
 /////////////Snake Game///////////////////
 
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 
