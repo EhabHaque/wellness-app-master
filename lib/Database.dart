@@ -1,35 +1,52 @@
-/*import 'dart:io';
+import 'package:appwrite/appwrite.dart';
+import 'saved_data.dart';
 
-import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
+import 'auth.dart';
 
-class DBProvider {
-  DBProvider._();
-  static final DBProvider db = DBProvider._();
-  static Database _database;
+String databaseId = "65e955e072eb7d2905bf";
 
-  Future<Database> get database async {
-    if (_database != null)
-    return _database;
+final Databases databases = Databases(client);
 
-    // if _database is null we instantiate it
-    _database = await initDB();
-    return _database;
+// Save the user data to appwrite database - not creating any new users through the app, implement if needed to create users through app
+
+// Create new events
+
+Future<void> createEvent(
+    String name,
+    String desc,
+    String image,
+    String location,
+    String datetime,
+    String createdBy,
+    bool isInPersonOrNot,
+    String guest,
+    String sponsers) async {
+  return await databases
+      .createDocument(
+          databaseId: databaseId,
+          collectionId: "65ea0edbdc577bb273b1",
+          documentId: ID.unique(),
+          data: {
+            "name": name,
+            "description": desc,
+            "image": image,
+            "location": location,
+            "datetime": datetime,
+            "createdBy": createdBy,
+            "isInPerson": isInPersonOrNot,
+            "guests": guest,
+          })
+      .then((value) => print("Event Created"))
+      .catchError((e) => print(e));
+}
+
+// Read all Events
+Future getAllEvents() async {
+  try {
+    final data = await databases.listDocuments(
+        databaseId: databaseId, collectionId: "65ea0edbdc577bb273b1");
+    return data.documents;
+  } catch (e) {
+    print(e);
   }
-  initDB() async {
-    Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "TestDB.db");
-        return await openDatabase(path, version: 1, onOpen: (db) {
-        }, onCreate: (Database db, int version) async {
-          await db.execute("CREATE TABLE Client ("
-              "id INTEGER PRIMARY KEY,"
-              "first_name TEXT,"
-              "last_name TEXT,"
-              "blocked BIT"
-              ")");
-        });
-      }
-    
-      String join(String path, String s) => path+s;
-}*/
+}

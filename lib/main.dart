@@ -1,24 +1,23 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+//import 'package:flutter/widgets.dart';
+import 'saved_data.dart';
 import 'Notifications.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
-import 'Deals.dart';
-import 'SecondPage.dart';
+import 'events.dart';
 import 'WishList.dart';
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'Notifications.dart';
 
 import 'wellness_activities.dart';
 import 'snake_game.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await SavedData.init();
   // Initialize the local notifications plugin
   await initNotifications();
-
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: BottomNav(),
@@ -67,13 +66,9 @@ ThemeData appTheme = ThemeData(
 int sel = 0;
 double? width;
 double? height;
-final bodies = [
-  HomeScreen(),
-  WishList(),
-  Deals(),
-  prefix0.Notification(),
-  SnakeGame()
-];
+
+final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
+
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -216,6 +211,20 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(
                   height: height! / 16,
                 ),
+                Spacer(),
+                /* IconButton(
+              onPressed: () async {
+                // logoutUser();
+                await Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profile()));
+
+                refresh();
+              },
+              icon: Icon(
+                Icons.account_circle,
+                color: Colors.white),
+                //size: 30,
+              )), */
                 SizedBox(
                   height: height! / 7,
                 ),
