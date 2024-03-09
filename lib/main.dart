@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 //import 'package:flutter/widgets.dart';
 import 'saved_data.dart';
@@ -5,16 +6,54 @@ import 'Notifications.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
 import 'events.dart';
 import 'WishList.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'Notifications.dart';
+
+import 'wellness_activities.dart';
+import 'snake_game.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SavedData.init();
+  // Initialize the local notifications plugin
+  await initNotifications();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: BottomNav(),
     theme: appTheme,
     title: "YFS Wellness Center",
+    onGenerateRoute: (RouteSettings settings) {
+      // Handle notification tap here
+      if (settings.name == '/notification') {
+        // Handle notification tap logic
+        print("Notification tapped with payload: ${settings.arguments}");
+      }
+      // You can add additional route handling here if needed
+    },
   ));
+}
+
+// Function to initialize local notifications
+Future<void> initNotifications() async {
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings(
+          'app_icon'); // Replace 'app_icon' with your app icon name
+
+  final InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+  );
+
+  //await flutterLocalNotificationsPlugin.initialize(
+  //initializationSettings,
+  //onSelectNotification: (String? payload) async {
+  // Handle notification tap here
+  //print("Notification tapped with payload: $payload");
+  //},
+  //);
 }
 
 ThemeData appTheme = ThemeData(
@@ -27,7 +66,9 @@ ThemeData appTheme = ThemeData(
 int sel = 0;
 double? width;
 double? height;
-final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification()];
+
+final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
+
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -70,14 +111,24 @@ class _BottomNavState extends State<BottomNav> {
         label: "Events"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.notifications,
+          Icons.lock_clock,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.notifications,
+          Icons.lock_clock,
           color: Colors.black,
         ),
-        label: "Notifications"));
+        label: "Pomodoro"));
+    items.add(BottomNavigationBarItem(
+        activeIcon: Icon(
+          Icons.gamepad,
+          color: appTheme.primaryColor,
+        ),
+        icon: Icon(
+          Icons.gamepad,
+          color: Colors.black,
+        ),
+        label: "Snake"));
     return items;
   }
 
@@ -111,131 +162,19 @@ class HomeScreen extends StatelessWidget {
 
     width = MediaQuery.of(context).size.shortestSide;
     height = MediaQuery.of(context).size.longestSide;
-    double h = 50;
-    double w = 50;
     return Scaffold(
       // bottomNavigationBar: /*NavigationTest()*/Navigation(),
-      floatingActionButton: FloatingActionButton(
-        elevation: 0,
-        hoverElevation: 0,
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text("Socials:"),
-                content: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: SizedBox(
-                        height: 50,
-                        width: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shape: StadiumBorder(),
-                          ),
-                          child: Image.asset('assets/images/pinterest.png'),
-                          onPressed: () async {
-                            Uri url = Uri.parse(
-                                'https://www.pinterest.ca/YFSWellness/');
-                            // const url = 'https://www.pinterest.ca/YFSWellness/';
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: SizedBox(
-                        height: h,
-                        width: w,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shape: StadiumBorder(),
-                          ),
-                          child: Image.asset('assets/images/instagram.png',
-                              fit: BoxFit.cover),
-                          onPressed: () async {
-                            Uri url = Uri.parse(
-                                'https://www.instagram.com/yfswellness');
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: SizedBox(
-                        height: h,
-                        width: w,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shape: StadiumBorder(),
-                          ),
-                          child: Image.asset(
-                              'assets/images/twitter.png'), // Change to twitter asset
-                          onPressed: () async {
-                            Uri url = Uri.parse(
-                                'https://twitter.com/yfslocal68?lang=en');
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: SizedBox(
-                        height: h,
-                        width: w,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shape: StadiumBorder(),
-                          ),
-                          child: Image.asset('assets/images/spotify.png'),
-                          onPressed: () async {
-                            Uri url = Uri.parse(
-                                'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=73bd19c342cc472c');
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
-        },
-        child: Icon(Icons.info_outline),
-        backgroundColor: appTheme.primaryColor.withOpacity(.5),
-      ),
 
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: <Widget>[HomeTop(), homeDown, homeDown],
+          children: <Widget>[
+            HomeTop(),
+            homeDown,
+            WellnessActivitiesSection(),
+            ContactUsContainer()
+          ],
+          //To add a new widget you have to add it here.
         ),
       ),
     );
@@ -567,3 +506,246 @@ class City extends StatelessWidget {
     );
   }
 }
+
+class ContactUsContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 20.0),
+      color: Colors.white, // Background color
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Pinterest button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Twitter button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Spotify button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Instagram button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+              CircularButton(
+                icon: Icons.add,
+                onPressed: () {
+                  // Handle Instagram button press
+                  // Add your navigation logic or URL launch here
+                },
+              ),
+            ],
+          ),
+          SizedBox(
+              height:
+                  20.0), // Add spacing between buttons and additional information
+          Text(
+            'Contact Us',
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            'Email: wellness@yfs.ca',
+            style: TextStyle(fontSize: 16.0),
+          ),
+          Text(
+            'Phone: (416)-736-2100 x44872',
+            style: TextStyle(fontSize: 16.0),
+          ),
+          Text(
+            'York University, Second Student Centre Rm:341',
+            style: TextStyle(fontSize: 16.0),
+          ),
+          Text(
+            'Address: 15 Library Ln, North York, ON M3J 2S5',
+            style: TextStyle(fontSize: 16.0),
+          ),
+
+          // Add more information as needed
+        ],
+      ),
+    );
+  }
+}
+
+class CircularButton extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onPressed;
+
+  CircularButton({required this.icon, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPressed,
+      borderRadius: BorderRadius.circular(30.0),
+      child: Container(
+        height: 45.0,
+        width: 45.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.blue, // Customize button color
+        ),
+        child: Center(
+          child: Icon(
+            icon,
+            color: Colors.white, // Customize icon color
+            size: 30.0,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/////////////////////-Wellness Activities-//////////////////////////
+
+//This part is for the wellness box/widgets
+class WellnessActivitiesSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                "Wellness Activities At York",
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+              // Spacer(), // Remove the spacer if you don't want the VIEW ALL button
+              // Text("VIEW ALL", style: viewallstyle),
+            ],
+          ),
+        ),
+        Container(
+          height: 170, // Adjust the height as needed
+          child: ListView.builder(
+            itemBuilder: (context, index) => WellnessActivityCard(
+                wellnessActivity: wellnessActivities[index]),
+            shrinkWrap: true,
+            padding: EdgeInsets.all(0.0),
+            itemCount: wellnessActivities.length,
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class WellnessActivityCard extends StatelessWidget {
+  final WellnessActivity? wellnessActivity;
+
+  WellnessActivityCard({this.wellnessActivity});
+
+  @override
+  Widget build(BuildContext context) {
+    //This part basically detects the gestures to swipe right
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                WellnessDetailPage(wellnessActivity: wellnessActivity!),
+          ),
+        );
+      },
+      child: Column(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Container(
+                    height: height! * .137 < 160 ? height! * .137 : 160,
+                    width: width! * .5 < 250 ? width! * .5 : 250,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(wellnessActivity!.image),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  height: 60,
+                  width: width! * .5 < 250 ? width! * .5 : 250,
+                  left: 5,
+                  bottom: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.black, Colors.black12],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              wellnessActivity!.name,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  left: 10,
+                  bottom: 10,
+                  right: 15,
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/////////////Snake Game///////////////////
+
+
+
