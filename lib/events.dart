@@ -36,7 +36,7 @@ class _EventState extends State<Event> {
         slivers: [
           SliverToBoxAdapter(
             child: Text(
-              "Events",
+              "",
               style: TextStyle(
                   color: appTheme.primaryColor,
                   fontSize: 32,

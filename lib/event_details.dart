@@ -130,7 +130,6 @@ class _EventDetailsState extends State<EventDetails> {
                             fontWeight: FontWeight.w700),
                       ),
                     ),
-                    Icon(Icons.share)
                   ],
                 ),
                 SizedBox(
