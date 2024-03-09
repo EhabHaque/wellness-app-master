@@ -172,7 +172,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             HomeTop(),
-            homeDown,
+            homeDown(),
             WellnessActivitiesSection(),
             ContactUsContainer()
           ],
