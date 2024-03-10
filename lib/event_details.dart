@@ -125,7 +125,7 @@ class _EventDetailsState extends State<EventDetails> {
                       child: Text(
                         widget.data.data["name"],
                         style: TextStyle(
-                            color: Colors.black,
+                            color: appTheme.primaryColor,
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
                       ),
@@ -145,7 +145,7 @@ class _EventDetailsState extends State<EventDetails> {
                 Text(
                   "Special Guests ",
                   style: TextStyle(
-                      color: Colors.black,
+                      color: appTheme.primaryColor,
                       fontWeight: FontWeight.w700,
                       fontSize: 20),
                 ),
@@ -162,7 +162,7 @@ class _EventDetailsState extends State<EventDetails> {
                 Text(
                   "More Info ",
                   style: TextStyle(
-                      color: Colors.black,
+                      color: appTheme.primaryColor,
                       fontWeight: FontWeight.w700,
                       fontSize: 20),
                 ),
@@ -177,7 +177,7 @@ class _EventDetailsState extends State<EventDetails> {
                   height: 8,
                 ),
                 Text(
-                  "Time : ${formatDate(widget.data.data["datetime"])}",
+                  "Date : ${formatDate(widget.data.data["datetime"])}",
                   style: TextStyle(color: Colors.black),
                 ),
                 SizedBox(

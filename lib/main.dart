@@ -9,6 +9,8 @@ import 'events.dart';
 import 'WishList.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'Notifications.dart';
+import 'dart:math'; 
+import 'quote_provider.dart';
 
 import 'wellness_activities.dart';
 import 'snake_game.dart';
@@ -57,6 +59,7 @@ Future<void> initNotifications() async {
   //},
   //);
 }
+ 
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
@@ -183,8 +186,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-var selectedloc = 0;
-List<String> locs = ['Kerman (KER)', 'Mashhad (MASH)'];
 
 class HomeTop extends StatefulWidget {
   @override
@@ -192,8 +193,29 @@ class HomeTop extends StatefulWidget {
 }
 
 class _HomeTop extends State<HomeTop> {
-  var isFlightselected = true;
-  TextEditingController c = TextEditingController(text: locs[1]);
+  String dailyQuote = "";
+  @override
+  void initState() {
+    super.initState();
+    // Set a new quote when the widget is initialized
+    setRandomQuote();
+
+    // Schedule a timer to update the quote every 24 hours
+    const duration = const Duration(hours: 24);
+    Timer.periodic(duration, (Timer timer) {
+      setRandomQuote();
+    });
+  }
+  void setRandomQuote() {
+    // Get a random index to select a quote
+    int randomIndex = Random().nextInt(QuoteProvider.quotes.length);
+
+    // Set the dailyQuote to the randomly selected quote
+    setState(() {
+      dailyQuote = QuoteProvider.quotes[randomIndex];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -215,7 +237,7 @@ class _HomeTop extends State<HomeTop> {
                 ),
                 Spacer(),
                 SizedBox(
-                  height: height! / 7,
+                  height: height! / 12,
                 ),
                 Image.asset(
                   'assets/images/YFSWellnessCentreLogo.png',
@@ -223,6 +245,11 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(height: height! * 0.0375),
                 SizedBox(
                   height: height! * 0.025,
+                ),
+                Text(
+                  dailyQuote,
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
