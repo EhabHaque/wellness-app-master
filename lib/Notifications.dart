@@ -1,18 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class Notification extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(child: Text("Notification Clicked")),
-//     );
-//   }
-// }
-
-// Notifications.dart
-
-// ignore_for_file: unnecessary_null_comparison
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 
@@ -21,7 +6,8 @@ class Notification extends StatefulWidget {
   _PomodoroTimerState createState() => _PomodoroTimerState();
 }
 
-class _PomodoroTimerState extends State<Notification> {
+class _PomodoroTimerState extends State<Notification>
+    with AutomaticKeepAliveClientMixin {
   int workDuration = 20; // in minutes
   int breakDuration = 5; // in minutes
   int pomodoroCount = 0;
@@ -29,6 +15,9 @@ class _PomodoroTimerState extends State<Notification> {
   bool isRunning = false;
   int timeLeftInSeconds = 0;
   late Timer timer;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -157,6 +146,8 @@ class _PomodoroTimerState extends State<Notification> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); // This line is important for AutomaticKeepAliveClientMixin
+
     Color backgroundColor = isWorking ? Colors.green : Colors.red;
 
     return Scaffold(
@@ -230,3 +221,4 @@ class _PomodoroTimerState extends State<Notification> {
     );
   }
 }
+

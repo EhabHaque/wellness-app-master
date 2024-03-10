@@ -8,7 +8,6 @@ class SnakeGame extends StatefulWidget {
 
 class _SnakeGameState extends State<SnakeGame> {
   static const int gridSize = 20;
-  static const int cellSize = 20;
 
   List<int> snake = [45, 65, 85];
   int food = 50;
@@ -137,8 +136,19 @@ class _SnakeGameState extends State<SnakeGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Snake Game'),
+        title: Text(
+        'Snake',
+        style: TextStyle(
+        fontFamily: 'Garamond',
+        fontSize: 30, // Adjust the font size as needed
+        fontWeight: FontWeight.bold,
+      // You can also set other text styles like color, letterSpacing, etc. here
       ),
+      ),
+        centerTitle: true,
+        backgroundColor: Color.fromRGBO(180, 117, 231, 0.080),
+      ),
+      backgroundColor: Color.fromRGBO(180, 117, 231, 0.573),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -164,7 +174,7 @@ class _SnakeGameState extends State<SnakeGame> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
                 onPressed: () {
@@ -183,51 +193,62 @@ class _SnakeGameState extends State<SnakeGame> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                onPressed: () {
-                  // Handle Up button press
+              ArrowButton(
+                onTap: () {
                   setState(() {
                     direction = Direction.up;
                   });
                 },
-                icon: Icon(Icons.arrow_upward),
+                icon: Icons.arrow_upward,
               ),
-              IconButton(
-                onPressed: () {
-                  // Handle Down button press
-                  setState(() {
-                    direction = Direction.down;
-                  });
-                },
-                icon: Icon(Icons.arrow_downward),
-              ),
-              IconButton(
-                onPressed: () {
-                  // Handle Left button press
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ArrowButton(
+                onTap: () {
                   setState(() {
                     direction = Direction.left;
                   });
                 },
-                icon: Icon(Icons.arrow_back),
+                icon: Icons.arrow_back,
               ),
-              IconButton(
-                onPressed: () {
-                  // Handle Right button press
+              SizedBox(width: 10),
+              // ArrowButton(
+              //   onTap: () {
+              //     setState(() {
+              //       direction = Direction.down;
+              //     });
+              //   },
+              //   icon: Icons.arrow_downward,
+              // ),
+              SizedBox(width: 40),
+              ArrowButton(
+                onTap: () {
                   setState(() {
                     direction = Direction.right;
                   });
                 },
-                icon: Icon(Icons.arrow_forward),
+                icon: Icons.arrow_forward,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ArrowButton(
+                onTap: () {
+                  // Handle the bottom arrow tap
+                  setState(() {
+                    direction = Direction.down;
+                  });
+                },
+                icon: Icons.arrow_downward,
               ),
             ],
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          resetGame();
-        },
-        child: Icon(Icons.refresh),
       ),
     );
   }
@@ -245,6 +266,28 @@ class Cell extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         shape: BoxShape.rectangle,
+      ),
+    );
+  }
+}
+
+class ArrowButton extends StatelessWidget {
+  final VoidCallback onTap;
+  final IconData icon;
+
+  const ArrowButton({
+    Key? key,
+    required this.onTap,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: CircleAvatar(
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+        child: Icon(icon),
       ),
     );
   }
