@@ -1,8 +1,8 @@
 import 'package:appwrite/models.dart';
-import 'package:tutvideo/event_container.dart';
+import 'event_container.dart';
 import 'auth.dart';
 import 'main.dart';
-import 'database.dart';
+import 'Database.dart';
 import 'saved_data.dart';
 import 'package:flutter/material.dart';
 
