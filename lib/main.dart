@@ -70,13 +70,7 @@ int sel = 0;
 double? width;
 double? height;
 
-final bodies = [
-  HomeScreen(),
-  WishList(),
-  Event(),
-  prefix0.Notification(),
-  SnakeGame()
-];
+final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -310,61 +304,59 @@ class _Choice08State extends State<Choice08>
   }
 }
 
+
 var viewallstyle =
     TextStyle(fontSize: 14, color: appTheme.primaryColor //Colors.teal
         );
 
 class homeDown extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              // SizedBox(
-              //   width: width! * 0.05,
-              // ),
-              Text(
-                "Upcoming Events",
-                style: TextStyle(color: Colors.black, fontSize: 16),
-              ),
-              Spacer(),
-              GestureDetector(
-                onTap: () {
-                  // Navigate to the events page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Event(),
-                    ),
-                  );
-                },
-                child: Text("VIEW ALL", style: viewallstyle),
-              )
-            ],
+    
+return Column(
+  children: <Widget>[
+    Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        
+        children: <Widget> [
+          // SizedBox(
+          //   width: width! * 0.05,
+          // ),
+          Text(
+            "Upcoming Events",
+            style: TextStyle(color: Colors.black, fontSize: 16),
           ),
-        ),
-        Container(
-          height: height! * .25 < 170 ? height! * .25 : 170,
-          //height: height! * .25 < 300 ? height! * .25 : 300,
-          // child:
-          // ConstrainedBox(
-          //   constraints: BoxConstraints(maxHeight: 170, minHeight: height! * .13),
-          child: ListView.builder(
-              itemBuilder: (context, index) => cities[index],
-              shrinkWrap: true,
-              padding: EdgeInsets.all(0.0),
-              itemCount: cities.length,
-              scrollDirection: Axis.horizontal),
-        ),
-      ],
-    );
-  }
-}
+          Spacer(), GestureDetector(
+      onTap: () {
+        // Navigate to the events page
+        Navigator.push( context,MaterialPageRoute(builder: (context) => Event(), 
+          ),
+        );
+      },
+          child: Text("VIEW ALL", style: viewallstyle),
+          )
+        ],
+      ),
+    ),
+    Container(
+      height: height! * .25 < 170 ? height! * .25 : 170,
+      //height: height! * .25 < 300 ? height! * .25 : 300,
+      // child:
+      // ConstrainedBox(
+      //   constraints: BoxConstraints(maxHeight: 170, minHeight: height! * .13),
+      child: ListView.builder(
+          itemBuilder: (context, index) => cities[index],
+          shrinkWrap: true,
+          padding: EdgeInsets.all(0.0),
+          itemCount: cities.length,
+          scrollDirection: Axis.horizontal),
+    ),
+  ],
+);}}
 
 List<City> cities = [
   City(
@@ -543,6 +535,7 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
+
                 icon: CustomIcons.twitter,
                 onPressed: () {
                   launch('https://twitter.com/yfslocal68?lang=en');
