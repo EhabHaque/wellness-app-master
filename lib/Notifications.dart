@@ -1,18 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class Notification extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(child: Text("Notification Clicked")),
-//     );
-//   }
-// }
-
-// Notifications.dart
-
-// ignore_for_file: unnecessary_null_comparison
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 
@@ -21,7 +6,8 @@ class Notification extends StatefulWidget {
   _PomodoroTimerState createState() => _PomodoroTimerState();
 }
 
-class _PomodoroTimerState extends State<Notification> {
+class _PomodoroTimerState extends State<Notification>
+    with AutomaticKeepAliveClientMixin {
   int workDuration = 20; // in minutes
   int breakDuration = 5; // in minutes
   int pomodoroCount = 0;
@@ -29,6 +15,9 @@ class _PomodoroTimerState extends State<Notification> {
   bool isRunning = false;
   int timeLeftInSeconds = 0;
   late Timer timer;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -90,34 +79,37 @@ class _PomodoroTimerState extends State<Notification> {
     });
   }
 
-  void adjustTimerDuration(int minutes) {
-    if (!isRunning) {
-      setState(() {
-        if (isWorking) {
-          workDuration += minutes;
-          timeLeftInSeconds = workDuration * 60;
-        } else {
-          breakDuration += minutes;
-          timeLeftInSeconds = breakDuration * 60;
-        }
-        if (timeLeftInSeconds < 0) {
-          timeLeftInSeconds = 0;
-        }
-      });
-    }
+ void adjustTimerDuration(int minutes) {
+  if (!isRunning) {
+    setState(() {
+      if (isWorking) {
+        // Ensure that the work duration doesn't go below 5 minutes, otherwise it crashes
+        workDuration = (workDuration + minutes).clamp(5, 60);
+        timeLeftInSeconds = workDuration * 60;
+      } else {
+        breakDuration += minutes;
+        timeLeftInSeconds = breakDuration * 60;
+      }
+      if (timeLeftInSeconds < 0) {
+        timeLeftInSeconds = 0;
+      }
+    });
   }
+}
 
   void showNotification(String message) {
     // Implement your notification logic here
     // You can use packages like flutter_local_notifications or others for notifications
   }
 
-  void showInfoModal() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Row(
+ void showInfoModal() {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Center(
+          child: Row(
+
             children: [
               Expanded(
                 child: Text('What is the pomodoro technique?'),
@@ -130,22 +122,27 @@ class _PomodoroTimerState extends State<Notification> {
               ),
             ],
           ),
-          content: Text('''The Pomodoro Technique involves working on a specific task for a set period, followed by a short break.
-          It helps by enhancing focus, alleviating burnout, and promoting better time awareness.
-          
-          How to use the Pomodoro Technique:
+        ),
+        content: Center(
+          child: Text(
+            '''The Pomodoro Technique involves working on a specific task for a set period, followed by a short break.
+            It helps by enhancing focus, alleviating burnout, and promoting better time awareness.
+            
+            How to use the Pomodoro Technique:
 
-          1. Select a task you want to work on.
-          2. Set a duration you would like for your work session, you can add or decrease 5 minutes with the buttons.
-          3. One Pomodoro is when you have completed a work session focusing exclusively on the task.
-          3. Work on the task: Dedicate yourself to the task until the timer rings.
-          4. Take a short break: Enjoy a 5-minute break to relax and recharge.
-          5. Repeat the process, after completing four Pomodoros, you will get a long break of 15 minutes.
-           '''),
-        );
-      },
-    );
-  }
+            1. Select a task you want to work on.
+            2. Set a duration you would like for your work session, you can add or decrease 5 minutes with the buttons.
+            3. One Pomodoro is when you have completed a work session focusing exclusively on the task.
+            3. Work on the task: Dedicate yourself to the task until the timer rings.
+            4. Take a short break: Enjoy a 5-minute break to relax and recharge.
+            5. Repeat the process, after completing four Pomodoros, you will get a long break of 15 minutes.
+            ''',
+          ),
+        ),
+      );
+    },
+  );
+}
 
   @override
   void dispose() {
@@ -157,6 +154,8 @@ class _PomodoroTimerState extends State<Notification> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); // This line is important for AutomaticKeepAliveClientMixin
+
     Color backgroundColor = isWorking ? Colors.green : Colors.red;
 
     return Scaffold(
@@ -230,3 +229,4 @@ class _PomodoroTimerState extends State<Notification> {
     );
   }
 }
+

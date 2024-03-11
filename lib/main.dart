@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+//import 'package:flutter/widgets.dart';
+import 'custom_icons_icons.dart';
 import 'saved_data.dart';
 import 'Notifications.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
@@ -15,6 +17,8 @@ import 'event_container.dart';
 import 'Database.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,13 +75,9 @@ int sel = 0;
 double? width;
 double? height;
 
-final bodies = [
-  HomeScreen(),
-  WishList(),
-  Event(),
-  prefix0.Notification(),
-  SnakeGame()
-];
+
+final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
+
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -361,6 +361,7 @@ class _homeDownState extends State<homeDown> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -407,12 +408,14 @@ class _homeDownState extends State<homeDown> {
   }
 }
 
-// for
+
+/////////////////////////Contact US/////////////////////////////////////////////////
+
 class ContactUsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20.0),
+      padding: EdgeInsets.symmetric(vertical: 0.0),
       color: Colors.white, // Background color
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -421,36 +424,43 @@ class ContactUsContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CircularButton(
-                icon: Icons.add,
+                icon: Icons.facebook,
                 onPressed: () {
+                  launch('https://www.facebook.com/yfslocal68');
                   // Handle Pinterest button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+
+                icon: CustomIcons.twitter,
                 onPressed: () {
+                  launch('https://twitter.com/yfslocal68?lang=en');
                   // Handle Twitter button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.pinterest_circled,
                 onPressed: () {
+                  launch('https://www.pinterest.ca/YFSWellness/');
                   // Handle Spotify button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.instagram,
                 onPressed: () {
+                  launch('https://www.instagram.com/yfswellness');
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.spotify,
                 onPressed: () {
+                  launch(
+                      'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed');
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
@@ -504,13 +514,13 @@ class CircularButton extends StatelessWidget {
         width: 45.0,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.blue, // Customize button color
+          color: Color.fromRGBO(180, 117, 231, 0.573), // Customize button color
         ),
         child: Center(
           child: Icon(
             icon,
             color: Colors.white, // Customize icon color
-            size: 30.0,
+            size: 40.0,
           ),
         ),
       ),
@@ -645,8 +655,6 @@ class WellnessActivityCard extends StatelessWidget {
     );
   }
 }
-
-/////////////Snake Game///////////////////
 
 class MyHttpOverrides extends HttpOverrides {
   @override
