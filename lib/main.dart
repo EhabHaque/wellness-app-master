@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 //import 'package:flutter/widgets.dart';
+import 'custom_icons_icons.dart';
 import 'saved_data.dart';
 import 'Notifications.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
@@ -13,7 +14,6 @@ import 'Notifications.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,8 +70,13 @@ int sel = 0;
 double? width;
 double? height;
 
-final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
-
+final bodies = [
+  HomeScreen(),
+  WishList(),
+  Event(),
+  prefix0.Notification(),
+  SnakeGame()
+];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -305,58 +310,62 @@ class _Choice08State extends State<Choice08>
   }
 }
 
-
 var viewallstyle =
     TextStyle(fontSize: 14, color: appTheme.primaryColor //Colors.teal
         );
+
 class homeDown extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
-    
-return Column(
-  children: <Widget>[
-    Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        
-        children: <Widget> [
-          // SizedBox(
-          //   width: width! * 0.05,
-          // ),
-          Text(
-            "Upcoming Events",
-            style: TextStyle(color: Colors.black, fontSize: 16),
+    return Column(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              // SizedBox(
+              //   width: width! * 0.05,
+              // ),
+              Text(
+                "Upcoming Events",
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+              Spacer(),
+              GestureDetector(
+                onTap: () {
+                  // Navigate to the events page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Event(),
+                    ),
+                  );
+                },
+                child: Text("VIEW ALL", style: viewallstyle),
+              )
+            ],
           ),
-          Spacer(), GestureDetector(
-      onTap: () {
-        // Navigate to the events page
-        Navigator.push( context,MaterialPageRoute(builder: (context) => Event(), 
-          ),
-        );
-      },
-          child: Text("VIEW ALL", style: viewallstyle),
-          )
-        ],
-      ),
-    ),
-    Container(
-      height: height! * .25 < 170 ? height! * .25 : 170,
-      //height: height! * .25 < 300 ? height! * .25 : 300,
-      // child:
-      // ConstrainedBox(
-      //   constraints: BoxConstraints(maxHeight: 170, minHeight: height! * .13),
-      child: ListView.builder(
-          itemBuilder: (context, index) => cities[index],
-          shrinkWrap: true,
-          padding: EdgeInsets.all(0.0),
-          itemCount: cities.length,
-          scrollDirection: Axis.horizontal),
-    ),
-  ],
-);}}
+        ),
+        Container(
+          height: height! * .25 < 170 ? height! * .25 : 170,
+          //height: height! * .25 < 300 ? height! * .25 : 300,
+          // child:
+          // ConstrainedBox(
+          //   constraints: BoxConstraints(maxHeight: 170, minHeight: height! * .13),
+          child: ListView.builder(
+              itemBuilder: (context, index) => cities[index],
+              shrinkWrap: true,
+              padding: EdgeInsets.all(0.0),
+              itemCount: cities.length,
+              scrollDirection: Axis.horizontal),
+        ),
+      ],
+    );
+  }
+}
+
 List<City> cities = [
   City(
     image: "assets/images/Kerman.png",
@@ -511,7 +520,6 @@ class City extends StatelessWidget {
   }
 }
 
-
 /////////////////////////Contact US/////////////////////////////////////////////////
 
 class ContactUsContainer extends StatelessWidget {
@@ -535,7 +543,7 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.twitter,
                 onPressed: () {
                   launch('https://twitter.com/yfslocal68?lang=en');
                   // Handle Twitter button press
@@ -561,7 +569,8 @@ class ContactUsContainer extends StatelessWidget {
               CircularButton(
                 icon: Icons.add,
                 onPressed: () {
-                  launch('https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed');
+                  launch(
+                      'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed');
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
@@ -757,7 +766,6 @@ class WellnessActivityCard extends StatelessWidget {
   }
 }
 
-
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
@@ -766,5 +774,3 @@ class MyHttpOverrides extends HttpOverrides {
           (X509Certificate cert, String host, int port) => true;
   }
 }
-
-
