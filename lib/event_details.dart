@@ -169,8 +169,18 @@ class _EventDetailsState extends State<EventDetails> {
                 SizedBox(
                   height: 8,
                 ),
+                
                 Text(
                   "Event Type : ${widget.data.data["isInPerson"] == true ? "In Person" : "Virtual"}",
+                  style: TextStyle(color: Colors.black),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                
+                if(widget.data.data["urlLink"] != null)
+                Text(
+                  "Link : ${widget.data.data["urlLink"]}",
                   style: TextStyle(color: Colors.black),
                 ),
                 SizedBox(

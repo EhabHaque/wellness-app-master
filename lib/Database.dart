@@ -20,7 +20,7 @@ Future<void> createEvent(
     String createdBy,
     bool isInPersonOrNot,
     String guest,
-    String sponsers) async {
+    String urlLink) async {
   return await databases
       .createDocument(
           databaseId: databaseId,
@@ -35,6 +35,7 @@ Future<void> createEvent(
             "createdBy": createdBy,
             "isInPerson": isInPersonOrNot,
             "guests": guest,
+            "urlLink": urlLink,
           })
       .then((value) => print("Event Created"))
       .catchError((e) => print(e));
