@@ -551,7 +551,7 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.pinterest_circled,
                 onPressed: () {
                   launch('https://www.pinterest.ca/YFSWellness/');
                   // Handle Spotify button press
@@ -559,7 +559,7 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.instagram,
                 onPressed: () {
                   launch('https://www.instagram.com/yfswellness');
                   // Handle Instagram button press
@@ -567,7 +567,7 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.spotify,
                 onPressed: () {
                   launch(
                       'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed');
