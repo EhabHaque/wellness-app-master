@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 //import 'package:flutter/widgets.dart';
+import 'custom_icons_icons.dart';
 import 'saved_data.dart';
 import 'Notifications.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
@@ -9,10 +10,14 @@ import 'events.dart';
 import 'WishList.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'Notifications.dart';
-
+import 'dart:math';
+import 'package:appwrite/models.dart';
+import 'quote_provider.dart';
+import 'event_container.dart';
+import 'Database.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 
 void main() async {
@@ -69,6 +74,7 @@ ThemeData appTheme = ThemeData(
 int sel = 0;
 double? width;
 double? height;
+
 
 final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
 
@@ -184,17 +190,36 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-var selectedloc = 0;
-List<String> locs = ['Kerman (KER)', 'Mashhad (MASH)'];
-
 class HomeTop extends StatefulWidget {
   @override
   _HomeTop createState() => _HomeTop();
 }
 
 class _HomeTop extends State<HomeTop> {
-  var isFlightselected = true;
-  TextEditingController c = TextEditingController(text: locs[1]);
+  String dailyQuote = "";
+  @override
+  void initState() {
+    super.initState();
+    // Set a new quote when the widget is initialized
+    setRandomQuote();
+
+    // Schedule a timer to update the quote every 24 hours
+    const duration = const Duration(hours: 24);
+    Timer.periodic(duration, (Timer timer) {
+      setRandomQuote();
+    });
+  }
+
+  void setRandomQuote() {
+    // Get a random index to select a quote
+    int randomIndex = Random().nextInt(QuoteProvider.quotes.length);
+
+    // Set the dailyQuote to the randomly selected quote
+    setState(() {
+      dailyQuote = QuoteProvider.quotes[randomIndex];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -216,7 +241,7 @@ class _HomeTop extends State<HomeTop> {
                 ),
                 Spacer(),
                 SizedBox(
-                  height: height! / 7,
+                  height: height! / 16,
                 ),
                 Image.asset(
                   'assets/images/YFSWellnessCentreLogo.png',
@@ -224,6 +249,11 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(height: height! * 0.0375),
                 SizedBox(
                   height: height! * 0.025,
+                ),
+                Text(
+                  dailyQuote,
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
@@ -305,207 +335,74 @@ class _Choice08State extends State<Choice08>
   }
 }
 
-
 var viewallstyle =
     TextStyle(fontSize: 14, color: appTheme.primaryColor //Colors.teal
         );
-class homeDown extends StatelessWidget {
-  
+
+class homeDown extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    
-return Column(
-  children: <Widget>[
-    Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        
-        children: <Widget> [
-          // SizedBox(
-          //   width: width! * 0.05,
-          // ),
-          Text(
-            "Upcoming Events",
-            style: TextStyle(color: Colors.black, fontSize: 16),
-          ),
-          Spacer(), GestureDetector(
-      onTap: () {
-        // Navigate to the events page
-        Navigator.push( context,MaterialPageRoute(builder: (context) => Event(), 
-          ),
-        );
-      },
-          child: Text("VIEW ALL", style: viewallstyle),
-          )
-        ],
-      ),
-    ),
-    Container(
-      height: height! * .25 < 170 ? height! * .25 : 170,
-      //height: height! * .25 < 300 ? height! * .25 : 300,
-      // child:
-      // ConstrainedBox(
-      //   constraints: BoxConstraints(maxHeight: 170, minHeight: height! * .13),
-      child: ListView.builder(
-          itemBuilder: (context, index) => cities[index],
-          shrinkWrap: true,
-          padding: EdgeInsets.all(0.0),
-          itemCount: cities.length,
-          scrollDirection: Axis.horizontal),
-    ),
-  ],
-);}}
-List<City> cities = [
-  City(
-    image: "assets/images/Kerman.png",
-    name: "Kerman",
-    monthyear: "Far 1399",
-    oldprice: "258500",
-    newprice: "150000",
-    discount: "58",
-  ),
-  City(
-    image: "assets/images/Mashhad.png",
-    name: "Mashhad",
-    monthyear: "Far 1399",
-    oldprice: "258500",
-    newprice: "150000",
-    discount: "58",
-  ),
-  City(
-    image: "assets/images/Tehran.png",
-    name: "Tehran",
-    monthyear: "Far 1399",
-    oldprice: "258500",
-    newprice: "150000",
-    discount: "58",
-  ),
-];
+  _homeDownState createState() => _homeDownState();
+}
 
-class City extends StatelessWidget {
-  final String? image, monthyear, oldprice;
-  final String? name, discount, newprice;
+class _homeDownState extends State<homeDown> {
+  List<Document> events = [];
 
-  const City(
-      {Key? key,
-      this.image,
-      this.monthyear,
-      this.oldprice,
-      this.name,
-      this.discount,
-      this.newprice})
-      : super(key: key);
+  @override
+  void initState() {
+    refresh();
+    super.initState();
+  }
+
+  void refresh() {
+    getAllEvents().then((value) {
+      setState(() {
+        events = value;
+      });
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            child: Stack(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Container(
-                    height: height! * .137 < 160 ? height! * .137 : 160,
-                    width: width! * .5 < 250 ? width! * .5 : 250,
-                    //   child: Image.asset(image,fit: BoxFit.cover,)
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(image!), fit: BoxFit.fill)),
-                  ),
-                ),
-                Positioned(
-                  height: 60,
-                  width: width! * .5 < 250 ? width! * .5 : 250,
-                  left: 5,
-                  //right: 0,
-                  bottom: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.black, Colors.black12],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter)),
-                  ),
-                ),
-                Positioned(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                        //decoration: BoxDecoration(
-                        //   shape: BoxShape.rectangle,
-                        //   color: Colors.black.withOpacity(.4),
-                        //  borderRadius: BorderRadius.all(Radius.circular(10))
-                        // ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              name!,
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              monthyear!,
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        child: Text(
-                          discount! + "%",
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black),
-                        ),
-                      )
-                    ],
-                  ),
-                  left: 10,
-                  bottom: 10,
-                  right: 15,
-                )
-              ],
-            )),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text("\$ " + '${(newprice)}',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic)),
-            SizedBox(
-              width: width! * 0.08,
-            ),
-            Text("\$ " + '${(oldprice)}',
-                style: TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.italic)),
-          ],
-        )
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                "Upcoming Events",
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+              Spacer(),
+              GestureDetector(
+                onTap: () {
+                  // Navigate to the events page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Event(),
+                    ),
+                  );
+                },
+                child: Text("VIEW ALL", style: viewallstyle),
+              )
+            ],
+          ),
+        ),
+        Container(
+          height: height! * .25 < 170 ? height! * .25 : 170,
+          child: ListView.builder(
+            itemBuilder: (context, index) =>
+                EventContainer(data: events[index]),
+            shrinkWrap: true,
+            padding: EdgeInsets.all(0.0),
+            itemCount: events.length,
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
       ],
     );
   }
@@ -535,7 +432,8 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+
+                icon: CustomIcons.twitter,
                 onPressed: () {
                   launch('https://twitter.com/yfslocal68?lang=en');
                   // Handle Twitter button press
@@ -543,7 +441,7 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.pinterest_circled,
                 onPressed: () {
                   launch('https://www.pinterest.ca/YFSWellness/');
                   // Handle Spotify button press
@@ -551,7 +449,7 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.instagram,
                 onPressed: () {
                   launch('https://www.instagram.com/yfswellness');
                   // Handle Instagram button press
@@ -559,9 +457,10 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.spotify,
                 onPressed: () {
-                  launch('https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed');
+                  launch(
+                      'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed');
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
@@ -767,5 +666,3 @@ class MyHttpOverrides extends HttpOverrides {
           (X509Certificate cert, String host, int port) => true;
   }
 }
-
-

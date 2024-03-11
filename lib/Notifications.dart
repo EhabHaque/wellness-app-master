@@ -182,8 +182,6 @@ How To Use The Pomodoro Technique
     },
   );
 }
-
-
   @override
   void dispose() {
     if (timer != null) {
