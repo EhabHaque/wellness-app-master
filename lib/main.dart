@@ -8,14 +8,13 @@ import 'events.dart';
 import 'WishList.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'Notifications.dart';
-import 'dart:math'; 
+import 'dart:math';
 import 'package:appwrite/models.dart';
 import 'quote_provider.dart';
 import 'event_container.dart';
 import 'Database.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,7 +59,6 @@ Future<void> initNotifications() async {
   //},
   //);
 }
- 
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
@@ -73,8 +71,13 @@ int sel = 0;
 double? width;
 double? height;
 
-final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
-
+final bodies = [
+  HomeScreen(),
+  WishList(),
+  Event(),
+  prefix0.Notification(),
+  SnakeGame()
+];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -187,7 +190,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-
 class HomeTop extends StatefulWidget {
   @override
   _HomeTop createState() => _HomeTop();
@@ -207,6 +209,7 @@ class _HomeTop extends State<HomeTop> {
       setRandomQuote();
     });
   }
+
   void setRandomQuote() {
     // Get a random index to select a quote
     int randomIndex = Random().nextInt(QuoteProvider.quotes.length);
@@ -332,11 +335,10 @@ class _Choice08State extends State<Choice08>
   }
 }
 
-
 var viewallstyle =
     TextStyle(fontSize: 14, color: appTheme.primaryColor //Colors.teal
         );
- 
+
 class homeDown extends StatefulWidget {
   @override
   _homeDownState createState() => _homeDownState();
@@ -392,7 +394,8 @@ class _homeDownState extends State<homeDown> {
         Container(
           height: height! * .25 < 170 ? height! * .25 : 170,
           child: ListView.builder(
-            itemBuilder: (context, index) => EventContainer(data: events[index]),
+            itemBuilder: (context, index) =>
+                EventContainer(data: events[index]),
             shrinkWrap: true,
             padding: EdgeInsets.all(0.0),
             itemCount: events.length,
@@ -403,9 +406,6 @@ class _homeDownState extends State<homeDown> {
     );
   }
 }
- 
-
-
 
 // for
 class ContactUsContainer extends StatelessWidget {
@@ -656,5 +656,3 @@ class MyHttpOverrides extends HttpOverrides {
           (X509Certificate cert, String host, int port) => true;
   }
 }
-
-
