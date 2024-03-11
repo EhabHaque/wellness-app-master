@@ -109,6 +109,7 @@ class _PomodoroTimerState extends State<Notification>
       return AlertDialog(
         title: Center(
           child: Row(
+
             children: [
               Expanded(
                 child: Text('What is the pomodoro technique?'),
@@ -142,9 +143,6 @@ class _PomodoroTimerState extends State<Notification>
     },
   );
 }
-
-
-
 
   @override
   void dispose() {

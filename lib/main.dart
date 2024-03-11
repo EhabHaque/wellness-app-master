@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 //import 'package:flutter/widgets.dart';
+import 'custom_icons_icons.dart';
 import 'saved_data.dart';
 import 'Notifications.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
@@ -13,7 +14,6 @@ import 'Notifications.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,7 +71,6 @@ double? width;
 double? height;
 
 final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
-
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -309,6 +308,7 @@ class _Choice08State extends State<Choice08>
 var viewallstyle =
     TextStyle(fontSize: 14, color: appTheme.primaryColor //Colors.teal
         );
+
 class homeDown extends StatelessWidget {
   
   @override
@@ -357,6 +357,7 @@ return Column(
     ),
   ],
 );}}
+
 List<City> cities = [
   City(
     image: "assets/images/Kerman.png",
@@ -511,7 +512,6 @@ class City extends StatelessWidget {
   }
 }
 
-
 /////////////////////////Contact US/////////////////////////////////////////////////
 
 class ContactUsContainer extends StatelessWidget {
@@ -535,7 +535,8 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+
+                icon: CustomIcons.twitter,
                 onPressed: () {
                   launch('https://twitter.com/yfslocal68?lang=en');
                   // Handle Twitter button press
@@ -543,7 +544,7 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.pinterest_circled,
                 onPressed: () {
                   launch('https://www.pinterest.ca/YFSWellness/');
                   // Handle Spotify button press
@@ -551,7 +552,7 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.instagram,
                 onPressed: () {
                   launch('https://www.instagram.com/yfswellness');
                   // Handle Instagram button press
@@ -559,9 +560,10 @@ class ContactUsContainer extends StatelessWidget {
                 },
               ),
               CircularButton(
-                icon: Icons.add,
+                icon: CustomIcons.spotify,
                 onPressed: () {
-                  launch('https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed');
+                  launch(
+                      'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed');
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
@@ -757,7 +759,6 @@ class WellnessActivityCard extends StatelessWidget {
   }
 }
 
-
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
@@ -766,5 +767,3 @@ class MyHttpOverrides extends HttpOverrides {
           (X509Certificate cert, String host, int port) => true;
   }
 }
-
-
