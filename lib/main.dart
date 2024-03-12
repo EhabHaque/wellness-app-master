@@ -17,6 +17,7 @@ import 'event_container.dart';
 import 'Database.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
+import 'package:flutter/services.dart';
 
 
 
@@ -25,6 +26,7 @@ void main() async {
   await SavedData.init();
   // Initialize the local notifications plugin
   await initNotifications();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]);
   HttpOverrides.global = MyHttpOverrides();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -425,8 +427,9 @@ class ContactUsContainer extends StatelessWidget {
             children: [
               CircularButton(
                 icon: Icons.facebook,
-                onPressed: () {
-                  launch('https://www.facebook.com/yfslocal68');
+                onPressed: () async {
+                  launchUrl(Uri.parse('https://www.facebook.com/yfslocal68'));
+                  
                   // Handle Pinterest button press
                   // Add your navigation logic or URL launch here
                 },
@@ -434,24 +437,26 @@ class ContactUsContainer extends StatelessWidget {
               CircularButton(
 
                 icon: CustomIcons.twitter,
-                onPressed: () {
-                  launch('https://twitter.com/yfslocal68?lang=en');
+                onPressed: () async {
+                  launchUrl(Uri.parse('https://twitter.com/yfslocal68?lang=en'));
                   // Handle Twitter button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
                 icon: CustomIcons.pinterest_circled,
-                onPressed: () {
-                  launch('https://www.pinterest.ca/YFSWellness/');
+                onPressed: ()  {
+                                      launchUrl(Uri.parse(
+                                'https://www.pinterest.ca/YFSWellness/'));
                   // Handle Spotify button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
                 icon: CustomIcons.instagram,
-                onPressed: () {
-                  launch('https://www.instagram.com/yfswellness');
+                onPressed: () async {
+                    launchUrl(Uri.parse(
+                                'https://www.instagram.com/yfswellness'));
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
@@ -459,8 +464,8 @@ class ContactUsContainer extends StatelessWidget {
               CircularButton(
                 icon: CustomIcons.spotify,
                 onPressed: () {
-                  launch(
-                      'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed');
+                  launchUrl(Uri.parse(
+                      'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed'));
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
