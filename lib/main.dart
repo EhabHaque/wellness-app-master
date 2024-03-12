@@ -21,12 +21,12 @@ import 'package:flutter/services.dart';
 
 
 
-Future <void> main() async {
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]);
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SavedData.init();
   // Initialize the local notifications plugin
   await initNotifications();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]);
   HttpOverrides.global = MyHttpOverrides();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
