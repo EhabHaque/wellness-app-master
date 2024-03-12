@@ -17,10 +17,12 @@ import 'event_container.dart';
 import 'Database.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
+import 'package:flutter/services.dart';
 
 
 
-void main() async {
+Future <void> main() async {
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]);
   WidgetsFlutterBinding.ensureInitialized();
   await SavedData.init();
   // Initialize the local notifications plugin
