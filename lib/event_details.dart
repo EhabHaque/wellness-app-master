@@ -180,7 +180,7 @@ class _EventDetailsState extends State<EventDetails> {
                 
                 if(widget.data.data["urlLink"] != null)
                 Text(
-                  "Link : ${widget.data.data["urlLink"]}",
+                  "Link : launchUrl(Uri.parse(${widget.data.data["urlLink"]}))",
                   style: TextStyle(color: Colors.black),
                 ),
                 SizedBox(
