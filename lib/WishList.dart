@@ -19,7 +19,7 @@ class ResourcesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Resources'),
+        title: Text('Resources', style: TextStyle(fontSize: 24)),
       ),
       body: ListView.builder(
         itemCount: 10,
@@ -28,43 +28,43 @@ class ResourcesPage extends StatelessWidget {
           String resourceContent = '';
           switch (index) {
             case 0:
-              resourceName = 'Mental Health Resources';
+              resourceName = 'Mental Health';
               resourceContent = mentalHealthResources;
               break;
             case 1:
-              resourceName = 'Physical Health Resources';
+              resourceName = 'Physical Health';
               resourceContent = physicalHealthResources;
               break;
             case 2:
-              resourceName = 'Sexual Violence Resources';
+              resourceName = 'Sexual Violence';
               resourceContent = sexualViolenceResources;
               break;
             case 3:
-              resourceName = 'Harm Reduction Resources';
+              resourceName = 'Harm Reduction';
               resourceContent = harmReductionResources;
               break;
             case 4:
-              resourceName = 'Housing Resources';
+              resourceName = 'Housing';
               resourceContent = housingResources;
               break;
             case 5:
-              resourceName = 'Academic Resources';
+              resourceName = 'Academic';
               resourceContent = academicResources;
               break;
             case 6:
-              resourceName = 'Financial Resources';
+              resourceName = 'Financial';
               resourceContent = financialResources;
               break;
             case 7:
-              resourceName = 'Employment Resources';
+              resourceName = 'Employment';
               resourceContent = employmentResources;
               break;
             case 8:
-              resourceName = 'Video Resources';
+              resourceName = 'Video';
               resourceContent = videoResources;
               break;
             case 9:
-              resourceName = 'Other Resources';
+              resourceName = 'Other';
               resourceContent = otherResources;
               break;
           }
@@ -94,7 +94,9 @@ class ResourceButton extends StatelessWidget {
           ),
         );
       },
-      child: Text(resourceName),
+      child: Container(
+          alignment: Alignment.center,
+          child: Text(resourceName, style: TextStyle(fontSize: 20))),
     );
   }
 }
@@ -125,11 +127,6 @@ class ResourceDetailPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //Text(
-              //  'Resource Name: $resourceName',
-              //  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              //),
-              //SizedBox(height: 10),
               Text(
                 '$resourceContent',
                 style: TextStyle(fontSize: 16),
