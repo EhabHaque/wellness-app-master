@@ -63,7 +63,7 @@ class _EventDetailsState extends State<EventDetails> {
                     width: 4,
                   ),
                   Text(
-                    "${formatDate(widget.data.data["datetime"])}",
+                    "${formatDate(widget.data.data["startDateTime"])}",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -80,7 +80,7 @@ class _EventDetailsState extends State<EventDetails> {
                     width: 4,
                   ),
                   Text(
-                    "${formatTime(widget.data.data["datetime"])}",
+                    "${formatTime(widget.data.data["startDateTime"])}",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
