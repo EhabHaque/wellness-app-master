@@ -6,7 +6,8 @@ import 'database.dart';
 import 'saved_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+import 'package:add_2_calendar/add_2_calendar.dart';
+2
 class EventDetails extends StatefulWidget {
   final Document data;
   const EventDetails({super.key, required this.data});
@@ -218,12 +219,54 @@ class _EventDetailsState extends State<EventDetails> {
                 SizedBox(
                   height: 8,
                 ),
+                 Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  _addToCalendar(
+                    widget.data.data["name"],
+                    widget.data.data["description"],
+                    widget.data.data["location"],
+                    widget.data.data["datetime"],
+                  );
+                },
+                child: Text('Add to Calendar'),
+              ),
+            ),
+          ),
               ],
             ),
           )
         ],
       ),
     );
+  }
+    void _addToCalendar(
+    String name,
+    String description,
+    String location,
+    DateTime startDatetime,
+  ) {
+    final event = Event(
+      title: name,
+      description: description,
+      location: location,
+      startDate: startDatetime,
+    );
+
+    Add2Calendar.addEvent2Cal(event).then((success) {
+      if (success) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Event added to calendar successfully')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to add event to calendar')),
+        );
+      }
+    });
   }
   void _launchURL(String url) async {
   final Uri uri = Uri.parse(url);
@@ -233,4 +276,5 @@ class _EventDetailsState extends State<EventDetails> {
     throw 'Could not launch $url';
   }
 }
+
 }
