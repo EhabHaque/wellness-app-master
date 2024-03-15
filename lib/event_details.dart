@@ -175,7 +175,7 @@ class _EventDetailsState extends State<EventDetails> {
                 SizedBox(
                   height: 8,
                 ),               
-               if (widget.data.data["urlLink"] != null)(
+               if (widget.data.data["urlLink"] != "")(
             GestureDetector(
               onTap: () {
                 _launchURL(widget.data.data["urlLink"]);
