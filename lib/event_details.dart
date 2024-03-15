@@ -199,14 +199,14 @@ class _EventDetailsState extends State<EventDetails> {
                   height: 8,
                 ),
                 Text(
-                  "Date : ${formatDate(widget.data.data["datetime"])}",
+                  "Starts : ${formatDate(widget.data.data["startDateTime"])} ${formatTime(widget.data.data["startDateTime"])}",
                   style: TextStyle(color: Colors.black),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
-                  "Time : ${formatTime(widget.data.data["datetime"])}",
+                  "Ends : ${formatDate(widget.data.data["endDateTime"])} ${formatTime(widget.data.data["endDateTime"])}",
                   style: TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -229,7 +229,8 @@ class _EventDetailsState extends State<EventDetails> {
                     widget.data.data["name"],
                     widget.data.data["description"],
                     widget.data.data["location"],
-                    widget.data.data["datetime"],
+                    widget.data.data["startDateTime"],
+                    widget.data.data["endDateTime"]
                   );
                 },
                 child: Text('Add to Calendar'),
@@ -247,13 +248,15 @@ class _EventDetailsState extends State<EventDetails> {
     String name,
     String description,
     String location,
-    DateTime startDatetime,
+    DateTime startDateTime,
+    DateTime endDateTime,
   ) {
     final event = Event(
       title: name,
       description: description,
       location: location,
-      startDate: startDatetime,
+      startDate: startDateTime,
+      endDate: endDateTime,
     );
 
     Add2Calendar.addEvent2Cal(event).then((success) {
