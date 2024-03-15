@@ -10,15 +10,12 @@ import 'package:add_2_calendar/add_2_calendar.dart';
 class EventDetails extends StatefulWidget {
   final Document data;
   const EventDetails({super.key, required this.data});
-
-  @override
+ @override
   State<EventDetails> createState() => _EventDetailsState();
 }
 
 class _EventDetailsState extends State<EventDetails> {
   String id = "";
-
-
 
   @override
   void initState() {
@@ -276,7 +273,6 @@ class _EventDetailsState extends State<EventDetails> {
     await launchUrl(uri);
   } else {
     throw 'Could not launch $url';
+    }
   }
-}
-
 }
