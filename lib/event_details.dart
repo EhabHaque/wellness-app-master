@@ -7,7 +7,6 @@ import 'saved_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
-2
 class EventDetails extends StatefulWidget {
   final Document data;
   const EventDetails({super.key, required this.data});
