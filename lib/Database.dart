@@ -16,11 +16,12 @@ Future<void> createEvent(
     String desc,
     String image,
     String location,
-    String datetime,
     String createdBy,
     bool isInPersonOrNot,
     String guest,
-    String urlLink) async {
+    String urlLink,
+    String startDateTime,
+    String endDateTime,) async {
   return await databases
       .createDocument(
           databaseId: databaseId,
@@ -31,11 +32,12 @@ Future<void> createEvent(
             "description": desc,
             "image": image,
             "location": location,
-            "datetime": datetime,
             "createdBy": createdBy,
             "isInPerson": isInPersonOrNot,
             "guests": guest,
             "urlLink": urlLink,
+            "startDateTime": startDateTime,
+            "endDateTime": endDateTime,
           })
       .then((value) => print("Event Created"))
       .catchError((e) => print(e));

@@ -6,25 +6,22 @@ import 'database.dart';
 import 'saved_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+import 'package:add_2_calendar/add_2_calendar.dart';
 class EventDetails extends StatefulWidget {
   final Document data;
   const EventDetails({super.key, required this.data});
-
-  @override
+ @override
   State<EventDetails> createState() => _EventDetailsState();
 }
 
 class _EventDetailsState extends State<EventDetails> {
   String id = "";
 
-
-
   @override
   void initState() {
     super.initState();
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +63,7 @@ class _EventDetailsState extends State<EventDetails> {
                     width: 4,
                   ),
                   Text(
-                    "${formatDate(widget.data.data["datetime"])}",
+                    "${formatDate(widget.data.data["startDateTime"])}",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -83,7 +80,7 @@ class _EventDetailsState extends State<EventDetails> {
                     width: 4,
                   ),
                   Text(
-                    "${formatTime(widget.data.data["datetime"])}",
+                    "${formatTime(widget.data.data["startDateTime"])}",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -177,25 +174,33 @@ class _EventDetailsState extends State<EventDetails> {
                 ),
                 SizedBox(
                   height: 8,
+                ),               
+               if (widget.data.data["urlLink"] != null && widget.data.data["urlLink"] != " ")
+            GestureDetector(
+              onTap: () {
+                _launchURL(widget.data.data["urlLink"]);
+              },
+                child: Text(
+                  "Link: ${widget.data.data["urlLink"]}",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
-                
-                if(widget.data.data["urlLink"] != null)
+              
+            ),
+                SizedBox(
+                  height: 8,
+                ),
                 Text(
-                  "Link : ${launchUrl(Uri.parse(widget.data.data["urlLink"]))}",
+                  "Starts : ${formatDate(widget.data.data["startDateTime"])} ${formatTime(widget.data.data["startDateTime"])}",
                   style: TextStyle(color: Colors.black),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
-                  "Date : ${formatDate(widget.data.data["datetime"])}",
-                  style: TextStyle(color: Colors.black),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  "Time : ${formatTime(widget.data.data["datetime"])}",
+                  "Ends : ${formatDate(widget.data.data["endDateTime"])} ${formatTime(widget.data.data["endDateTime"])}",
                   style: TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -208,11 +213,61 @@ class _EventDetailsState extends State<EventDetails> {
                 SizedBox(
                   height: 8,
                 ),
+                 Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                _addToCalendar();
+                },
+                child: Text('Add to Calendar'),
+              ),
+            ),
+          ),
               ],
             ),
           )
         ],
       ),
     );
+  }
+   void _addToCalendar() {
+  // Retrieve event details from widget.data
+  final String name = widget.data.data["name"];
+  final String description = widget.data.data["description"];
+  final String location = widget.data.data["location"];
+  final DateTime startDateTime = DateTime.parse(widget.data.data["startDateTime"]);
+  final DateTime endDateTime = DateTime.parse(widget.data.data["endDateTime"]);
+
+  // Create an event using the retrieved data
+  final Event event = Event(
+    title: name,
+    description: description,
+    location: location,
+    startDate: startDateTime,
+    endDate: endDateTime,
+  );
+
+  // Add the event to the calendar
+  Add2Calendar.addEvent2Cal(event).then((success) {
+    if (success) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Event added to calendar'),
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Failed to add event to calendar'),
+      ));
+    }
+  });
+}
+ void _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
