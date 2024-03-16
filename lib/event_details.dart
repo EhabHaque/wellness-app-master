@@ -221,13 +221,7 @@ class _EventDetailsState extends State<EventDetails> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                Add2Calendar.addEvent2Cal._addToCalendar(
-                    widget.data.data["name"],
-                    widget.data.data["description"],
-                    widget.data.data["location"],
-                    widget.data.data["startDateTime"],
-                    widget.data.data["endDateTime"]
-                  ));
+                _addToCalendar();
                 },
                 child: Text('Add to Calendar'),
               ),
