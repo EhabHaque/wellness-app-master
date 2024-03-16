@@ -175,13 +175,11 @@ class _EventDetailsState extends State<EventDetails> {
                 SizedBox(
                   height: 8,
                 ),               
-               if (widget.data.data["urlLink"] != null && widget.data.data["urlLink"] != "")
+               if (widget.data.data["urlLink"] != null && widget.data.data["urlLink"] != " ")
             GestureDetector(
               onTap: () {
                 _launchURL(widget.data.data["urlLink"]);
               },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "Link: ${widget.data.data["urlLink"]}",
                   style: TextStyle(
@@ -189,7 +187,7 @@ class _EventDetailsState extends State<EventDetails> {
                     decoration: TextDecoration.underline,
                   ),
                 ),
-              ),
+              
             ),
                 SizedBox(
                   height: 8,
@@ -264,12 +262,12 @@ class _EventDetailsState extends State<EventDetails> {
     }
   });
 }
-  void _launchURL(String url) async {
-  final Uri uri = Uri.parse(url);
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri);
-  } else {
-    throw 'Could not launch $url';
+ void _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $url';
     }
   }
 }
