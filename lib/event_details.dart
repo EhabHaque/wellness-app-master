@@ -221,13 +221,13 @@ class _EventDetailsState extends State<EventDetails> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  _addToCalendar(
+                Add2Calendar.addEvent2Cal._addToCalendar(
                     widget.data.data["name"],
                     widget.data.data["description"],
                     widget.data.data["location"],
                     widget.data.data["startDateTime"],
                     widget.data.data["endDateTime"]
-                  );
+                  ));
                 },
                 child: Text('Add to Calendar'),
               ),
@@ -240,33 +240,36 @@ class _EventDetailsState extends State<EventDetails> {
       ),
     );
   }
-    void _addToCalendar(
-    String name,
-    String description,
-    String location,
-    DateTime startDateTime,
-    DateTime endDateTime,
-  ) {
-    final event = Event(
-      title: name,
-      description: description,
-      location: location,
-      startDate: startDateTime,
-      endDate: endDateTime,
-    );
+   void _addToCalendar() {
+  // Retrieve event details from widget.data
+  final String name = widget.data.data["name"];
+  final String description = widget.data.data["description"];
+  final String location = widget.data.data["location"];
+  final DateTime startDateTime = widget.data.data["startDateTime"];
+  final DateTime endDateTime = widget.data.data["endDateTime"];
 
-    Add2Calendar.addEvent2Cal(event).then((success) {
-      if (success) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Event added to calendar successfully')),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to add event to calendar')),
-        );
-      }
-    });
-  }
+  // Create an event using the retrieved data
+  final Event event = Event(
+    title: name,
+    description: description,
+    location: location,
+    startDate: startDateTime,
+    endDate: endDateTime,
+  );
+
+  // Add the event to the calendar
+  Add2Calendar.addEvent2Cal(event).then((success) {
+    if (success) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Event added to calendar'),
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Failed to add event to calendar'),
+      ));
+    }
+  });
+}
   void _launchURL(String url) async {
   final Uri uri = Uri.parse(url);
   if (await canLaunchUrl(uri)) {
