@@ -239,8 +239,8 @@ class _EventDetailsState extends State<EventDetails> {
   final String name = widget.data.data["name"];
   final String description = widget.data.data["description"];
   final String location = widget.data.data["location"];
-  final DateTime startDateTime = widget.data.data["startDateTime"];
-  final DateTime endDateTime = widget.data.data["endDateTime"];
+  final DateTime startDateTime = DateTime.parse(widget.data.data["startDateTime"]);
+  final DateTime endDateTime = DateTime.parse(widget.data.data["endDateTime"]);
 
   // Create an event using the retrieved data
   final Event event = Event(
