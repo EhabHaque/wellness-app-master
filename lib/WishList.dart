@@ -100,7 +100,7 @@ class ResourceButton extends StatelessWidget {
                 listIcon = Icon(Icons.healing);
                 break;
               case "Harm Reduction":
-                listIcon = Icon(Icons.health_and_safety);
+                listIcon = Icon(Icons.person_add_alt_1);
                 break;
               case "Housing":
                 listIcon = Icon(Icons.house);
@@ -133,10 +133,10 @@ class ResourceButton extends StatelessWidget {
                   ),
                 );
               },
+              contentPadding: EdgeInsets.only(left: 20),
               leading: listIcon,
               title: Row(
                 children: [
-                  // Container(height: 40, color: Colors.amber),
                   Container(
                       alignment: Alignment.center,
                       child: Text(resourceName, style: TextStyle(fontSize: 20)))
@@ -160,14 +160,6 @@ class ResourceDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(resourceName),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
