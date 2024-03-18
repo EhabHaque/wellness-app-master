@@ -84,19 +84,27 @@ class ResourceButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                ResourceDetailPage(resourceName, resourceContent),
-          ),
-        );
-      },
-      child: Container(
-          alignment: Alignment.center,
-          child: Text(resourceName, style: TextStyle(fontSize: 20))),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 5),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  ResourceDetailPage(resourceName, resourceContent),
+            ),
+          );
+        },
+        child: Column(
+          children: [
+            // Container(height: 40, color: Colors.amber),
+            Container(
+                alignment: Alignment.center,
+                child: Text(resourceName, style: TextStyle(fontSize: 20)))
+          ],
+        ),
+      ),
     );
   }
 }
