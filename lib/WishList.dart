@@ -85,27 +85,67 @@ class ResourceButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 5),
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  ResourceDetailPage(resourceName, resourceContent),
-            ),
-          );
-        },
-        child: Column(
-          children: [
-            // Container(height: 40, color: Colors.amber),
-            Container(
-                alignment: Alignment.center,
-                child: Text(resourceName, style: TextStyle(fontSize: 20)))
-          ],
-        ),
-      ),
-    );
+        padding: EdgeInsets.symmetric(vertical: 5),
+        child: Builder(
+          builder: (context) {
+            Icon listIcon;
+            switch (resourceName) {
+              case "Mental Health":
+                listIcon = Icon(Icons.favorite);
+                break;
+              case "Physical Health":
+                listIcon = Icon(Icons.health_and_safety);
+                break;
+              case "Sexual Violence":
+                listIcon = Icon(Icons.healing);
+                break;
+              case "Harm Reduction":
+                listIcon = Icon(Icons.health_and_safety);
+                break;
+              case "Housing":
+                listIcon = Icon(Icons.house);
+                break;
+              case "Academic":
+                listIcon = Icon(Icons.school);
+                break;
+              case "Financial":
+                listIcon = Icon(Icons.attach_money);
+                break;
+              case "Employment":
+                listIcon = Icon(Icons.group);
+                break;
+              case "Video":
+                listIcon = Icon(Icons.camera_alt);
+                break;
+              case "Other":
+                listIcon = Icon(Icons.more_horiz);
+                break;
+              default:
+                listIcon = Icon(Icons.question_mark);
+            }
+            return ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ResourceDetailPage(resourceName, resourceContent),
+                  ),
+                );
+              },
+              leading: listIcon,
+              title: Row(
+                children: [
+                  // Container(height: 40, color: Colors.amber),
+                  Container(
+                      alignment: Alignment.center,
+                      child: Text(resourceName, style: TextStyle(fontSize: 20)))
+                ],
+              ),
+              trailing: Icon(Icons.arrow_right),
+            );
+          },
+        ));
   }
 }
 
