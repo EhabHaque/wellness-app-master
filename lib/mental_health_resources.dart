@@ -1,4 +1,57 @@
 //Mental Health Resources Button
+import 'package:flutter/material.dart';
+
+class MentalHealthPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ResourceCard("N110 Bennett Center (Keele)", ["416-736-5297"],
+            "https://students.yorku.ca/counselling", "", "schw@yorku.ca"),
+        ResourceCard(
+            "YH B108 Student Success Centre (Glendon)",
+            ["416-487-6701"],
+            "https://www.yorku.ca/glendon/supports-and-services/glendon-counselling/",
+            "",
+            "counselling@glendon.yorku.ca"),
+        ResourceCard(
+            "Student Accessibility Services",
+            ["416-736-5755"],
+            "yfsaccesscentre@csg.yfs.ca",
+            "321 First Student Centre",
+            "Student-run alternative to disability services that offers York students and staff a space to consider various dimensions of the disability experience")
+      ],
+    );
+  }
+}
+
+class ResourceCard extends StatelessWidget {
+  final String resource;
+  final List<String> phoneNumbers;
+  final String website;
+  final String address;
+  final String details;
+
+  ResourceCard(this.resource, this.phoneNumbers, this.website, this.address,
+      this.details);
+
+  @override
+  Card build(BuildContext context) {
+    return Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(resource),
+          for (var item in phoneNumbers) Text(item),
+          if (website != "") Text(website),
+          if (address != "") Text(address),
+          if (details != "") Text(details),
+        ],
+      ),
+    );
+  }
+}
+
 final String mentalHealthResources = '''
   York University Student Counselling, Health, & Well-being
 
@@ -637,7 +690,6 @@ agincourtcommunityservices.com
 4155reception@agincourtcommunityservices.com  
 4155 Sheppard Ave. East
 ''';
-
 
 final String housingResources = '''
 York University
@@ -1606,7 +1658,6 @@ Cleo: Does your Landlord want you to Move Out?
 Cleo: Can your Landlord take your Stuff? Different situations given. 
 ''';
 
-
 final String academicResources = '''
 York University
 YFS Student Advocacy Centre
@@ -1639,7 +1690,6 @@ ontario.ca/page/osap-ontario-student-assistance-program
 
 Grants and loans available from the province to help pay for post-secondary education. Restrictions apply.
 ''';
-
 
 final String financialResources = '''
  Funding, Scholarship & Project Grant Opportunities
@@ -1781,7 +1831,6 @@ Deadline: Ongoing
 Toronto Funding
 
 ''';
-
 
 final String employmentResources = '''
 York University
@@ -1944,7 +1993,6 @@ Cleo: Employment Insurance
 Cleo: Have you been Fired or Laid Off?
 ''';
 
-
 final String videoResources = '''
 Online Learning and Education
 Apps & Extensions for School Productivity
@@ -1965,7 +2013,6 @@ Making Peace with Food
 Eating on a Budget
 WATCH NUTRITION VIDEOS HERE
 ''';
-
 
 final String otherResources = '''
 York University

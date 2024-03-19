@@ -163,18 +163,18 @@ class ResourceDetailPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '$resourceContent',
-                style: TextStyle(fontSize: 16),
-              ),
-              // Add more content as needed
-            ],
-          ),
-        ),
+            padding: const EdgeInsets.all(16.0), child: MentalHealthPage()
+            // child: Column(
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     Text(
+            //       '$resourceContent',
+            //       style: TextStyle(fontSize: 16),
+            //     ),
+            //     // Add more content as needed
+            //   ],
+            // ),
+            ),
       ),
     );
   }
