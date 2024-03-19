@@ -8,7 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'events.dart';
 import 'WishList.dart';
 //import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-//import 'pomodoro.dart';
+import 'pomodoro.dart';
 import 'dart:math';
 import 'package:appwrite/models.dart';
 import 'quote_provider.dart';
@@ -18,11 +18,12 @@ import 'wellness_activities.dart';
 import 'snake_game.dart';
 import 'package:flutter/services.dart';
 
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SavedData.init();
-  await SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]);
   HttpOverrides.global = MyHttpOverrides();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -31,6 +32,9 @@ void main() async {
     title: "YFS Wellness Center",
   ));
 }
+
+
+
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
@@ -43,13 +47,9 @@ int sel = 0;
 double? width;
 double? height;
 
-final bodies = [
-  HomeScreen(),
-  WishList(),
-  Event(),
-  prefix0.Notification(),
-  SnakeGame()
-];
+
+final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
+
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -330,6 +330,7 @@ class _homeDownState extends State<homeDown> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -394,24 +395,25 @@ class ContactUsContainer extends StatelessWidget {
                 icon: Icons.facebook,
                 onPressed: () async {
                   launchUrl(Uri.parse('https://www.facebook.com/yfslocal68'));
-
+                  
                   // Handle Pinterest button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
+
                 icon: CustomIcons.twitter,
                 onPressed: () async {
-                  launchUrl(
-                      Uri.parse('https://twitter.com/yfslocal68?lang=en'));
+                  launchUrl(Uri.parse('https://twitter.com/yfslocal68?lang=en'));
                   // Handle Twitter button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
                 icon: CustomIcons.pinterest_circled,
-                onPressed: () {
-                  launchUrl(Uri.parse('https://www.pinterest.ca/YFSWellness/'));
+                onPressed: ()  {
+                                      launchUrl(Uri.parse(
+                                'https://www.pinterest.ca/YFSWellness/'));
                   // Handle Spotify button press
                   // Add your navigation logic or URL launch here
                 },
@@ -419,7 +421,8 @@ class ContactUsContainer extends StatelessWidget {
               CircularButton(
                 icon: CustomIcons.instagram,
                 onPressed: () async {
-                  launchUrl(Uri.parse('https://www.instagram.com/yfswellness'));
+                    launchUrl(Uri.parse(
+                                'https://www.instagram.com/yfswellness'));
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
