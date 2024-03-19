@@ -191,6 +191,128 @@ class MentalHealthPage extends StatelessWidget {
                         "publichealth@toronto.ca",
                         "",
                         ""),
+                    ResourceCard("Public Health, East York", ["416-461-8136"],
+                        "", "", "East York", ""),
+                    ResourceCard("Public Health, Etobicoke ", ["416-394-8300"],
+                        "", "", "Etobicoke ", ""),
+                    ResourceCard("Public Health, North York", ["416-395-7700"],
+                        "", "", "North York", ""),
+                    ResourceCard("Public Health, Scarborough", ["416-396-7454"],
+                        "", "", "Scarborough", ""),
+                    ResourceCard("Public Health, York", ["416-394-2436"], "",
+                        "", "York", ""),
+                    ResourceCard(
+                        "Native Youth Sexual Health Network",
+                        [""],
+                        "nativeyouthsexualhealth.com",
+                        "info@nativeyouthsexualhealth.com",
+                        "2345 Yonge Street",
+                        ""),
+                    ResourceCard(
+                        "Teen Health Source",
+                        ["416-961-3200", "647-933-5399 (Text)"],
+                        "teenhealthsource.com",
+                        "teenhealthsource@ppt.on.ca",
+                        "",
+                        ""),
+                    ResourceCard(
+                        "Hassle Free Clinic",
+                        ["416-922-0566"],
+                        "hasslefreeclinic.org",
+                        "",
+                        "66 Gerrard Street East, 2nd Floor",
+                        "Medical and sexual health services; anonymous HIV testing by appointment."),
+                    ResourceCard(
+                        "Health with Dignity",
+                        ["416-324-8677"],
+                        "accessalliance.ca/health-with-dignity/",
+                        "",
+                        "",
+                        "Provides services and addresses system inequities to improve health outcomes for  immigrants, refugees, and their communities."),
+                    ResourceCard(
+                        "Parkdale Queen West Community Health Centre",
+                        [
+                          "416-537-2455 (Parkdale Site)",
+                          "416-703-8482 (Queen West Site)",
+                          "416-537-8222 (Satellite Site)"
+                        ],
+                        "pqwchc.org/",
+                        "",
+                        "1229 Queen Street West, 168 Bathurst Street, 27 Roncesvalles Avenue, Suite 301",
+                        "Services include primary health care, dental care, harm reduction, health promotion, counselling, and community development programming."),
+                    ResourceCard(
+                        "Loft Community Services",
+                        ["416-979-1994"],
+                        "loftcs.org",
+                        "info@loftcs.org",
+                        "15 Toronto Street, 9th Floor",
+                        "Promotes recovery and independence for people with complex challenges."),
+                    ResourceCard(
+                        "AIM Academy",
+                        ["416-323-1818 ext 200"],
+                        "aim-academy.ca/pages/acupuncture-student-clinic",
+                        "info@aim-academy.ca",
+                        "455 Spadina Avenue, Suite 300",
+                        "Affordable acupuncture at the teaching clinic, first session is free! Later sessions are 20 dollars per hour."),
+                    ResourceCard(
+                        "Royal Canadian College of Massage Therapy",
+                        ["416-447-7680"],
+                        "rccmassage.com/our-clinic/virtual-tour",
+                        "info@rccmassage.com",
+                        "",
+                        "Lower cost massage therapy."),
+                    ResourceCard(
+                        "Planet Fitness",
+                        ["416-546-9099"],
+                        "planetfitness.com/gyms/north-york-yorkgate-mall",
+                        "",
+                        "1 York Gate Boulevard",
+                        "Private gym with fitness classes."),
+                    ResourceCard(
+                        "Women's Health in Women's Hands",
+                        ["416-593-7655"],
+                        "http://www.whiwh.com/",
+                        "info@whiwh.com",
+                        "",
+                        "Community Health Centre for racialized women living in Toronto and surrounding municipalities."),
+                    ResourceCard(
+                        "Centre For Health and Sports Medicine",
+                        ["416-789-2476"],
+                        "chsm.net/fees",
+                        "information@chsm.net",
+                        "68 Apex Road",
+                        "Clinic close to Yorkdale Mall that offers athletic therapy, physiotherapy, massage therapy, osteopathy, dietitian."),
+                    Text("Ontario"),
+                    ResourceCard(
+                        "Telehealth Ontario",
+                        ["1-866-797-000", "1-866-797-0007 (TTY)"],
+                        "ontario.ca/page/get-medical-advice-telehealth-ontario",
+                        "",
+                        "",
+                        "Phone services for health advice in multiple languages."),
+                    ResourceCard(
+                        "Government of Canada - Healthy Living",
+                        ["1-844-280-5020"],
+                        "canada.ca/en/public-health/services/health-promotion/healthy-living/physical-activity/physical-activity.html",
+                        "",
+                        "180 Queen Street West, 11th Floor",
+                        ""),
+                    ResourceCard(
+                        "Planned Parenthood",
+                        ["416-961-0113"],
+                        "ppt.on.ca",
+                        "ppt@ppt.on.ca",
+                        "36B Prince Arthur Ave",
+                        "Serving youth aged 13-29 years, with or without OHIP."),
+                    ResourceCard(
+                        "CATIE (HIV/Hep C)",
+                        ["416-203-7122"],
+                        "catie.ca/en/home",
+                        "info@catie.ca",
+                        "",
+                        "Research and practice in the HIV and Hep C field."),
+                    ResourceCard("HIV411", [""], "hiv411.ca", "", "",
+                        "Website for those looking for HIV or Hepatitis C services in Canada. You can search for services by your location or by the type of service you are looking for."),
                   ]);
 
               break;
@@ -424,7 +546,7 @@ info@nativeyouthsexualhealth.com
 2345 Yonge Street
 
 Teen Health Source
-416-961-3200  
+416-961-3200
 647-933-5399 (Text)
 teenhealthsource.com
 teenhealthsource@ppt.on.ca  
@@ -454,7 +576,7 @@ pqwchc.org/
 Services include primary health care, dental care, harm reduction, health promotion, counselling, and community development programming.
 
 Loft Community Services
-416-979-1994  
+416-979-1994
 loftcs.org
 info@loftcs.org  
 15 Toronto Street, 9th Floor  
@@ -462,7 +584,6 @@ info@loftcs.org
 Promotes recovery and independence for people with complex challenges.
 
 AIM Academy 
-416-323-1818 ext 200.  
 aim-academy.ca/pages/acupuncture-student-clinic 
 info@aim-academy.ca  
 455 Spadina Avenue, Suite 300
