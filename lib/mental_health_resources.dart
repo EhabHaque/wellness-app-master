@@ -1,6 +1,240 @@
 //Mental Health Resources Button
+import 'package:flutter/material.dart';
+
+class MentalHealthPage extends StatelessWidget {
+  final String page;
+  MentalHealthPage(this.page);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: Builder(
+        builder: (context) {
+          switch (page) {
+            case "Mental Health":
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("York University"),
+                  ResourceCard(
+                      "Student Counselling, Health, & Well-being",
+                      ["416-736-5297"],
+                      "https://students.yorku.ca/counselling",
+                      "schw@yorku.ca",
+                      "N110 Bennett Center (Keele)",
+                      ""),
+                  ResourceCard(
+                      "Student Counselling, Health, & Well-being",
+                      ["416-487-6701"],
+                      "https://www.yorku.ca/glendon/supports-and-services/glendon-counselling/",
+                      "counselling@glendon.yorku.ca",
+                      "YH B108 Student Success Centre (Glendon)",
+                      ""),
+                  ResourceCard(
+                      "Student Accessibility Services",
+                      ["416-736-5755"],
+                      "",
+                      "yfsaccesscentre@csg.yfs.ca",
+                      "321 First Student Centre",
+                      ""),
+                  ResourceCard(
+                      "YFS Access Centre",
+                      ["416-736-2100 ext. 77612"],
+                      "",
+                      "yfsaccesscentre@csg.yfs.ca",
+                      "",
+                      "Student-run alternative to disability services that offers York students and staff a space to consider various dimensions of the disability experience."),
+                  ResourceCard(
+                      "Graduate Student Wellness Services",
+                      ["416-736-2100 ext. 33379"],
+                      "",
+                      "gradwell@yorku.ca",
+                      "",
+                      "All registered part–time/full–time York University graduate students may access the service. Grad students who are not currently registered active but are on an approved leave from their studies may also access the service."),
+                  ResourceCard(
+                      "York Psychology Clinic",
+                      ["416-650-8488"],
+                      "",
+                      "",
+                      "104 Behavioural Science",
+                      "Clinical Manager reviews phone-call intakes on a weekly basis and will let the caller know if and when they can start to provide the requested service."),
+                  Text("Toronto & GTA"),
+                  ResourceCard(
+                      "Toronto Distress Centre",
+                      ["416-408-4357", "416-408-0007 (TTY)"],
+                      "https://torontodistresscentre.com",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Centre for Addictions & Mental Health",
+                      ["416-535-8501"],
+                      "https://www.camh.ca/en/your-care/programs-and-services",
+                      "",
+                      "250 College Street (24 hr Emergency Centre), 1001 Queen Street West",
+                      ""),
+                  ResourceCard(
+                      "Canadian Mental Health Association",
+                      [
+                        "Crisis Line: 1-866-531-2600",
+                        "Lawrence Ave West Site: 416-789-7957",
+                        "Markham Road Site: 416-789-7957"
+                      ],
+                      "https://toronto.cmha.ca",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "CMHA Crisis Support Peel",
+                      [
+                        "Phone: 905-278-9036",
+                        "Toll-Free: 1-866-863-0511",
+                        "Text: #SAFE (7233)"
+                      ],
+                      "https://peel.cmha.ca/247csp/",
+                      "",
+                      "",
+                      "Crisis de-escalation and a Mobile Crisis Team are available."),
+                  ResourceCard(
+                      "Griffin Centre Mental Health Services",
+                      ["416-222-1153"],
+                      "http://www.griffin-centre.org",
+                      "",
+                      "",
+                      "Offering services including assessment, service coordination and planning, individual, family and group counselling, specialized day/residential services, and respite services."),
+                  ResourceCard(
+                      "Black Youth Helpline",
+                      ["Phone: 416-285-9944", "Toll-Free: 1-833-294-8650"],
+                      "https://blackyouth.ca",
+                      "",
+                      "1111 Finch Ave. West, Suite 411",
+                      ""),
+                  ResourceCard(
+                      "Gerstein Crisis Centre",
+                      ["416-929-9647"],
+                      "https://gersteincentre.org",
+                      "",
+                      "100 Charles Street East, 1045 Bloor Street West",
+                      "To provide a community-based, alternative approach to crisis intervention by delivering individualized, non-medical support to people experiencing a mental health crisis."),
+                  ResourceCard(
+                      "Skylark Youth",
+                      ["416-482-0081"],
+                      "https://skylarkyouth.org/what-we-do/programs-counselling-services/",
+                      "",
+                      "255-40 Orchard View Blvd",
+                      "Free walk-in counselling for youth and families. They also provide 23-days treatment programs, drug education, free safe housing, and more."),
+                  ResourceCard(
+                      "Distress Centre of Toronto",
+                      ["416-408-4357", "416-408-0007 (TTY)"],
+                      "",
+                      "",
+                      "",
+                      "Phone line for people in emotional distress or in need of crisis intervention and suicide prevention; multiple languages."),
+                ],
+              );
+            case "Physical Health":
+              return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("York"),
+                    ResourceCard(
+                        "YFS Health & Dental Plan",
+                        ["416-736-2100 ext. 58066"],
+                        "yfs.ca/health-and-dental/",
+                        "healthplan@yfs.ca",
+                        "106 First Student Centre",
+                        ""),
+                    ResourceCard(
+                        "Appletree Medical Clinic",
+                        ["647-722-2370"],
+                        "appletreepatients.com",
+                        "",
+                        "York Lanes",
+                        "Local clinic on Keele campus, providing some vaccinations, allergy testing, birth control, STI screening and much more."),
+                    ResourceCard(
+                        "Tait McKenzie Centre",
+                        ["416-736-5185"],
+                        "reconline.yorkulions.ca",
+                        "taitmck@yorku.ca",
+                        "",
+                        "The centre is a spacious, multipurpose sport and recreation facility with a 11,000 square foot Fitness Centre. It contains 58 cardio machines, 29 sectorized machines, functional training apparatus and free weights and hosts a number of free classes."),
+                    ResourceCard(
+                        "Glendon Athletic Club",
+                        [
+                          "MEMBERSHIP OFFICE: 416-487-6717",
+                          "RECEPTION: 416-487-6740"
+                        ],
+                        "",
+                        "gac@glendon.yorku.ca",
+                        "2275 Bayview Avenue",
+                        "The Glendon Athletic Club is a 55,000 square foot full use fitness facility located within Glendon College open to York Students, Staff, Faculty, Alumni and Community Members."),
+                    ResourceCard(
+                        "YFS Access Centre",
+                        ["416-736-2100 ext. 77612"],
+                        "",
+                        "yaccess@yorku.ca",
+                        "321 First Student Centre",
+                        "Student-run alternative to disability services that offers York students and staff a space in which to consider the various dimensions of the disability experience."),
+                    ResourceCard(
+                        "Shopper’s Drug Mart",
+                        ["416-514-0993"],
+                        "www1.shoppersdrugmart.ca/en/store-locator/store/1162?utm_source=G&utm_medium=lpm&utm_campaign=LPM_SDM",
+                        "",
+                        "York Lanes",
+                        ""),
+                    Text("Toronto & GTA"),
+                    ResourceCard(
+                        "Toronto Public Health",
+                        ["416-392-0658"],
+                        "toronto.ca/community-people/health-wellness-care/health-programs-advice/physical-activity/",
+                        "publichealth@toronto.ca",
+                        "",
+                        ""),
+                  ]);
+
+              break;
+            default:
+          }
+
+          return Text("huh");
+        },
+      ),
+    );
+  }
+}
+
+class ResourceCard extends StatelessWidget {
+  final String resource;
+  final List<String> phoneNumbers;
+  final String website;
+  final String email;
+  final String address;
+  final String details;
+
+  ResourceCard(this.resource, this.phoneNumbers, this.website, this.email,
+      this.address, this.details);
+
+  @override
+  Card build(BuildContext context) {
+    return Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(resource),
+          for (var item in phoneNumbers) Text(item),
+          if (website != "") Text(website),
+          if (address != "") Text(address),
+          if (details != "") Text(details),
+        ],
+      ),
+    );
+  }
+}
+
 final String mentalHealthResources = '''
-  York University Student Counselling, Health, & Well-being
+  York University 
+  Student Counselling, Health, & Well-being
 
   - N110 Bennett Center (Keele)
     - Website: [YorkU Counselling](https://students.yorku.ca/counselling)
@@ -107,9 +341,8 @@ healthplan@yfs.ca
 
 Appletree Medical Clinic
 647-722-2370
-appletreepatients.com/  
+appletreepatients.com  
 York Lanes
-
 Local clinic on Keele campus, providing some vaccinations, allergy testing, birth control, STI screening and much more.
 
 Tait McKenzie Centre
@@ -128,18 +361,16 @@ Mon-Fri: 6am - 10pm
 Sat: 10am - 7pm
 Sun: 9am - 5pm
 
-The centre is a spacious, multipurpose sport and recreation facility with a 11,000 square foot Fitness Centre. It contains 58 cardio machines, 29 sectorized machines, functional training apparatus and free weights and hosts a number of free classes.  
+The centre is a spacious, multipurpose sport and recreation facility with a 11,000 square foot Fitness Centre. It contains 58 cardio machines, 29 sectorized machines, functional training apparatus and free weights and hosts a number of free classes.
 
 Glendon Athletic Club
 Glendon Campus – York University
 2275 Bayview Avenue
 Toronto, Ontario M4N 3M6
 Canada
-
 Phone:
 MEMBERSHIP OFFICE: 416-487-6717
 RECEPTION: 416-487-6740
-
 Email: gac@glendon.yorku.ca
 
 Hours
@@ -153,7 +384,6 @@ YFS Access Centre
 416-736-2100 ext. 77612
 yaccess@yorku.ca
 321 First Student Centre  
-
 Student-run alternative to disability services that offers York students and staff a space in which to consider the various dimensions of the disability experience.
 
 Shopper’s Drug Mart
@@ -169,7 +399,7 @@ CLINICS ACCEPTING UHIP NEAR GLENDON CAMPUS (Click Here)
 Toronto Public Health
 416-392-0658  
 toronto.ca/community-people/health-wellness-care/health-programs-advice/physical-activity/  
-publichealth@toronto.ca  
+publichealth@toronto.ca
 toronto.ca/explore-enjoy/recreation/free-lower-cost-recreation-options/  
 311@toronto.ca  
 
@@ -637,7 +867,6 @@ agincourtcommunityservices.com
 4155reception@agincourtcommunityservices.com  
 4155 Sheppard Ave. East
 ''';
-
 
 final String housingResources = '''
 York University
@@ -1606,7 +1835,6 @@ Cleo: Does your Landlord want you to Move Out?
 Cleo: Can your Landlord take your Stuff? Different situations given. 
 ''';
 
-
 final String academicResources = '''
 York University
 YFS Student Advocacy Centre
@@ -1639,7 +1867,6 @@ ontario.ca/page/osap-ontario-student-assistance-program
 
 Grants and loans available from the province to help pay for post-secondary education. Restrictions apply.
 ''';
-
 
 final String financialResources = '''
  Funding, Scholarship & Project Grant Opportunities
@@ -1781,7 +2008,6 @@ Deadline: Ongoing
 Toronto Funding
 
 ''';
-
 
 final String employmentResources = '''
 York University
@@ -1944,7 +2170,6 @@ Cleo: Employment Insurance
 Cleo: Have you been Fired or Laid Off?
 ''';
 
-
 final String videoResources = '''
 Online Learning and Education
 Apps & Extensions for School Productivity
@@ -1965,7 +2190,6 @@ Making Peace with Food
 Eating on a Budget
 WATCH NUTRITION VIDEOS HERE
 ''';
-
 
 final String otherResources = '''
 York University
