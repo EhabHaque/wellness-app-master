@@ -163,7 +163,8 @@ class ResourceDetailPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-            padding: const EdgeInsets.all(16.0), child: MentalHealthPage()
+            padding: const EdgeInsets.all(16.0),
+            child: MentalHealthPage(resourceName)
             // child: Column(
             //   crossAxisAlignment: CrossAxisAlignment.start,
             //   children: [
