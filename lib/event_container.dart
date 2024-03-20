@@ -1,7 +1,7 @@
 import 'package:appwrite/models.dart';
 import 'format_datetime.dart';
 import 'event_details.dart';
-import 'main.dart';
+//import 'main.dart';
 
 import 'package:flutter/material.dart';
 
@@ -72,7 +72,7 @@ class EventContainer extends StatelessWidget {
                   const Icon(Icons.calendar_month_outlined, size: 18),
                   const SizedBox(width: 4),
                   Text(
-                    formatDate(data.data["datetime"]),
+                    formatDate(data.data["startDateTime"]),
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 14,
@@ -83,7 +83,7 @@ class EventContainer extends StatelessWidget {
                   const Icon(Icons.access_time_rounded, size: 18),
                   const SizedBox(width: 4),
                   Text(
-                    formatTime(data.data["datetime"]),
+                    formatTime(data.data["startDateTime"]),
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 14,

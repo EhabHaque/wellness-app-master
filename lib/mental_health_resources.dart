@@ -15,130 +15,129 @@ class MentalHealthPage extends StatelessWidget {
           switch (page) {
             case "Mental Health":
               return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("York University"),
-                  ResourceCard(
-                      "Student Counselling, Health, & Well-being",
-                      ["416-736-5297"],
-                      "https://students.yorku.ca/counselling",
-                      "schw@yorku.ca",
-                      "N110 Bennett Center (Keele)",
-                      ""),
-                  ResourceCard(
-                      "Student Counselling, Health, & Well-being",
-                      ["416-487-6701"],
-                      "https://www.yorku.ca/glendon/supports-and-services/glendon-counselling/",
-                      "counselling@glendon.yorku.ca",
-                      "YH B108 Student Success Centre (Glendon)",
-                      ""),
-                  ResourceCard(
-                      "Student Accessibility Services",
-                      ["416-736-5755"],
-                      "",
-                      "yfsaccesscentre@csg.yfs.ca",
-                      "321 First Student Centre",
-                      ""),
-                  ResourceCard(
-                      "YFS Access Centre",
-                      ["416-736-2100 ext. 77612"],
-                      "",
-                      "yfsaccesscentre@csg.yfs.ca",
-                      "",
-                      "Student-run alternative to disability services that offers York students and staff a space to consider various dimensions of the disability experience."),
-                  ResourceCard(
-                      "Graduate Student Wellness Services",
-                      ["416-736-2100 ext. 33379"],
-                      "",
-                      "gradwell@yorku.ca",
-                      "",
-                      "All registered part–time/full–time York University graduate students may access the service. Grad students who are not currently registered active but are on an approved leave from their studies may also access the service."),
-                  ResourceCard(
-                      "York Psychology Clinic",
-                      ["416-650-8488"],
-                      "",
-                      "",
-                      "104 Behavioural Science",
-                      "Clinical Manager reviews phone-call intakes on a weekly basis and will let the caller know if and when they can start to provide the requested service."),
-                  Text("Toronto & GTA"),
-                  ResourceCard(
-                      "Toronto Distress Centre",
-                      ["416-408-4357", "416-408-0007 (TTY)"],
-                      "https://torontodistresscentre.com",
-                      "",
-                      "",
-                      ""),
-                  ResourceCard(
-                      "Centre for Addictions & Mental Health",
-                      ["416-535-8501"],
-                      "https://www.camh.ca/en/your-care/programs-and-services",
-                      "",
-                      "250 College Street (24 hr Emergency Centre), 1001 Queen Street West",
-                      ""),
-                  ResourceCard(
-                      "Canadian Mental Health Association",
-                      [
-                        "Crisis Line: 1-866-531-2600",
-                        "Lawrence Ave West Site: 416-789-7957",
-                        "Markham Road Site: 416-789-7957"
-                      ],
-                      "https://toronto.cmha.ca",
-                      "",
-                      "",
-                      ""),
-                  ResourceCard(
-                      "CMHA Crisis Support Peel",
-                      [
-                        "Phone: 905-278-9036",
-                        "Toll-Free: 1-866-863-0511",
-                        "Text: #SAFE (7233)"
-                      ],
-                      "https://peel.cmha.ca/247csp/",
-                      "",
-                      "",
-                      "Crisis de-escalation and a Mobile Crisis Team are available."),
-                  ResourceCard(
-                      "Griffin Centre Mental Health Services",
-                      ["416-222-1153"],
-                      "http://www.griffin-centre.org",
-                      "",
-                      "",
-                      "Offering services including assessment, service coordination and planning, individual, family and group counselling, specialized day/residential services, and respite services."),
-                  ResourceCard(
-                      "Black Youth Helpline",
-                      ["Phone: 416-285-9944", "Toll-Free: 1-833-294-8650"],
-                      "https://blackyouth.ca",
-                      "",
-                      "1111 Finch Ave. West, Suite 411",
-                      ""),
-                  ResourceCard(
-                      "Gerstein Crisis Centre",
-                      ["416-929-9647"],
-                      "https://gersteincentre.org",
-                      "",
-                      "100 Charles Street East, 1045 Bloor Street West",
-                      "To provide a community-based, alternative approach to crisis intervention by delivering individualized, non-medical support to people experiencing a mental health crisis."),
-                  ResourceCard(
-                      "Skylark Youth",
-                      ["416-482-0081"],
-                      "https://skylarkyouth.org/what-we-do/programs-counselling-services/",
-                      "",
-                      "255-40 Orchard View Blvd",
-                      "Free walk-in counselling for youth and families. They also provide 23-days treatment programs, drug education, free safe housing, and more."),
-                  ResourceCard(
-                      "Distress Centre of Toronto",
-                      ["416-408-4357", "416-408-0007 (TTY)"],
-                      "",
-                      "",
-                      "",
-                      "Phone line for people in emotional distress or in need of crisis intervention and suicide prevention; multiple languages."),
-                ],
-              );
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SectionTitle("York University"),
+                    ResourceCard(
+                        "Student Counselling, Health, & Well-being",
+                        ["416-736-5297"],
+                        "https://students.yorku.ca/counselling",
+                        "schw@yorku.ca",
+                        "N110 Bennett Center (Keele)",
+                        ""),
+                    ResourceCard(
+                        "Student Counselling, Health, & Well-being",
+                        ["416-487-6701"],
+                        "https://www.yorku.ca/glendon/supports-and-services/glendon-counselling/",
+                        "counselling@glendon.yorku.ca",
+                        "YH B108 Student Success Centre (Glendon)",
+                        ""),
+                    ResourceCard(
+                        "Student Accessibility Services",
+                        ["416-736-5755"],
+                        "",
+                        "yfsaccesscentre@csg.yfs.ca",
+                        "321 First Student Centre",
+                        ""),
+                    ResourceCard(
+                        "YFS Access Centre",
+                        ["416-736-2100 ext. 77612"],
+                        "",
+                        "yfsaccesscentre@csg.yfs.ca",
+                        "",
+                        "Student-run alternative to disability services that offers York students and staff a space to consider various dimensions of the disability experience."),
+                    ResourceCard(
+                        "Graduate Student Wellness Services",
+                        ["416-736-2100 ext. 33379"],
+                        "",
+                        "gradwell@yorku.ca",
+                        "",
+                        "All registered part–time/full–time York University graduate students may access the service. Grad students who are not currently registered active but are on an approved leave from their studies may also access the service."),
+                    ResourceCard(
+                        "York Psychology Clinic",
+                        ["416-650-8488"],
+                        "",
+                        "",
+                        "104 Behavioural Science",
+                        "Clinical Manager reviews phone-call intakes on a weekly basis and will let the caller know if and when they can start to provide the requested service."),
+                    SectionTitle("Toronto & GTA"),
+                    ResourceCard(
+                        "Toronto Distress Centre",
+                        ["416-408-4357", "416-408-0007 (TTY)"],
+                        "https://torontodistresscentre.com",
+                        "",
+                        "",
+                        ""),
+                    ResourceCard(
+                        "Centre for Addictions & Mental Health",
+                        ["416-535-8501"],
+                        "https://www.camh.ca/en/your-care/programs-and-services",
+                        "",
+                        "250 College Street (24 hr Emergency Centre), 1001 Queen Street West",
+                        ""),
+                    ResourceCard(
+                        "Canadian Mental Health Association",
+                        [
+                          "Crisis Line: 1-866-531-2600",
+                          "Lawrence Ave West Site: 416-789-7957",
+                          "Markham Road Site: 416-789-7957"
+                        ],
+                        "https://toronto.cmha.ca",
+                        "",
+                        "",
+                        ""),
+                    ResourceCard(
+                        "CMHA Crisis Support Peel",
+                        [
+                          "Phone: 905-278-9036",
+                          "Toll-Free: 1-866-863-0511",
+                          "Text: #SAFE (7233)"
+                        ],
+                        "https://peel.cmha.ca/247csp/",
+                        "",
+                        "",
+                        "Crisis de-escalation and a Mobile Crisis Team are available."),
+                    ResourceCard(
+                        "Griffin Centre Mental Health Services",
+                        ["416-222-1153"],
+                        "http://www.griffin-centre.org",
+                        "",
+                        "",
+                        "Offering services including assessment, service coordination and planning, individual, family and group counselling, specialized day/residential services, and respite services."),
+                    ResourceCard(
+                        "Black Youth Helpline",
+                        ["Phone: 416-285-9944", "Toll-Free: 1-833-294-8650"],
+                        "https://blackyouth.ca",
+                        "",
+                        "1111 Finch Ave. West, Suite 411",
+                        ""),
+                    ResourceCard(
+                        "Gerstein Crisis Centre",
+                        ["416-929-9647"],
+                        "https://gersteincentre.org",
+                        "",
+                        "100 Charles Street East, 1045 Bloor Street West",
+                        "To provide a community-based, alternative approach to crisis intervention by delivering individualized, non-medical support to people experiencing a mental health crisis."),
+                    ResourceCard(
+                        "Skylark Youth",
+                        ["416-482-0081"],
+                        "https://skylarkyouth.org/what-we-do/programs-counselling-services/",
+                        "",
+                        "255-40 Orchard View Blvd",
+                        "Free walk-in counselling for youth and families. They also provide 23-days treatment programs, drug education, free safe housing, and more."),
+                    ResourceCard(
+                        "Distress Centre of Toronto",
+                        ["416-408-4357", "416-408-0007 (TTY)"],
+                        "",
+                        "",
+                        "",
+                        "Phone line for people in emotional distress or in need of crisis intervention and suicide prevention; multiple languages."),
+                  ]);
             case "Physical Health":
               return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("York"),
+                    SectionTitle("York"),
                     ResourceCard(
                         "YFS Health & Dental Plan",
                         ["416-736-2100 ext. 58066"],
@@ -184,7 +183,7 @@ class MentalHealthPage extends StatelessWidget {
                         "",
                         "York Lanes",
                         ""),
-                    Text("Toronto & GTA"),
+                    SectionTitle("Toronto & GTA"),
                     ResourceCard(
                         "Toronto Public Health",
                         ["416-392-0658"],
@@ -283,7 +282,7 @@ class MentalHealthPage extends StatelessWidget {
                         "information@chsm.net",
                         "68 Apex Road",
                         "Clinic close to Yorkdale Mall that offers athletic therapy, physiotherapy, massage therapy, osteopathy, dietitian."),
-                    Text("Ontario"),
+                    SectionTitle("Ontario"),
                     ResourceCard(
                         "Telehealth Ontario",
                         ["1-866-797-000", "1-866-797-0007 (TTY)"],
@@ -326,6 +325,20 @@ class MentalHealthPage extends StatelessWidget {
   }
 }
 
+class SectionTitle extends StatelessWidget {
+  final String title;
+
+  SectionTitle(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    );
+  }
+}
+
 class ResourceCard extends StatelessWidget {
   final String resource;
   final List<String> phoneNumbers;
@@ -343,6 +356,7 @@ class ResourceCard extends StatelessWidget {
     return Card(
         color: Colors.purple[50],
         elevation: 2,
+        margin: EdgeInsets.only(bottom: 10),
         child: Padding(
           padding: EdgeInsets.all(10),
           child: Column(
