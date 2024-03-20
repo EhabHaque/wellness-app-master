@@ -140,23 +140,6 @@ class _EventDetailsState extends State<EventDetails> {
                   height: 8,
                 ),
                 Text(
-                  "Special Guests ",
-                  style: TextStyle(
-                      color: appTheme.primaryColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  "${widget.data.data["guests"] == "" ? "None" : widget.data.data["guests"]}",
-                  style: TextStyle(color: Colors.black),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
                   "More Info ",
                   style: TextStyle(
                       color: appTheme.primaryColor,
