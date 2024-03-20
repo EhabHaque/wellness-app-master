@@ -2,9 +2,8 @@ import 'package:appwrite/models.dart';
 import 'main.dart';
 import 'format_datetime.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'database.dart';
-import 'saved_data.dart';
-import 'package:flutter/foundation.dart';
+//import 'database.dart';
+//import 'saved_data.dart';
 import 'package:flutter/material.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
 class EventDetails extends StatefulWidget {

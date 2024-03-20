@@ -1,7 +1,7 @@
 import 'package:appwrite/models.dart';
 import 'format_datetime.dart';
 import 'event_details.dart';
-import 'main.dart';
+//import 'main.dart';
 
 import 'package:flutter/material.dart';
 

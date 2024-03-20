@@ -3,66 +3,33 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'custom_icons_icons.dart';
 import 'saved_data.dart';
-import 'Notifications.dart' as prefix0;
+import 'pomodoro.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
 import 'events.dart';
 import 'WishList.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'Notifications.dart';
+//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'pomodoro.dart';
 import 'dart:math';
 import 'package:appwrite/models.dart';
 import 'quote_provider.dart';
 import 'event_container.dart';
-import 'Database.dart';
+import 'database.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
 import 'package:flutter/services.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SavedData.init();
-  // Initialize the local notifications plugin
-  await initNotifications();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]);
+  await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   HttpOverrides.global = MyHttpOverrides();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: BottomNav(),
     theme: appTheme,
     title: "YFS Wellness Center",
-    onGenerateRoute: (RouteSettings settings) {
-      // Handle notification tap here
-      if (settings.name == '/notification') {
-        // Handle notification tap logic
-        print("Notification tapped with payload: ${settings.arguments}");
-      }
-      // You can add additional route handling here if needed
-    },
   ));
-}
-
-// Function to initialize local notifications
-Future<void> initNotifications() async {
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
-
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings(
-          'app_icon'); // Replace 'app_icon' with your app icon name
-
-  final InitializationSettings initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-  );
-
-  //await flutterLocalNotificationsPlugin.initialize(
-  //initializationSettings,
-  //onSelectNotification: (String? payload) async {
-  // Handle notification tap here
-  //print("Notification tapped with payload: $payload");
-  //},
-  //);
 }
 
 ThemeData appTheme = ThemeData(
@@ -76,9 +43,13 @@ int sel = 0;
 double? width;
 double? height;
 
-
-final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
-
+final bodies = [
+  HomeScreen(),
+  WishList(),
+  Event(),
+  prefix0.Notification(),
+  SnakeGame()
+];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -238,12 +209,9 @@ class _HomeTop extends State<HomeTop> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: height! / 16,
+                  height: height! / 6,
                 ),
-                Spacer(),
-                SizedBox(
-                  height: height! / 16,
-                ),
+                //Spacer(),
                 Image.asset(
                   'assets/images/YFSWellnessCentreLogo.png',
                 ),
@@ -253,7 +221,10 @@ class _HomeTop extends State<HomeTop> {
                 ),
                 Text(
                   dailyQuote,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.red.shade700,
+                      fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -362,7 +333,6 @@ class _homeDownState extends State<homeDown> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -427,25 +397,24 @@ class ContactUsContainer extends StatelessWidget {
                 icon: Icons.facebook,
                 onPressed: () async {
                   launchUrl(Uri.parse('https://www.facebook.com/yfslocal68'));
-                  
+
                   // Handle Pinterest button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
-
                 icon: CustomIcons.twitter,
                 onPressed: () async {
-                  launchUrl(Uri.parse('https://twitter.com/yfslocal68?lang=en'));
+                  launchUrl(
+                      Uri.parse('https://twitter.com/yfslocal68?lang=en'));
                   // Handle Twitter button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
                 icon: CustomIcons.pinterest_circled,
-                onPressed: ()  {
-                                      launchUrl(Uri.parse(
-                                'https://www.pinterest.ca/YFSWellness/'));
+                onPressed: () {
+                  launchUrl(Uri.parse('https://www.pinterest.ca/YFSWellness/'));
                   // Handle Spotify button press
                   // Add your navigation logic or URL launch here
                 },
@@ -453,8 +422,7 @@ class ContactUsContainer extends StatelessWidget {
               CircularButton(
                 icon: CustomIcons.instagram,
                 onPressed: () async {
-                    launchUrl(Uri.parse(
-                                'https://www.instagram.com/yfswellness'));
+                  launchUrl(Uri.parse('https://www.instagram.com/yfswellness'));
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
