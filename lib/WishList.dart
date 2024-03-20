@@ -18,10 +18,9 @@ class ResourcesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Resources'),
-        ),
-        /*
+      appBar: AppBar(
+        title: Text('Resources', style: TextStyle(fontSize: 24)),
+      ),
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
@@ -29,43 +28,43 @@ class ResourcesPage extends StatelessWidget {
           String resourceContent = '';
           switch (index) {
             case 0:
-              resourceName = 'Mental Health Resources';
+              resourceName = 'Mental Health';
               resourceContent = mentalHealthResources;
               break;
             case 1:
-              resourceName = 'Physical Health Resources';
+              resourceName = 'Physical Health';
               resourceContent = physicalHealthResources;
               break;
             case 2:
-              resourceName = 'Sexual Violence Resources';
+              resourceName = 'Sexual Violence';
               resourceContent = sexualViolenceResources;
               break;
             case 3:
-              resourceName = 'Harm Reduction Resources';
+              resourceName = 'Harm Reduction';
               resourceContent = harmReductionResources;
               break;
             case 4:
-              resourceName = 'Housing Resources';
+              resourceName = 'Housing';
               resourceContent = housingResources;
               break;
             case 5:
-              resourceName = 'Academic Resources';
+              resourceName = 'Academic';
               resourceContent = academicResources;
               break;
             case 6:
-              resourceName = 'Financial Resources';
+              resourceName = 'Financial';
               resourceContent = financialResources;
               break;
             case 7:
-              resourceName = 'Employment Resources';
+              resourceName = 'Employment';
               resourceContent = employmentResources;
               break;
             case 8:
-              resourceName = 'Video Resources';
+              resourceName = 'Video';
               resourceContent = videoResources;
               break;
             case 9:
-              resourceName = 'Other Resources';
+              resourceName = 'Other';
               resourceContent = otherResources;
               break;
           }
@@ -73,66 +72,7 @@ class ResourcesPage extends StatelessWidget {
           return ResourceButton(resourceName, resourceContent);
         },
       ),
-    */
-        body: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[100],
-              child: const Text("Mental Health"),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[200],
-              child: const Text('Physical Health'),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[300],
-              child: const Text('Sexual Violence'),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[400],
-              child: const Text('Harm Reduction'),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[500],
-              child: const Text('Housing'),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[600],
-              child: const Text('Academic'),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[700],
-              child: const Text('Financial'),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[800],
-              child: const Text('Employment'),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[900],
-              child: const Text('Video'),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[900],
-              child: const Text('Other'),
-            ),
-          ],
-        ));
+    );
   }
 }
 
@@ -144,18 +84,68 @@ class ResourceButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                ResourceDetailPage(resourceName, resourceContent),
-          ),
-        );
-      },
-      child: Text(resourceName),
-    );
+    return Padding(
+        padding: EdgeInsets.symmetric(vertical: 5),
+        child: Builder(
+          builder: (context) {
+            Icon listIcon;
+            switch (resourceName) {
+              case "Mental Health":
+                listIcon = Icon(Icons.favorite);
+                break;
+              case "Physical Health":
+                listIcon = Icon(Icons.health_and_safety);
+                break;
+              case "Sexual Violence":
+                listIcon = Icon(Icons.healing);
+                break;
+              case "Harm Reduction":
+                listIcon = Icon(Icons.person_add_alt_1);
+                break;
+              case "Housing":
+                listIcon = Icon(Icons.house);
+                break;
+              case "Academic":
+                listIcon = Icon(Icons.school);
+                break;
+              case "Financial":
+                listIcon = Icon(Icons.attach_money);
+                break;
+              case "Employment":
+                listIcon = Icon(Icons.group);
+                break;
+              case "Video":
+                listIcon = Icon(Icons.camera_alt);
+                break;
+              case "Other":
+                listIcon = Icon(Icons.more_horiz);
+                break;
+              default:
+                listIcon = Icon(Icons.question_mark);
+            }
+            return ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ResourceDetailPage(resourceName, resourceContent),
+                  ),
+                );
+              },
+              contentPadding: EdgeInsets.only(left: 20),
+              leading: listIcon,
+              title: Row(
+                children: [
+                  Container(
+                      alignment: Alignment.center,
+                      child: Text(resourceName, style: TextStyle(fontSize: 20)))
+                ],
+              ),
+              trailing: Icon(Icons.arrow_right),
+            );
+          },
+        ));
   }
 }
 
@@ -170,34 +160,22 @@ class ResourceDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(resourceName),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //Text(
-              //  'Resource Name: $resourceName',
-              //  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              //),
-              //SizedBox(height: 10),
-              Text(
-                '$resourceContent',
-                style: TextStyle(fontSize: 16),
-              ),
-              // Add more content as needed
-            ],
-          ),
-        ),
+            padding: const EdgeInsets.all(16.0),
+            child: MentalHealthPage(resourceName)
+            // child: Column(
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     Text(
+            //       '$resourceContent',
+            //       style: TextStyle(fontSize: 16),
+            //     ),
+            //     // Add more content as needed
+            //   ],
+            // ),
+            ),
       ),
     );
   }

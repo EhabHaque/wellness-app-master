@@ -102,48 +102,86 @@ class _PomodoroTimerState extends State<Notification>
     // You can use packages like flutter_local_notifications or others for notifications
   }
 
- void showInfoModal() {
+
+void showInfoModal() {
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Center(
-          child: Row(
-
+        backgroundColor: Color.fromARGB(255, 214, 116, 239), // Replace with your desired background color
+        content: SingleChildScrollView(
+          child: Column(
             children: [
-              Expanded(
-                child: Text('What is the pomodoro technique?'),
+              Container(
+                alignment: Alignment.center,
+                child: Text(
+                  'What Is The Pomodoro Technique?',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                    fontFamily: 'Roboto',
+                    color: Colors.white, // Replace with your desired text color
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+              SizedBox(height: 20), // Add some space between text sections
+              Center(
+                child: Text(
+                  '''The Pomodoro Technique involves working on a specific task for a set period followed by a short break. It helps by enhancing focus, alleviating burnout, and promoting better time awareness.
+                  ''',
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    fontFamily: 'Roboto',
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: 20), // Add some space between text sections
+              Center(
+                child: Text(
+                  '''
+How To Use The Pomodoro Technique
+''',
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Roboto',
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Center(
+                child: Text(
+                  '''
+1. Select a task to work on.
+
+2. Set a duration you would like for your work session, you can add or decrease 5 minutes with the buttons.
+
+3. One Pomodoro is when you have completed a work session focusing exclusively on the task.
+
+4. Dedicate yourself to working on the task until the timer is finished.
+
+5. Take a short break: Enjoy a 5-minute break to relax and recharge.
+
+6. Repeat the process, after completing four Pomodoros, you will get a longer break of 15 minutes.''',
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    fontFamily: 'Roboto',
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ],
-          ),
-        ),
-        content: Center(
-          child: Text(
-            '''The Pomodoro Technique involves working on a specific task for a set period, followed by a short break.
-            It helps by enhancing focus, alleviating burnout, and promoting better time awareness.
-            
-            How to use the Pomodoro Technique:
-
-            1. Select a task you want to work on.
-            2. Set a duration you would like for your work session, you can add or decrease 5 minutes with the buttons.
-            3. One Pomodoro is when you have completed a work session focusing exclusively on the task.
-            3. Work on the task: Dedicate yourself to the task until the timer rings.
-            4. Take a short break: Enjoy a 5-minute break to relax and recharge.
-            5. Repeat the process, after completing four Pomodoros, you will get a long break of 15 minutes.
-            ''',
           ),
         ),
       );
     },
   );
 }
-
   @override
   void dispose() {
     if (timer != null) {
