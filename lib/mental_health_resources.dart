@@ -1,5 +1,6 @@
 //Mental Health Resources Button
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class MentalHealthPage extends StatelessWidget {
   final String page;
@@ -8,7 +9,7 @@ class MentalHealthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.fromLTRB(5, 5, 5, 0),
       child: Builder(
         builder: (context) {
           switch (page) {
@@ -315,7 +316,6 @@ class MentalHealthPage extends StatelessWidget {
                         "Website for those looking for HIV or Hepatitis C services in Canada. You can search for services by your location or by the type of service you are looking for."),
                   ]);
 
-              break;
             default:
           }
 
@@ -338,51 +338,86 @@ class ResourceCard extends StatelessWidget {
       this.address, this.details);
 
   @override
-  Card build(BuildContext context) {
+  Widget build(BuildContext context) {
+    double iconSize = 14;
     return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(resource),
-          for (var item in phoneNumbers) ...[
-            Row(children: [
-              Icon(
-                Icons.phone,
-                size: 14,
-              ),
-              Text(item),
-            ])
-          ],
-          if (website != "") ...[
-            Row(children: [
-              Icon(
-                Icons.web,
-                size: 14,
-              ),
-              Flexible(
-                child: Text(
-                  website,
-                  softWrap: true,
-                ),
-              )
-            ])
-          ],
-          if (address != "") ...[
-            Row(children: [
-              Icon(
-                Icons.location_on,
-                size: 14,
-              ),
+        color: Colors.purple[50],
+        elevation: 2,
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
               Text(
-                address,
-                softWrap: true,
+                resource,
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
-            ])
-          ],
-          if (details != "") Text(details),
-        ],
-      ),
-    );
+              Divider(
+                color: Colors.black12,
+              ),
+              for (var item in phoneNumbers) ...[
+                Row(children: [
+                  Icon(
+                    Icons.phone,
+                    size: 14,
+                  ),
+                  SizedBox(width: 5),
+                  Text(item),
+                ])
+              ],
+              if (website != "") ...[
+                Row(children: [
+                  Icon(
+                    Icons.web,
+                    size: iconSize,
+                  ),
+                  SizedBox(width: 5),
+                  Flexible(
+                      child: InkWell(
+                    child: Text(
+                      website,
+                      softWrap: true,
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    onTap: () => launchUrlString(website),
+                  ))
+                ])
+              ],
+              if (address != "") ...[
+                Row(children: [
+                  Icon(
+                    Icons.location_on,
+                    size: iconSize,
+                  ),
+                  SizedBox(width: 5),
+                  Flexible(
+                    child: Text(
+                      address,
+                      softWrap: true,
+                    ),
+                  ),
+                ])
+              ],
+              if (details != "") ...[
+                Row(children: [
+                  Icon(
+                    Icons.text_snippet,
+                    size: iconSize,
+                  ),
+                  SizedBox(width: 5),
+                  Flexible(
+                    child: Text(
+                      details,
+                      softWrap: true,
+                    ),
+                  ),
+                ])
+              ],
+            ],
+          ),
+        ));
   }
 }
 
