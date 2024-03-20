@@ -344,9 +344,41 @@ class ResourceCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(resource),
-          for (var item in phoneNumbers) Text(item),
-          if (website != "") Text(website),
-          if (address != "") Text(address),
+          for (var item in phoneNumbers) ...[
+            Row(children: [
+              Icon(
+                Icons.phone,
+                size: 14,
+              ),
+              Text(item),
+            ])
+          ],
+          if (website != "") ...[
+            Row(children: [
+              Icon(
+                Icons.web,
+                size: 14,
+              ),
+              Flexible(
+                child: Text(
+                  website,
+                  softWrap: true,
+                ),
+              )
+            ])
+          ],
+          if (address != "") ...[
+            Row(children: [
+              Icon(
+                Icons.location_on,
+                size: 14,
+              ),
+              Text(
+                address,
+                softWrap: true,
+              ),
+            ])
+          ],
           if (details != "") Text(details),
         ],
       ),
