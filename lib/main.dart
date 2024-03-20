@@ -18,14 +18,13 @@ import 'wellness_activities.dart';
 import 'snake_game.dart';
 import 'package:flutter/services.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SavedData.init();
   // Initialize the local notifications plugin
   await initNotifications();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]);
+  await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   HttpOverrides.global = MyHttpOverrides();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -76,9 +75,13 @@ int sel = 0;
 double? width;
 double? height;
 
-
-final bodies = [HomeScreen(), WishList(), Event(), prefix0.Notification(), SnakeGame()];
-
+final bodies = [
+  HomeScreen(),
+  WishList(),
+  Event(),
+  prefix0.Notification(),
+  SnakeGame()
+];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -238,11 +241,7 @@ class _HomeTop extends State<HomeTop> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: height! / 16,
-                ),
-                Spacer(),
-                SizedBox(
-                  height: height! / 16,
+                  height: height! / 6,
                 ),
                 Image.asset(
                   'assets/images/YFSWellnessCentreLogo.png',
@@ -251,11 +250,14 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(
                   height: height! * 0.025,
                 ),
-                Text(
-                  dailyQuote,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 50),
+                  child: Text(
+                    dailyQuote,
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                )
               ],
             ),
           ),
@@ -362,7 +364,6 @@ class _homeDownState extends State<homeDown> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -427,25 +428,24 @@ class ContactUsContainer extends StatelessWidget {
                 icon: Icons.facebook,
                 onPressed: () async {
                   launchUrl(Uri.parse('https://www.facebook.com/yfslocal68'));
-                  
+
                   // Handle Pinterest button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
-
                 icon: CustomIcons.twitter,
                 onPressed: () async {
-                  launchUrl(Uri.parse('https://twitter.com/yfslocal68?lang=en'));
+                  launchUrl(
+                      Uri.parse('https://twitter.com/yfslocal68?lang=en'));
                   // Handle Twitter button press
                   // Add your navigation logic or URL launch here
                 },
               ),
               CircularButton(
                 icon: CustomIcons.pinterest_circled,
-                onPressed: ()  {
-                                      launchUrl(Uri.parse(
-                                'https://www.pinterest.ca/YFSWellness/'));
+                onPressed: () {
+                  launchUrl(Uri.parse('https://www.pinterest.ca/YFSWellness/'));
                   // Handle Spotify button press
                   // Add your navigation logic or URL launch here
                 },
@@ -453,8 +453,7 @@ class ContactUsContainer extends StatelessWidget {
               CircularButton(
                 icon: CustomIcons.instagram,
                 onPressed: () async {
-                    launchUrl(Uri.parse(
-                                'https://www.instagram.com/yfswellness'));
+                  launchUrl(Uri.parse('https://www.instagram.com/yfswellness'));
                   // Handle Instagram button press
                   // Add your navigation logic or URL launch here
                 },
