@@ -376,7 +376,7 @@ class ResourceCard extends StatelessWidget {
                     size: 14,
                   ),
                   SizedBox(width: 5),
-                  Text(item),
+                  SelectableText(item),
                 ])
               ],
               if (website != "") ...[
