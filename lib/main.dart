@@ -3,17 +3,17 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'custom_icons_icons.dart';
 import 'saved_data.dart';
-import 'Notifications.dart' as prefix0;
+import 'pomodoro.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
 import 'events.dart';
 import 'WishList.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'Notifications.dart';
+//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'pomodoro.dart';
 import 'dart:math';
 import 'package:appwrite/models.dart';
 import 'quote_provider.dart';
 import 'event_container.dart';
-import 'Database.dart';
+import 'database.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
 import 'package:flutter/services.dart';
@@ -21,8 +21,6 @@ import 'package:flutter/services.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SavedData.init();
-  // Initialize the local notifications plugin
-  await initNotifications();
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   HttpOverrides.global = MyHttpOverrides();
@@ -31,37 +29,7 @@ void main() async {
     home: BottomNav(),
     theme: appTheme,
     title: "YFS Wellness Center",
-    onGenerateRoute: (RouteSettings settings) {
-      // Handle notification tap here
-      if (settings.name == '/notification') {
-        // Handle notification tap logic
-        print("Notification tapped with payload: ${settings.arguments}");
-      }
-      // You can add additional route handling here if needed
-    },
   ));
-}
-
-// Function to initialize local notifications
-Future<void> initNotifications() async {
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
-
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings(
-          'app_icon'); // Replace 'app_icon' with your app icon name
-
-  final InitializationSettings initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-  );
-
-  //await flutterLocalNotificationsPlugin.initialize(
-  //initializationSettings,
-  //onSelectNotification: (String? payload) async {
-  // Handle notification tap here
-  //print("Notification tapped with payload: $payload");
-  //},
-  //);
 }
 
 ThemeData appTheme = ThemeData(
@@ -243,6 +211,7 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(
                   height: height! / 6,
                 ),
+                //Spacer(),
                 Image.asset(
                   'assets/images/YFSWellnessCentreLogo.png',
                 ),
