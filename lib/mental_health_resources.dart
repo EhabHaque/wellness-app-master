@@ -325,20 +325,6 @@ class MentalHealthPage extends StatelessWidget {
   }
 }
 
-class SectionTitle extends StatelessWidget {
-  final String title;
-
-  SectionTitle(this.title);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-    );
-  }
-}
-
 class ResourceCard extends StatelessWidget {
   final String resource;
   final List<String> phoneNumbers;
@@ -432,6 +418,20 @@ class ResourceCard extends StatelessWidget {
             ],
           ),
         ));
+  }
+}
+
+class SectionTitle extends StatelessWidget {
+  final String title;
+
+  SectionTitle(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    );
   }
 }
 

@@ -568,7 +568,7 @@ class WellnessActivityCard extends StatelessWidget {
                     width: width! * .5 < 250 ? width! * .5 : 250,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(wellnessActivity!.image),
+                        image: AssetImage(wellnessActivity.image),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -601,7 +601,7 @@ class WellnessActivityCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              wellnessActivity!.name,
+                              wellnessActivity.name,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
