@@ -203,7 +203,7 @@ class MentalHealthPage extends StatelessWidget {
                         "", "York", ""),
                     ResourceCard(
                         "Native Youth Sexual Health Network",
-                        [""],
+                        [],
                         "nativeyouthsexualhealth.com",
                         "info@nativeyouthsexualhealth.com",
                         "2345 Yonge Street",
@@ -311,30 +311,327 @@ class MentalHealthPage extends StatelessWidget {
                         "info@catie.ca",
                         "",
                         "Research and practice in the HIV and Hep C field."),
-                    ResourceCard("HIV411", [""], "hiv411.ca", "", "",
+                    ResourceCard("HIV411", [], "hiv411.ca", "", "",
                         "Website for those looking for HIV or Hepatitis C services in Canada. You can search for services by your location or by the type of service you are looking for."),
                   ]);
-
+            case "Sexual Violence":
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SectionTitle("York University"),
+                  ResourceCard(
+                      "The Centre for Sexual Violence Response, Support and Education (The Centre)",
+                      ["416-736-5211"],
+                      "thecentre.yorku.ca",
+                      "thecentre@yorku.ca",
+                      "301 York Lanes",
+                      ""),
+                  ResourceCard(
+                      "goSAFE",
+                      ["416-736-5454 or Ext. 55454"],
+                      "",
+                      "goSAFE@yorku.ca",
+                      "",
+                      "goSAFE accompanies York community members to and from any on-campus location. Upon request, goSAFE staff will wait with you until your bus or transportation arrives or your car starts, and will meet you at your pick-up location"),
+                  ResourceCard("York Security (Urgent)", ["416-736-5333"], "",
+                      "", "", ""),
+                  ResourceCard("York Security (Non-Urgent)", ["416-650-8000"],
+                      "", "", "", "details"),
+                  SectionTitle("Toronto & GTA"),
+                  ResourceCard(
+                      "Assaulted Woman’s Helpline",
+                      [
+                        "416-863-0511 (Toronto)",
+                        "416-408-0007 (TTY)",
+                        "1-866-863-0511 (Toll Free)",
+                        "Text #SAFE (7233)"
+                      ],
+                      "awhl.org",
+                      "",
+                      "",
+                      "Interpreters in 154 languages are available to respond to callers."),
+                  ResourceCard(
+                      "Victim Support Line",
+                      ["1-888-579-2888 (Toll Free)", "416-314-2447 (Toronto)"],
+                      "",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Kid’s Helpline",
+                      ["1-800-668-6868"],
+                      "kidshelpphone.ca",
+                      "",
+                      "",
+                      "English and French services."),
+                  ResourceCard(
+                      "Lesbian Gay Bi Trans Youth Line",
+                      ["1-800-268-9688 (Toll Free)", "647-694-4275 (Text)"],
+                      "youthline.ca",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard("Good2Talk Student Crisis Line",
+                      ["1-866-925-5454 (24/7)"], "", "", "", ""),
+                  ResourceCard(
+                      "Barbra Schlifer Commemorative Clinic",
+                      ["416-323-9149"],
+                      "schliferclinic.com",
+                      "info@schliferclinic.com",
+                      "",
+                      "Offers counseling, legal and interpreter services for women who have been physically or sexually abused."),
+                  ResourceCard(
+                      "Women’s College Hospital",
+                      ["416-323-6400"],
+                      "womenscollegehospital.ca",
+                      "",
+                      "76 Grenville Street",
+                      "The Sexual Assault/Domestic Violence Care Centre (SA/DVCC) at Women’s College Hospital is a comprehensive service that assists women, men, and trans people who are survivors of sexual assault and domestic and intimate partner violence."),
+                  ResourceCard(
+                      "Crisis & Referral Services for Survivors That Are Men ",
+                      ["1-866-887-0015"],
+                      "https://www.attorneygeneral.jus.gov.on.ca/english/ovss/male_support_services/#:~:text=Survivors%20also%20have%20access%20to,when%20I%20was%20a%20child",
+                      "",
+                      "",
+                      "Provides help for male survivors of sexual abuse; recent or historical. The program is the first of its kind in Canada and is delivered by agencies across the province."),
+                  ResourceCard("Gerstein Crisis Centre",
+                      ["416-929-5200 (24/7)"], "", "", "", ""),
+                  ResourceCard("Trans Lifeline Canada ", ["877-330-6366"], "",
+                      "", "", ""),
+                  ResourceCard(
+                      "Durham Rape Crisis Centre (Whitby)",
+                      ["905-668-9200"],
+                      "durhamrapecrisiscentre.com",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard("Sherbourne Health Centre", ["416-324-4103"], "",
+                      "", "", "Services for Lesbian, Gay and Trans People"),
+                  ResourceCard(
+                      "Woman Abuse Council of Toronto",
+                      [],
+                      "womanabuse.ca",
+                      "",
+                      "",
+                      "The Woman Abuse Council of Toronto (WomanACT) is a policy development and planning body that coordinates an efficient and effective approach to providing services for assaulted women and their families."),
+                  ResourceCard(
+                      "All Saints Toronto",
+                      ["416-368-7768"],
+                      "allsaintstoronto.com/our-programs",
+                      "",
+                      "",
+                      "Safe and support resource for women (trans-inclusive) engaged in sex work."),
+                  ResourceCard(
+                      "Street Health",
+                      ["416-921-8668"],
+                      "streethealth.ca/street-resources/bad-date-reporting#.W_RrguhKiUk",
+                      "",
+                      "",
+                      "Street Health offers many resources, mainly for the homeless and under-housed."),
+                  ResourceCard(
+                      "Toronto Police Sex Crimes Unit",
+                      ["416-808-7474"],
+                      "torontopolice.on.ca/sexcrimes/",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Sexual Assault Care Centre, Scarborough Grace Hospital",
+                      ["416-95-2555"],
+                      "",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Sexual Assault Care Centre, York Central Hospital",
+                      ["905-883-2383"],
+                      "",
+                      "",
+                      "",
+                      ""),
+                  SectionTitle("Ontario"),
+                  ResourceCard("Need Help Now", [], "NeedHelpNow.ca", "", "",
+                      "Helps teens and adults stop the spread of sexual pictures or videos and provides support along the way. If you or someone you know has been negatively impacted by a self/peer exploitation incident, they are here to help offer guidance on the steps you can take to get through it."),
+                  ResourceCard(
+                      "Cyber Tip",
+                      ["1-866-658-9022"],
+                      "cybertip.ca",
+                      "",
+                      "",
+                      "Canada’s tipline to report the online sexual exploitation of children."),
+                  ResourceCard("Dawn Ontario", [], "dawncanada.net", "", "",
+                      "Information for women with disabilities that are being abused by partners; links provided for several areas such as legal help, housing help, financial assistance help, etc."),
+                  ResourceCard(
+                      "Immigrant Women Services (Ottawa)",
+                      ["613-729-1393"],
+                      "immigrantwomenservices.com",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Metropolitan Action Committee on Violence Against Women",
+                      [],
+                      "metrac.org",
+                      "",
+                      "",
+                      "Information via facts sheets on violence against women including sexual assaults, stalking and criminal harassment"),
+                  ResourceCard(
+                      "Ontario Coalition of Rape Crisis Centres (OCRCC)",
+                      [],
+                      "sexualassaultsupport.ca/support/",
+                      "",
+                      "",
+                      "Provides links to helplines, shelters, and supports in your region."),
+                  ResourceCard(
+                      "Ontario Association of Interval and Transition Houses (OAITH)",
+                      [],
+                      "oaith.ca",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Ontario Women’s Directorate",
+                      [],
+                      "",
+                      "ontario.ca/page/womens-issues",
+                      "",
+                      "The Ontario Women’s Directorate promotes women’s equality with a focus on ending violence against women and increasing women’s economic security."),
+                  ResourceCard(
+                      "Ontario Network of Sexual Assault/Domestic Violence care and Treatment Centres",
+                      ["416-323-6400"],
+                      "satcontario.com",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Support Services for Male Survivors of Sexual Abuse",
+                      ["1-866-887-0015"],
+                      "",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Talk4Healing",
+                      ["1-855-554-HEAL (24/7)"],
+                      "talk4healing.com",
+                      "",
+                      "",
+                      "A culturally grounded, fully confidential helpline for Indigenous women available in 14 languages all across Ontario."),
+                  ResourceCard(
+                      "Ontario Women’s Justice Network",
+                      [],
+                      "owjn.org",
+                      "",
+                      "",
+                      "Legal information and advice for women who are looking for help with family law or trying to understand legal terminology"),
+                  ResourceCard("Ottawa Rape Crisis", ["613-562-2333"],
+                      "orcc.net", "", "", ""),
+                  ResourceCard(
+                      "Chinese Family Services of Ontario",
+                      ["416-979-8299"],
+                      "chinesefamilyso.com/en/programs.asp",
+                      "info@chinesefamilyso.com",
+                      "",
+                      "")
+                ],
+              );
+            case "Harm Reduction":
+              return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SectionTitle("York"),
+                    ResourceCard(
+                        "Health Education & Promotion",
+                        ["(416) 736-2100, ext. 55196"],
+                        "healthed.scld.yorku.ca/",
+                        "",
+                        "",
+                        "Health Education And Promotion is a team of York Students and Staff that collaboratively work with on and off campus stakeholders to provide physical and sexual health information."),
+                    ResourceCard(
+                        "Toronto Eating Disorder Resources",
+                        ["416-340-3041 (Intake Coordinator)"],
+                        "https://www.uhn.ca/MCC/PatientsFamilies/Clinics_Tests/Eating_Disorder",
+                        "",
+                        "Eaton Building in Toronto General - Floor 7/8",
+                        "Monday – Friday 9AM–5PM\nToronto General Hospital provides comprehensive information, assessment and intensive treatment to individuals 17 years or older with anorexia nervosa, bulimia nervosa or other forms of disordered eating."),
+                    ResourceCard(
+                        "North York General Hospital",
+                        ["416-756-6642"],
+                        "https://www.nygh.on.ca/areas-care/mental-health/eating-disorders-program?cid=1230&lang=1",
+                        "",
+                        "North York General Hospital, 7th floor, 4001 Leslie Street",
+                        "North York General Hospital's Adult Eating Disorders program for those aged 17+ is a collaborative initiative with Toronto General Hospital. They offer partial hospitalization program for patients with diagnosed anorexia and bulimia nervosa, and group-based aftercare for patients who have completed the partial hospitalization program."),
+                    SectionTitle("Toronto & GTA"),
+                    ResourceCard(
+                        "Harm Reduction Supplies and Locations",
+                        [],
+                        "toronto.ca/community-people/health-wellness-care/health-programs-advice/harm-reduction-supplies-and-locations/",
+                        "",
+                        "",
+                        ""),
+                    ResourceCard(
+                        "“The Works” Supervised Injection Site",
+                        ["416-338-7600", "416-392-0520"],
+                        "toronto.ca/community-people/health-wellness-care/health-programs-advice/services-provided-by-the-works/",
+                        "theworks@toronto.ca",
+                        "",
+                        "Monday - Saturday: 10AM-10PM"),
+                    ResourceCard(
+                        "Pieces2Pathways",
+                        ["647-209-2043"],
+                        "https://www.facebook.com/PiecestoPathways\nhttps://www.breakawayaddictions.ca/p2p",
+                        "piecestopathwaysinfo@breakawayaddictions.ca",
+                        "",
+                        "Pieces to Pathways (P2P) is a peer-led initiative offering Canada’s only substance use support program for LGBTTQQ2SIA youth (ages 16-29)."),
+                    ResourceCard(
+                        "Trip! Project",
+                        ["(647) 822-6435"],
+                        "http://tripproject.ca\nhttps://www.facebook.com/TRIPProject",
+                        "",
+                        "",
+                        "Did a line? Don’t think you’re fine? Need to enquire? Just text the TRIP!wire (647) 822-6435\nThe Trip! Project provides safer sex and drug information and supplies to party people in Toronto’s electronic music communities. We neither condone nor condemn the use of any drug, and provide factual information to help partiers make informed decisions that directly affect their long-term health."),
+                    ResourceCard(
+                        "Black Coalition for Aids Prevention (Black CAP)",
+                        ["(416) 977 - 9955", "Fax: (416) 977 - 7664"],
+                        "www.blackcap.ca",
+                        "info@black-cap.com",
+                        "20 Victoria St. 4th floor",
+                        "Since 1989, Black CAP has worked to reduce the spread of HIV infection within Toronto’s African, Caribbean and Black communities while enhancing the quality of life of those living with or affected by HIV/AIDS."),
+                    ResourceCard(
+                        "Street Health Toronto",
+                        ["416-921-8668"],
+                        "streethealth.ca/",
+                        "info@streethealth.ca",
+                        "338 Dundas Street East",
+                        ""),
+                    ResourceCard(
+                        "South Riverdale Community Health Centre - Supervised Consumption Service ",
+                        ["416-461-1925"],
+                        "srchc.ca/programs/harm-reduction/supervised-consumption-service/",
+                        "srchc@srchc.com, nkallio@srchc.com",
+                        "955 Queen St East",
+                        ""),
+                    ResourceCard(
+                        "Regent Park Community Health Centre",
+                        ["416-364-2261"],
+                        "regentparkchc.org/",
+                        "",
+                        "",
+                        "The overdose prevention program provides free acess to laundry, housing, showers, doctors and nurses. They also have an ID program that runs every Wednesday morning where they help folks apply for passports, healthcard and birth certificate for free. There is no age limit to these services."),
+                    ResourceCard(
+                        "Canadian Harm Reduction Network",
+                        ["416-928-0279"],
+                        "canadianharmreduction.com",
+                        "noharm@canadianharmreduction.com",
+                        "666 Spadina Avenue, Suite 1904",
+                        ""),
+                  ]);
             default:
           }
 
           return Text("huh");
         },
       ),
-    );
-  }
-}
-
-class SectionTitle extends StatelessWidget {
-  final String title;
-
-  SectionTitle(this.title);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
     );
   }
 }
@@ -376,7 +673,7 @@ class ResourceCard extends StatelessWidget {
                     size: 14,
                   ),
                   SizedBox(width: 5),
-                  Text(item),
+                  SelectableText(item),
                 ])
               ],
               if (website != "") ...[
@@ -432,6 +729,20 @@ class ResourceCard extends StatelessWidget {
             ],
           ),
         ));
+  }
+}
+
+class SectionTitle extends StatelessWidget {
+  final String title;
+
+  SectionTitle(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    );
   }
 }
 
@@ -1002,7 +1313,7 @@ regentparkchc.org/
 The overdose prevention program provides free acess to laundry, housing, showers, doctors and nurses. They also have an ID program that runs every Wednesday morning where they help folks apply for passports, healthcard and birth certificate for free. There is no age limit to these services.  
 
 Canadian Harm Reduction Network
-416.928.0279  
+416-928-0279  
 canadianharmreduction.com
 noharm@canadianharmreduction.com  
 666 Spadina Avenue, Suite 1904  
