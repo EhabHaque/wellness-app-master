@@ -18,7 +18,6 @@ Future<void> createEvent(
     String location,
     String createdBy,
     bool isInPersonOrNot,
-    String guest,
     String urlLink,
     String startDateTime,
     String endDateTime,) async {
@@ -34,7 +33,6 @@ Future<void> createEvent(
             "location": location,
             "createdBy": createdBy,
             "isInPerson": isInPersonOrNot,
-            "guests": guest,
             "urlLink": urlLink,
             "startDateTime": startDateTime,
             "endDateTime": endDateTime,
