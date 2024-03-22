@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'custom_icons_icons.dart';
 import 'saved_data.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -225,7 +226,7 @@ class _HomeTop extends State<HomeTop> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: height! / 6,
+                  height: 75,
                 ),
                 //Spacer(),
                 Image.asset(
@@ -235,14 +236,15 @@ class _HomeTop extends State<HomeTop> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.black.withOpacity(0.05),
-                    ),
+                    // decoration: BoxDecoration(
+                    //   borderRadius: BorderRadius.circular(15),
+                    //   color: Colors.black.withOpacity(0.1),
+                    // ),
                     width: double.infinity,
                     child: Text(
                       dailyQuote,
-                      style: textStyle(24, Colors.white, FontWeight.bold),
+                      style: textStyle(
+                          24, Color.fromRGBO(0, 80, 67, 0.85), FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -367,24 +369,30 @@ class _homeDownState extends State<homeDown> {
                 "Upcoming Events",
                 style: TextStyle(color: Colors.black, fontSize: 16),
               ),
-              Spacer(),
-              GestureDetector(
-                onTap: () {
-                  // Navigate to the events page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Event(),
-                    ),
-                  );
-                },
-                child: Text("VIEW ALL", style: viewallstyle),
-              )
             ],
           ),
         ),
+        GestureDetector(
+          onTap: () {
+            // Navigate to the events page
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Event(),
+              ),
+            );
+          },
+          child: Center(
+              child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 400,
+              maxHeight: 250,
+            ),
+            child: Image.asset("assets/images/EventsImage.png"),
+          )),
+        ),
         Container(
-          height: height! * .25 < 170 ? height! * .25 : 170,
+          height: 50,
           child: ListView.builder(
             itemBuilder: (context, index) =>
                 EventContainer(data: events[index]),
