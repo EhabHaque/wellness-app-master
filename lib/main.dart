@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
 import 'custom_icons_icons.dart';
 import 'saved_data.dart';
@@ -25,7 +26,7 @@ void main() async {
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   HttpOverrides.global = MyHttpOverrides();
-  
+
   runApp(
     MultiProvider(
       providers: [
@@ -35,7 +36,7 @@ void main() async {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: BottomNavWrapper(),   //Test BottomNav() if it doesnt work
+        home: BottomNavWrapper(), //Test BottomNav() if it doesnt work
         theme: appTheme,
         title: "YFS Wellness Center",
       ),
@@ -45,6 +46,7 @@ void main() async {
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
+  // primaryColor: Colors.blueAccent,
   /* Colors.tealAccent,*/
   //secondaryHeaderColor: Colors.red /* Colors.teal*/
   // fontFamily:
@@ -54,13 +56,7 @@ int sel = 0;
 double? width;
 double? height;
 
-final bodies = [
-  HomeScreen(),
-  WishList(),
-  Event(),
-  Pomodoro(),
-  SnakeGame()
-];
+final bodies = [HomeScreen(), WishList(), Event(), Pomodoro(), SnakeGame()];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -76,6 +72,7 @@ class BottomNavWrapper extends StatelessWidget {
     );
   }
 }
+
 class _BottomNavState extends State<BottomNav> {
   List<BottomNavigationBarItem> createItems() {
     List<BottomNavigationBarItem> items = [];
@@ -234,16 +231,20 @@ class _HomeTop extends State<HomeTop> {
                 Image.asset(
                   'assets/images/YFSWellnessCentreLogo.png',
                 ),
-                SizedBox(height: height! * 0.0375),
-                SizedBox(
-                  height: height! * 0.025,
-                ),
+                SizedBox(height: 20),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Text(
-                    dailyQuote,
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                    textAlign: TextAlign.center,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.black.withOpacity(0.05),
+                    ),
+                    width: double.infinity,
+                    child: Text(
+                      dailyQuote,
+                      style: textStyle(24, Colors.white, FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 )
               ],
