@@ -57,7 +57,13 @@ int sel = 0;
 double? width;
 double? height;
 
-final bodies = [HomeScreen(), WishList(), Event(), Pomodoro(), SnakeGame()];
+final bodies = [
+  HomeScreen(),
+  ResourcesPage(),
+  Event(),
+  Pomodoro(),
+  SnakeGame()
+];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -217,7 +223,6 @@ class _HomeTop extends State<HomeTop> {
           clipper: Clipper08(),
           child: Container(
             height: 450, //400
-            //color: Colors.tealAccent,
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
               appTheme.primaryColor,
@@ -226,7 +231,7 @@ class _HomeTop extends State<HomeTop> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 75,
+                  height: 55,
                 ),
                 Image.asset(
                   'assets/images/YFSWellnessCentreLogo.png',
@@ -363,12 +368,12 @@ class _homeDownState extends State<homeDown> {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                "Upcoming Events",
-                style: textStyle(17, Colors.black87, FontWeight.bold),
-              ),
-            ],
+            // children: <Widget>[
+            //   // Text(
+            //   //   "Upcoming Events",
+            //   //   style: textStyle(17, Colors.black87, FontWeight.bold),
+            //   // ),
+            // ],
           ),
         ),
         GestureDetector(
@@ -391,7 +396,7 @@ class _homeDownState extends State<homeDown> {
           )),
         ),
         Container(
-          height: 50,
+          height: 25,
           child: ListView.builder(
             itemBuilder: (context, index) =>
                 EventContainer(data: events[index]),

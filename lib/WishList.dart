@@ -1,26 +1,16 @@
+import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
 import 'mental_health_resources.dart';
-
-class WishList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Resources App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: ResourcesPage(),
-    );
-  }
-}
 
 class ResourcesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Resources'),
-      ),
+          title: Text(
+        'RESOURCES',
+        style: textStyle(25, Colors.black87, FontWeight.bold),
+      )),
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
