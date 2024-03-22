@@ -625,6 +625,48 @@ class MentalHealthPage extends StatelessWidget {
                         "noharm@canadianharmreduction.com",
                         "666 Spadina Avenue, Suite 1904",
                         ""),
+                    ResourceCard(
+                        "Canadian Association of People Who Use Drugs (CAPUD)",
+                        ["778-991-8490 "],
+                        "capud.ca",
+                        "",
+                        "",
+                        ""),
+                    ResourceCard(
+                        "Black CAP Toronto",
+                        ["416-977-995"],
+                        "blackcap.ca/page.php?u=/programs-services/harm-reduction-program",
+                        "k.martin@black-cap.com",
+                        "",
+                        "Workshops and drop-in offered on harm reduction for users. Services tailored for black folks."),
+                    ResourceCard(
+                        "Eva’s Satellite",
+                        ["416-229-1874"],
+                        "evas.ca",
+                        "info@evas.ca",
+                        "401 Richmond St W, Suite 245",
+                        "Emergency shelter for youth aged 16-24 with mental health and substance use support."),
+                    ResourceCard(
+                        "Breakaway",
+                        ["416-537-9346"],
+                        "breakawayaddictions.ca/",
+                        "",
+                        "21 Strictland Ave",
+                        "All programs are free and confidential."),
+                    ResourceCard(
+                        "The FIX (Scarborough Harm Reduction Services)",
+                        ["647-459-6912"],
+                        "agincourtcommunityservices.com/fix-scarborough-harm-reduction-services",
+                        "mrahema@agincourtcommunitys-ervices.com",
+                        "",
+                        ""),
+                    ResourceCard(
+                        "All Saints Church Community Centre - Downtown Toronto, East",
+                        ["416-368-7768"],
+                        "allsaintstoronto.com/",
+                        "admin@allsaintstoronto.com",
+                        "315 Dundas Street East",
+                        "Needle exchange and harm reduction materials available."),
                   ]);
             default:
           }
