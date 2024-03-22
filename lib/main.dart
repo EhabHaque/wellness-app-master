@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'custom_icons_icons.dart';
 import 'saved_data.dart';
-import 'pomodoro.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
 import 'events.dart';
 import 'WishList.dart';
@@ -17,6 +16,8 @@ import 'database.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'timerService.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,12 +25,22 @@ void main() async {
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   HttpOverrides.global = MyHttpOverrides();
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: BottomNav(),
-    theme: appTheme,
-    title: "YFS Wellness Center",
-  ));
+  
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<TimerService>(
+          create: (_) => TimerService(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: BottomNavWrapper(),   //Test BottomNav() if it doesnt work
+        theme: appTheme,
+        title: "YFS Wellness Center",
+      ),
+    ),
+  );
 }
 
 ThemeData appTheme = ThemeData(
@@ -47,7 +58,7 @@ final bodies = [
   HomeScreen(),
   WishList(),
   Event(),
-  prefix0.Notification(),
+  Pomodoro(),
   SnakeGame()
 ];
 
@@ -57,6 +68,14 @@ class BottomNav extends StatefulWidget {
   _BottomNavState createState() => _BottomNavState();
 }
 
+class BottomNavWrapper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: BottomNav(),
+    );
+  }
+}
 class _BottomNavState extends State<BottomNav> {
   List<BottomNavigationBarItem> createItems() {
     List<BottomNavigationBarItem> items = [];
