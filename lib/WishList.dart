@@ -19,7 +19,7 @@ class ResourcesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Resources', style: TextStyle(fontSize: 24)),
+        title: Text('Resources'),
       ),
       body: ListView.builder(
         itemCount: 10,

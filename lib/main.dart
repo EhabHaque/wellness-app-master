@@ -238,14 +238,14 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(
                   height: height! * 0.025,
                 ),
-                Text(
-                  dailyQuote,
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.red.shade700,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 50),
+                  child: Text(
+                    dailyQuote,
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                )
               ],
             ),
           ),
@@ -464,19 +464,19 @@ class ContactUsContainer extends StatelessWidget {
             'Contact Us',
             style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
-          Text(
+          SelectableText(
             'Email: wellness@yfs.ca',
             style: TextStyle(fontSize: 16.0),
           ),
-          Text(
+          SelectableText(
             'Phone: (416)-736-2100 x44872',
             style: TextStyle(fontSize: 16.0),
           ),
-          Text(
+          SelectableText(
             'York University, Second Student Centre Rm:341',
             style: TextStyle(fontSize: 16.0),
           ),
-          Text(
+          SelectableText(
             'Address: 15 Library Ln, North York, ON M3J 2S5',
             style: TextStyle(fontSize: 16.0),
           ),
@@ -544,8 +544,8 @@ class WellnessActivitiesSection extends StatelessWidget {
         Container(
           height: 170, // Adjust the height as needed
           child: ListView.builder(
-            itemBuilder: (context, index) => WellnessActivityCard(
-                wellnessActivity: wellnessActivities[index]),
+            itemBuilder: (context, index) =>
+                WellnessActivityCard(wellnessActivities[index]),
             shrinkWrap: true,
             padding: EdgeInsets.all(0.0),
             itemCount: wellnessActivities.length,
@@ -558,9 +558,9 @@ class WellnessActivitiesSection extends StatelessWidget {
 }
 
 class WellnessActivityCard extends StatelessWidget {
-  final WellnessActivity? wellnessActivity;
+  final WellnessActivity wellnessActivity;
 
-  WellnessActivityCard({this.wellnessActivity});
+  WellnessActivityCard(this.wellnessActivity);
 
   @override
   Widget build(BuildContext context) {
@@ -570,8 +570,7 @@ class WellnessActivityCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>
-                WellnessDetailPage(wellnessActivity: wellnessActivity!),
+            builder: (context) => WellnessDetailPage(wellnessActivity),
           ),
         );
       },
@@ -588,7 +587,7 @@ class WellnessActivityCard extends StatelessWidget {
                     width: width! * .5 < 250 ? width! * .5 : 250,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(wellnessActivity!.image),
+                        image: AssetImage(wellnessActivity.image),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -621,7 +620,7 @@ class WellnessActivityCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              wellnessActivity!.name,
+                              wellnessActivity.name,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,

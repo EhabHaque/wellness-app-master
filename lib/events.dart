@@ -1,4 +1,5 @@
 import 'package:appwrite/models.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'event_container.dart';
 //import 'auth.dart';
 import 'main.dart';
@@ -30,7 +31,10 @@ class _EventState extends State<Event> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
- 
+      appBar: AppBar(
+        // title: Text("Events", style: GoogleFonts.getFont("Montserrat")),
+        title: Text("Events"),
+      ),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
