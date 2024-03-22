@@ -314,7 +314,90 @@ class MentalHealthPage extends StatelessWidget {
                     ResourceCard("HIV411", [""], "hiv411.ca", "", "",
                         "Website for those looking for HIV or Hepatitis C services in Canada. You can search for services by your location or by the type of service you are looking for."),
                   ]);
-
+            case "Sexual Violence":
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SectionTitle("York University"),
+                  ResourceCard(
+                      "The Centre for Sexual Violence Response, Support and Education (The Centre)",
+                      ["416-736-5211"],
+                      "thecentre.yorku.ca",
+                      "thecentre@yorku.ca",
+                      "301 York Lanes",
+                      ""),
+                  ResourceCard(
+                      "goSAFE",
+                      ["416-736-5454 or Ext. 55454"],
+                      "",
+                      "goSAFE@yorku.ca",
+                      "",
+                      "goSAFE accompanies York community members to and from any on-campus location. Upon request, goSAFE staff will wait with you until your bus or transportation arrives or your car starts, and will meet you at your pick-up location"),
+                  ResourceCard("York Security (Urgent)", ["416-736-5333"], "",
+                      "", "", ""),
+                  ResourceCard("York Security (Non-Urgent)", ["416-650-8000"],
+                      "", "", "", "details"),
+                  SectionTitle("Toronto & GTA"),
+                  ResourceCard(
+                      "Assaulted Woman’s Helpline",
+                      [
+                        "416-863-0511 (Toronto)",
+                        "416-408-0007 (TTY)",
+                        "1-866-863-0511 (Toll Free)",
+                        "Text #SAFE (7233)"
+                      ],
+                      "awhl.org",
+                      "",
+                      "",
+                      "Interpreters in 154 languages are available to respond to callers."),
+                  ResourceCard(
+                      "Victim Support Line",
+                      ["1-888-579-2888 (Toll Free)", "416-314-2447 (Toronto)"],
+                      "",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Kid’s Helpline",
+                      ["1-800-668-6868"],
+                      "kidshelpphone.ca",
+                      "",
+                      "",
+                      "English and French services."),
+                  ResourceCard(
+                      "Lesbian Gay Bi Trans Youth Line",
+                      ["1-800-268-9688 (Toll Free)", "647-694-4275 (Text)"],
+                      "youthline.ca",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard("Good2Talk Student Crisis Line",
+                      ["1-866-925-5454 (24/7)"], "", "", "", ""),
+                  ResourceCard(
+                      "Barbra Schlifer Commemorative Clinic",
+                      ["416-323-9149"],
+                      "schliferclinic.com",
+                      "info@schliferclinic.com",
+                      "",
+                      "Offers counseling, legal and interpreter services for women who have been physically or sexually abused."),
+                  ResourceCard(
+                      "Women’s College Hospital",
+                      ["416-323-6400"],
+                      "womenscollegehospital.ca",
+                      "",
+                      "76 Grenville Street",
+                      "The Sexual Assault/Domestic Violence Care Centre (SA/DVCC) at Women’s College Hospital is a comprehensive service that assists women, men, and trans people who are survivors of sexual assault and domestic and intimate partner violence."),
+                  ResourceCard(
+                      "Crisis & Referral Services for Survivors That Are Men ",
+                      ["1-866-887-0015"],
+                      "https://www.attorneygeneral.jus.gov.on.ca/english/ovss/male_support_services/#:~:text=Survivors%20also%20have%20access%20to,when%20I%20was%20a%20child",
+                      "",
+                      "",
+                      "Provides help for male survivors of sexual abuse; recent or historical. The program is the first of its kind in Canada and is delivered by agencies across the province."),
+                  ResourceCard("Gerstein Crisis Centre",
+                      ["416-929-5200 (24/7)"], "", "", "", ""),
+                ],
+              );
             default:
           }
 

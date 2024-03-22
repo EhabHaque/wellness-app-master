@@ -12,7 +12,7 @@ class WellnessActivity {
 //List of Wellness Activities
 List<WellnessActivity> wellnessActivities = [
   WellnessActivity(
-    "assets/images/YFSWellnessCentre.PNG",
+    "assets/images/YFSWellnessCentreLogo.png",
     "Wellness Centre",
     WellnessCentreDes,
   ),
@@ -69,7 +69,7 @@ class WellnessDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.close),
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -77,17 +77,29 @@ class WellnessDetailPage extends StatelessWidget {
         title: Text(wellnessActivity.name),
       ),
       body: SingleChildScrollView(
-          child: Padding(
-        padding: EdgeInsets.all(16),
         child: Column(children: [
+          Container(
+            constraints:
+                BoxConstraints(maxHeight: 300, minWidth: double.infinity),
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(180, 117, 231, 0.573),
+            ),
+            child: Container(child: Image.asset(wellnessActivity.image)),
+          ),
+          // Extra Space
+          SizedBox(
+            height: 8,
+          ),
+
           for (var item in wellnessActivity.description) ...[
+            // Text(item),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
               child: Text(item),
             ),
           ],
         ]),
-      )),
+      ),
     );
   }
 }
