@@ -216,7 +216,7 @@ class _HomeTop extends State<HomeTop> {
         ClipPath(
           clipper: Clipper08(),
           child: Container(
-            height: height! * .65 < 450 ? height! * .65 : 500, //400
+            height: 450, //400
             //color: Colors.tealAccent,
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
@@ -228,7 +228,6 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(
                   height: 75,
                 ),
-                //Spacer(),
                 Image.asset(
                   'assets/images/YFSWellnessCentreLogo.png',
                 ),
@@ -367,7 +366,7 @@ class _homeDownState extends State<homeDown> {
             children: <Widget>[
               Text(
                 "Upcoming Events",
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: textStyle(17, Colors.black87, FontWeight.bold),
               ),
             ],
           ),
@@ -414,7 +413,7 @@ class ContactUsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 0.0),
-      color: Colors.white, // Background color
+      color: Colors.white.withOpacity(0.7), // Background color
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -543,7 +542,7 @@ class WellnessActivitiesSection extends StatelessWidget {
             children: <Widget>[
               Text(
                 "Wellness Activities At York",
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: textStyle(17, Colors.black87, FontWeight.bold),
               ),
               // Spacer(), // Remove the spacer if you don't want the VIEW ALL button
               // Text("VIEW ALL", style: viewallstyle),
