@@ -625,7 +625,184 @@ class MentalHealthPage extends StatelessWidget {
                         "noharm@canadianharmreduction.com",
                         "666 Spadina Avenue, Suite 1904",
                         ""),
+                    ResourceCard(
+                        "Canadian Association of People Who Use Drugs (CAPUD)",
+                        ["778-991-8490 "],
+                        "capud.ca",
+                        "",
+                        "",
+                        ""),
+                    ResourceCard(
+                        "Black CAP Toronto",
+                        ["416-977-995"],
+                        "blackcap.ca/page.php?u=/programs-services/harm-reduction-program",
+                        "k.martin@black-cap.com",
+                        "",
+                        "Workshops and drop-in offered on harm reduction for users. Services tailored for black folks."),
+                    ResourceCard(
+                        "Eva’s Satellite",
+                        ["416-229-1874"],
+                        "evas.ca",
+                        "info@evas.ca",
+                        "401 Richmond St W, Suite 245",
+                        "Emergency shelter for youth aged 16-24 with mental health and substance use support."),
+                    ResourceCard(
+                        "Breakaway",
+                        ["416-537-9346"],
+                        "breakawayaddictions.ca/",
+                        "",
+                        "21 Strictland Ave",
+                        "All programs are free and confidential."),
+                    ResourceCard(
+                        "The FIX (Scarborough Harm Reduction Services)",
+                        ["647-459-6912"],
+                        "agincourtcommunityservices.com/fix-scarborough-harm-reduction-services",
+                        "mrahema@agincourtcommunitys-ervices.com",
+                        "",
+                        ""),
+                    ResourceCard(
+                        "All Saints Church Community Centre - Downtown Toronto, East",
+                        ["416-368-7768"],
+                        "allsaintstoronto.com/",
+                        "admin@allsaintstoronto.com",
+                        "315 Dundas Street East",
+                        "Needle exchange and harm reduction materials available."),
+                    ResourceCard("Toronto Harm Reduction Alliance", [],
+                        "torontoharmreductionalliance.ca/", "", "", ""),
+                    ResourceCard(
+                        "2 Spirited People of the First Nations Toronto",
+                        ["416-944-9300"],
+                        "2spirits.com",
+                        "info@2spirits.com",
+                        "Suite 105, 145 Front St E",
+                        "“We provide prevention education and support for 2-Spirit, including First Nations, metis and Inuit people living with or at risk for HIV and related co-infections in the Greater Toronto Area. We base our work on indigenous philosophies of wholistic health and wellness.”"),
+                    ResourceCard(
+                        "Agincourt Community Services Association ",
+                        ["416-321-6912"],
+                        "agincourtcommunityservices.com",
+                        "4155reception@agincourtcommunityservices.com",
+                        "",
+                        "4155 Sheppard Ave. East")
                   ]);
+            case "Housing":
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SectionTitle("York"),
+                  ResourceCard(
+                      "Glendon Women & Trans Centre",
+                      ["416-487-6808"],
+                      "",
+                      "glendonwtc@gmail.com",
+                      "",
+                      "The Glendon Women and Trans Centre is dedicated to providing a positive space where no person is judged based on their gender, race, religion, or sexual orientation. We work to promote the preservation of all human rights with a special emphasis on celebrating the many voices of the women and trans community at Glendon. They offer emergency shelter services of all York Students.\nHours: 9am - 6pm"),
+                  ResourceCard(
+                      "The Centre for Sexual Violence Response, Support and Education (The Centre)",
+                      ["416-736-5211"],
+                      "thecentre.yorku.ca",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "York Housing Services",
+                      ["416-736-5152"],
+                      "studenthousing.info.yorku.ca",
+                      "undergradres@yorku.ca",
+                      "",
+                      ""),
+                  SectionTitle("Toronto & GTA"),
+                  ResourceCard(
+                      "City of Toronto - Tenant Rights & Responsibilities",
+                      ["416-921-9494"],
+                      "https://www.toronto.ca/311/knowledgebase/kb/docs/articles/municipal-licensing-and-standards/investigation-services/renting-in-toronto-101-tenant-rights-responsibilities.html\nhttps://www.toronto.ca/community-people/housing-shelter/housing-at-risk/",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Arrabon House",
+                      ["416-536-7037"],
+                      "arrabonhouse.org",
+                      "",
+                      "29 Wilson Park Road",
+                      "Residential treatment, supportive housing, aftercare support and counseling services to young women 13-24."),
+                  ResourceCard(
+                      "Assessment and Referral Centre",
+                      ["416-338-4766", "1-877-338-3398 (Toll Free)"],
+                      "toronto.ca/housing/index.htm",
+                      "sharc@toronto.ca",
+                      "129 Peter St",
+                      "Shelter services for single adults, youth, and couples."),
+                  ResourceCard("Central Family Intake", ["416-397-5637"], "",
+                      "", "", "Shelter services for families with children."),
+                  ResourceCard(
+                      "Covenant House Toronto",
+                      ["416-598-4898", "1-800-435-7308 (Toll Free)"],
+                      "covenanthousetoronto.ca/homeless-youth/Home.aspx",
+                      "general@covenanthouse.ca",
+                      "20 Gerrard St. E",
+                      "Shelter, transitional housing, and programs for homeless youth."),
+                  ResourceCard(
+                      "Dixon Hall",
+                      ["416-863-0499"],
+                      "dixonhall.org",
+                      "info@dixonhall.org",
+                      "58 Sumach St.",
+                      "Shelter and programs for people experiencing homelessness."),
+                  ResourceCard("Eva’s Phoenix", ["416-364-4716"], "", "", "",
+                      "Transitional housing for youth 16-24."),
+                  ResourceCard("Eva’s Place", ["416-441-1414"], "", "", "",
+                      "Emergency shelter for youth 16-24 dealing with substance use and/or mental health."),
+                  ResourceCard("Eva’s Satellite", ["416-642-2581"], "", "", "",
+                      "Emergency shelter for youth 16-24 dealing with substance use and/or mental health."),
+                  ResourceCard("Horizons for Youth", ["416-781-9898"], "", "",
+                      "", "Youth shelter."),
+                  ResourceCard("Humewood House", ["416-651-5657"], "", "", "",
+                      "Residence and programs for single and young parents."),
+                  ResourceCard(
+                      "Street Helpline", ["416-392-3777"], "", "", "", ""),
+                  ResourceCard("Family Hostel Central Intake Line",
+                      ["416-397-5637"], "", "", "", ""),
+                  ResourceCard(
+                      "Social Assistance",
+                      ["416-392-8623", "After Hours Emergency: 416-392-8600"],
+                      "",
+                      "",
+                      "",
+                      ""),
+                  ResourceCard(
+                      "Advocacy Centre for Tenants Ontario (ACTO)",
+                      [],
+                      "https://www.acto.ca/",
+                      "",
+                      "",
+                      "ACTO works for the advancement of human rights and justice in housing for low- income Ontarians through legal advice & representation, law reform, community organizing, training and education."),
+                  ResourceCard("Kennedy House Youth Services", ["416-421-7776"],
+                      "", "", "", "Shelter and services for homeless youth."),
+                  ResourceCard(
+                      "Massey Centre for Women",
+                      ["416-425-6348"],
+                      "",
+                      "",
+                      "",
+                      "Transitional housing and programs for pregnant and parenting youth."),
+                  ResourceCard(
+                      "Native Child and Family Services of Toronto",
+                      ["416-969-8510"],
+                      "",
+                      "",
+                      "",
+                      "Transitional housing and programs for Aboriginal communities."),
+                  ResourceCard("Sancta Maria House", ["416-925-7333"], "", "",
+                      "", "Residence and programs for young women."),
+                  ResourceCard(
+                      "Street Helpline",
+                      ["1-866-392-3777", "1-877-848-8481 (Peele Region)"],
+                      "",
+                      "",
+                      "",
+                      "Help for people who are homeless to get a safer place to sleep and find long-term housing."),
+                ],
+              );
             default:
           }
 
@@ -1489,7 +1666,7 @@ https://www.acto.ca/
 
 ACTO works for the advancement of human rights and justice in housing for low- income Ontarians through legal advice & representation, law reform, community organizing, training and education.
 
-Kennedy House Youth Services 
+Kennedy House Youth Services
 416-421-7776
 
 Shelter and services for homeless youth.
