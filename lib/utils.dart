@@ -72,9 +72,9 @@ void showInfoPopup(BuildContext context) {
                   '3. One Pomodoro Round is when you have completed a work session focusing exclusively on the task.\n\n'
                   '4. Dedicate yourself to working on the task until the timer is finished.\n\n'
                   '5. Take a short break: Enjoy a 5-minute break to relax and recharge.\n\n'
-                  '6. Repeat the process, upon completing four Pomodoros, you will get a longer break',
+                  '6. Repeat the process, upon completing four Pomodoros, you will get a longer break.',
                   style: textStyle(18, Colors.white, FontWeight.bold),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                 ),
               ),
               SizedBox(height: 5), // Add some space between text sections
