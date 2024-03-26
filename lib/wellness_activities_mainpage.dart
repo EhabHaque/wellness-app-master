@@ -1,5 +1,7 @@
 import 'package:example/utils.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 //Constructor Stuff
 class WellnessActivity {
@@ -83,10 +85,6 @@ class WellnessDetailPage extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10),
             constraints: BoxConstraints(maxHeight: 300),
-            // decoration: BoxDecoration(
-            //   color: Color.fromRGBO(180, 117, 231, 0.573),
-            //   borderRadius: BorderRadius.circular(15),
-            // ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16.0),
               child: Image.asset(
@@ -94,10 +92,6 @@ class WellnessDetailPage extends StatelessWidget {
               ),
             ),
           ),
-          // Extra Space
-          // SizedBox(
-          //   height: 8,
-          // ),
 
           for (var item in wellnessActivity.description) ...[
             // Text(item),
@@ -126,6 +120,7 @@ final List<String> WellnessCentreDes = [
   "This space is student-run, and operates autonomously from York University. The Wellness Centre is accessible to students all year round, it focuses on four main pillars of operation: Mental Health, Physical Health, Sexual Violence and Harm Reduction.",
   "For more information: https://www.yfswellness.ca/"
 ];
+
 
 final List<String> Tait = [
   "Engaging in regular physical activity and maintaining an active lifestyle are key components of promoting overall wellness.",

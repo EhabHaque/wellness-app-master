@@ -123,7 +123,7 @@ class _EventDetailsState extends State<EventDetails> {
                       child: Text(
                         widget.data.data["name"],
                         style: TextStyle(
-                            color: Colors.blueAccent,
+                            color: Color.fromRGBO(0, 80, 67, 0.85),
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
                       ),
@@ -143,7 +143,7 @@ class _EventDetailsState extends State<EventDetails> {
                 Text(
                   "More Info ",
                   style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: Color.fromRGBO(0, 80, 67, 0.85),
                       fontWeight: FontWeight.w700,
                       fontSize: 20),
                 ),
@@ -166,7 +166,7 @@ class _EventDetailsState extends State<EventDetails> {
                     child: Text(
                       "Link: ${widget.data.data["urlLink"]}",
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Color.fromRGBO(0, 80, 67, 0.85),
                         decoration: TextDecoration.underline,
                       ),
                     ),

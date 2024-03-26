@@ -7,7 +7,7 @@ import 'custom_icons_icons.dart';
 import 'saved_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'events.dart';
-import 'WishList.dart';
+import 'ResourcesPage.dart';
 //import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'pomodoro.dart';
 import 'dart:math';
@@ -15,7 +15,7 @@ import 'package:appwrite/models.dart';
 import 'quote_provider.dart';
 import 'event_container.dart';
 import 'database.dart';
-import 'wellness_activities.dart';
+import 'wellness_activities_mainpage.dart';
 import 'snake_game.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -549,8 +549,6 @@ class WellnessActivitiesSection extends StatelessWidget {
                 "Wellness Activities At York",
                 style: textStyle(17, Colors.black87, FontWeight.bold),
               ),
-              // Spacer(), // Remove the spacer if you don't want the VIEW ALL button
-              // Text("VIEW ALL", style: viewallstyle),
             ],
           ),
         ),
