@@ -46,16 +46,30 @@ void showInfoPopup(BuildContext context) {
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(height: 5), // Add some space between text sections
+              Container(
+                height: 5,
+                width: 250,
+                color: Colors.white.withOpacity(0.5),
+                padding: EdgeInsets.symmetric(horizontal: 100),
+              ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  'The Pomodoro Technique involves working on a specific task for a set period followed by a short break. It helps by enhancing focus, alleviating burnout, and promoting better time awareness.',
-                  style: textStyle(18, Colors.white, FontWeight.bold),
-                  textAlign: TextAlign.center,
+                child: Column(
+                  children: [
+                    Text(
+                      'The Pomodoro Technique involves working on a specific task for a set period followed by a short break.',
+                      style: textStyle(18, Colors.white, FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'It helps by enhancing focus, alleviating burnout, and promoting better time awareness.',
+                      style: textStyle(18, Colors.white, FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 5), // Add some space between text sections
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Text(
@@ -63,6 +77,12 @@ void showInfoPopup(BuildContext context) {
                   style: textStyle(25, Colors.white, FontWeight.w800),
                   textAlign: TextAlign.center,
                 ),
+              ),
+              Container(
+                height: 5,
+                width: 250,
+                color: Colors.white.withOpacity(0.5),
+                padding: EdgeInsets.symmetric(horizontal: 100),
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -72,9 +92,9 @@ void showInfoPopup(BuildContext context) {
                   '3. One Pomodoro Round is when you have completed a work session focusing exclusively on the task.\n\n'
                   '4. Dedicate yourself to working on the task until the timer is finished.\n\n'
                   '5. Take a short break: Enjoy a 5-minute break to relax and recharge.\n\n'
-                  '6. Repeat the process, upon completing four Pomodoros, you will get a longer break',
+                  '6. Repeat the process, upon completing four Pomodoros, you will get a longer break.',
                   style: textStyle(18, Colors.white, FontWeight.bold),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                 ),
               ),
               SizedBox(height: 5), // Add some space between text sections
@@ -84,7 +104,7 @@ void showInfoPopup(BuildContext context) {
                 },
                 child: Text(
                   'Close',
-                  style: textStyle(15, Colors.redAccent, FontWeight.bold),
+                  style: textStyle(15, Colors.white, FontWeight.bold),
                 ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
@@ -92,6 +112,7 @@ void showInfoPopup(BuildContext context) {
                   ),
                 ),
               ),
+              SizedBox(height: 10),
             ],
           ),
         ),

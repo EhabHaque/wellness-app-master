@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'custom_icons_icons.dart';
 import 'saved_data.dart';
-import 'pomodoro.dart' as prefix0;
 import 'package:url_launcher/url_launcher.dart';
 import 'events.dart';
 import 'WishList.dart';
@@ -17,6 +18,8 @@ import 'database.dart';
 import 'wellness_activities.dart';
 import 'snake_game.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'timerService.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,16 +27,27 @@ void main() async {
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   HttpOverrides.global = MyHttpOverrides();
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: BottomNav(),
-    theme: appTheme,
-    title: "YFS Wellness Center",
-  ));
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<TimerService>(
+          create: (_) => TimerService(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: BottomNavWrapper(), //Test BottomNav() if it doesnt work
+        theme: appTheme,
+        title: "YFS Wellness Center",
+      ),
+    ),
+  );
 }
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
+  // primaryColor: Colors.blueAccent,
   /* Colors.tealAccent,*/
   //secondaryHeaderColor: Colors.red /* Colors.teal*/
   // fontFamily:
@@ -45,9 +59,9 @@ double? height;
 
 final bodies = [
   HomeScreen(),
-  WishList(),
+  ResourcesPage(),
   Event(),
-  prefix0.Notification(),
+  Pomodoro(),
   SnakeGame()
 ];
 
@@ -55,6 +69,15 @@ class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
 
   _BottomNavState createState() => _BottomNavState();
+}
+
+class BottomNavWrapper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: BottomNav(),
+    );
+  }
 }
 
 class _BottomNavState extends State<BottomNav> {
@@ -199,8 +222,7 @@ class _HomeTop extends State<HomeTop> {
         ClipPath(
           clipper: Clipper08(),
           child: Container(
-            height: height! * .65 < 450 ? height! * .65 : 500, //400
-            //color: Colors.tealAccent,
+            height: 450, //400
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
               appTheme.primaryColor,
@@ -209,22 +231,26 @@ class _HomeTop extends State<HomeTop> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: height! / 6,
+                  height: 55,
                 ),
-                //Spacer(),
                 Image.asset(
                   'assets/images/YFSWellnessCentreLogo.png',
                 ),
-                SizedBox(height: height! * 0.0375),
-                SizedBox(
-                  height: height! * 0.025,
-                ),
+                SizedBox(height: 20),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Text(
-                    dailyQuote,
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                    textAlign: TextAlign.center,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Container(
+                    // decoration: BoxDecoration(
+                    //   borderRadius: BorderRadius.circular(15),
+                    //   color: Colors.black.withOpacity(0.1),
+                    // ),
+                    width: double.infinity,
+                    child: Text(
+                      dailyQuote,
+                      style: textStyle(
+                          24, Color.fromRGBO(0, 80, 67, 0.85), FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 )
               ],
@@ -342,29 +368,35 @@ class _homeDownState extends State<homeDown> {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                "Upcoming Events",
-                style: TextStyle(color: Colors.black, fontSize: 16),
-              ),
-              Spacer(),
-              GestureDetector(
-                onTap: () {
-                  // Navigate to the events page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Event(),
-                    ),
-                  );
-                },
-                child: Text("VIEW ALL", style: viewallstyle),
-              )
-            ],
+            // children: <Widget>[
+            //   // Text(
+            //   //   "Upcoming Events",
+            //   //   style: textStyle(17, Colors.black87, FontWeight.bold),
+            //   // ),
+            // ],
           ),
         ),
+        GestureDetector(
+          onTap: () {
+            // Navigate to the events page
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Event(),
+              ),
+            );
+          },
+          child: Center(
+              child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 400,
+              maxHeight: 250,
+            ),
+            child: Image.asset("assets/images/EventsImage.png"),
+          )),
+        ),
         Container(
-          height: height! * .25 < 170 ? height! * .25 : 170,
+          height: 25,
           child: ListView.builder(
             itemBuilder: (context, index) =>
                 EventContainer(data: events[index]),
@@ -386,7 +418,7 @@ class ContactUsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 0.0),
-      color: Colors.white, // Background color
+      color: Colors.white.withOpacity(0.7), // Background color
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -515,7 +547,7 @@ class WellnessActivitiesSection extends StatelessWidget {
             children: <Widget>[
               Text(
                 "Wellness Activities At York",
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: textStyle(17, Colors.black87, FontWeight.bold),
               ),
               // Spacer(), // Remove the spacer if you don't want the VIEW ALL button
               // Text("VIEW ALL", style: viewallstyle),

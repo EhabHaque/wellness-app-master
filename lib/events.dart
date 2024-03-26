@@ -7,9 +7,10 @@ import 'database.dart';
 //import 'saved_data.dart';
 import 'package:flutter/material.dart';
 
+import 'utils.dart';
+
 class Event extends StatefulWidget {
   const Event({super.key});
-
   @override
   State<Event> createState() => _EventState();
 }
@@ -34,7 +35,8 @@ class _EventState extends State<Event> {
     return Scaffold(
       appBar: AppBar(
         // title: Text("Events", style: GoogleFonts.getFont("Montserrat")),
-        title: Text("Events"),
+        title: Text("EVENTS",
+            style: textStyle(25, Colors.black87, FontWeight.bold)),
       ),
       body: CustomScrollView(
         slivers: [

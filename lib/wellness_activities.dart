@@ -1,3 +1,4 @@
+import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
 
 //Constructor Stuff
@@ -74,28 +75,40 @@ class WellnessDetailPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text(wellnessActivity.name),
+        title: Text(wellnessActivity.name, style: textStyle(18, Colors.black)),
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(10),
         child: Column(children: [
           Container(
-            constraints:
-                BoxConstraints(maxHeight: 300, minWidth: double.infinity),
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(180, 117, 231, 0.573),
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            constraints: BoxConstraints(maxHeight: 300),
+            // decoration: BoxDecoration(
+            //   color: Color.fromRGBO(180, 117, 231, 0.573),
+            //   borderRadius: BorderRadius.circular(15),
+            // ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16.0),
+              child: Image.asset(
+                wellnessActivity.image,
+              ),
             ),
-            child: Container(child: Image.asset(wellnessActivity.image)),
           ),
           // Extra Space
-          SizedBox(
-            height: 8,
-          ),
+          // SizedBox(
+          //   height: 8,
+          // ),
 
           for (var item in wellnessActivity.description) ...[
             // Text(item),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: Text(item),
+              child: Text(
+                item,
+                textAlign: TextAlign.center,
+                style: textStyle(
+                    16, Colors.black.withOpacity(0.8), FontWeight.w600),
+              ),
             ),
           ],
         ]),
