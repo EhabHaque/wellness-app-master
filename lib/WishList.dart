@@ -19,43 +19,33 @@ class ResourcesPage extends StatelessWidget {
           switch (index) {
             case 0:
               resourceName = 'Mental Health';
-              resourceContent = mentalHealthResources;
               break;
             case 1:
               resourceName = 'Physical Health';
-              resourceContent = physicalHealthResources;
               break;
             case 2:
               resourceName = 'Sexual Violence';
-              resourceContent = sexualViolenceResources;
               break;
             case 3:
               resourceName = 'Harm Reduction';
-              resourceContent = harmReductionResources;
               break;
             case 4:
               resourceName = 'Housing';
-              resourceContent = housingResources;
               break;
             case 5:
               resourceName = 'Academic';
-              resourceContent = academicResources;
               break;
             case 6:
               resourceName = 'Financial';
-              resourceContent = financialResources;
               break;
             case 7:
               resourceName = 'Employment';
-              resourceContent = employmentResources;
               break;
             case 8:
               resourceName = 'Video';
-              resourceContent = videoResources;
               break;
             case 9:
               resourceName = 'Other';
-              resourceContent = otherResources;
               break;
           }
 
@@ -118,8 +108,7 @@ class ResourceButton extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        ResourceDetailPage(resourceName, resourceContent),
+                    builder: (context) => ResourceDetailPage(resourceName),
                   ),
                 );
               },
@@ -141,9 +130,8 @@ class ResourceButton extends StatelessWidget {
 
 class ResourceDetailPage extends StatelessWidget {
   final String resourceName;
-  final String resourceContent;
 
-  ResourceDetailPage(this.resourceName, this.resourceContent);
+  ResourceDetailPage(this.resourceName);
 
   @override
   Widget build(BuildContext context) {
