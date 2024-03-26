@@ -12,7 +12,7 @@ class ResourcesPage extends StatelessWidget {
         style: textStyle(25, Colors.black87, FontWeight.bold),
       )),
       body: ListView.builder(
-        itemCount: 9,
+        itemCount: 9, // Switch Back to 10 if adding videos.
         itemBuilder: (context, index) {
           String resourceName = '';
           String resourceContent = '';
