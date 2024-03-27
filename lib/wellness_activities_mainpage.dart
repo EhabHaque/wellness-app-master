@@ -1,5 +1,4 @@
-import 'package:example/utils.dart';
-import 'package:flutter/gestures.dart';
+//Constructor Stuff
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,7 +14,7 @@ class WellnessActivity {
 //List of Wellness Activities
 List<WellnessActivity> wellnessActivities = [
   WellnessActivity(
-    "assets/images/YFSWellnessCentreLogo.png",
+    "assets/images/YFSWellnessCentreLogoCard.png",
     "Wellness Centre",
     WellnessCentreDes,
   ),
@@ -77,35 +76,30 @@ class WellnessDetailPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text(wellnessActivity.name, style: textStyle(18, Colors.black)),
+        title: Text(
+          wellnessActivity.name,
+          style: TextStyle(fontSize: 18, color: Colors.black),
+        ),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
-        child: Column(children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            constraints: BoxConstraints(maxHeight: 300),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16.0),
-              child: Image.asset(
-                wellnessActivity.image,
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              constraints: BoxConstraints(maxHeight: 300),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16.0),
+                child: Image.asset(
+                  wellnessActivity.image,
+                ),
               ),
             ),
-          ),
-
-          for (var item in wellnessActivity.description) ...[
-            // Text(item),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: Text(
-                item,
-                textAlign: TextAlign.center,
-                style: textStyle(
-                    16, Colors.black.withOpacity(0.8), FontWeight.w600),
-              ),
-            ),
+            for (var item in wellnessActivity.description) ...[
+              _buildDescription(context, item),
+            ],
           ],
-        ]),
+        ),
       ),
     );
   }
@@ -120,7 +114,6 @@ final List<String> WellnessCentreDes = [
   "This space is student-run, and operates autonomously from York University. The Wellness Centre is accessible to students all year round, it focuses on four main pillars of operation: Mental Health, Physical Health, Sexual Violence and Harm Reduction.",
   "For more information: https://www.yfswellness.ca/"
 ];
-
 
 final List<String> Tait = [
   "Engaging in regular physical activity and maintaining an active lifestyle are key components of promoting overall wellness.",
@@ -182,3 +175,38 @@ final List<String> Sports = [
   "Through regular participation, individuals can establish a balanced and active lifestyle, reaping the holistic rewards that sports and intramurals bring to overall wellness.",
   "For more information: https://reconline.yorkulions.ca/program?classificationId=b1ea822b-bf9d-4e32-b069-a92789260aa4"
 ];
+
+Widget _buildDescription(BuildContext context, String item) {
+  if (item.startsWith('For more information:')) {
+    String url = item.substring('For more information:'.length).trim();
+    return ElevatedButton(
+      onPressed: () {
+        _launchURL(Uri.parse(url)); // Call the function to open the URL
+      },
+      child: Text('More Information'),
+    );
+  } else {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Text(
+        item,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontSize: 16,
+            color: Colors.black.withOpacity(0.8),
+            fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+}
+
+// Function to launch URL
+_launchURL(Uri uri) async {
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw 'Could not launch $uri';
+  }
+}
+
+// Function to launch URL
