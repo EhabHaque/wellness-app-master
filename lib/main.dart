@@ -2,21 +2,18 @@ import 'dart:async';
 import 'dart:io';
 import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+//import 'package:flutter/widgets.dart';
 import 'custom_icons_icons.dart';
 import 'saved_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'events.dart';
-import 'ResourcesPage.dart';
+import 'wellness_activities_mainpage.dart';
 //import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'pomodoro.dart';
 import 'dart:math';
-import 'package:appwrite/models.dart';
 import 'quote_provider.dart';
-import 'event_container.dart';
-import 'database.dart';
-import 'wellness_activities_mainpage.dart';
-import 'snake_game.dart';
+import 'ResourcesPage.dart';
+import 'TicTacToeGame.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'timerService.dart';
@@ -47,8 +44,6 @@ void main() async {
 
 ThemeData appTheme = ThemeData(
   primaryColor: Color.fromRGBO(180, 117, 231, 0.573),
-  // primaryColor: Colors.blueAccent,
-  /* Colors.tealAccent,*/
   //secondaryHeaderColor: Colors.red /* Colors.teal*/
   // fontFamily:
 );
@@ -62,7 +57,7 @@ final bodies = [
   ResourcesPage(),
   Event(),
   Pomodoro(),
-  SnakeGame()
+  TicTacToeGame()
 ];
 
 class BottomNav extends StatefulWidget {
@@ -132,7 +127,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.gamepad,
           color: Colors.black,
         ),
-        label: "Snake"));
+        label: "Game"));
     return items;
   }
 
@@ -173,10 +168,7 @@ class HomeScreen extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Column(
           children: <Widget>[
-            HomeTop(),
-            homeDown(),
-            WellnessActivitiesSection(),
-            ContactUsContainer()
+            HomePage(),
           ],
           //To add a new widget you have to add it here.
         ),
@@ -185,12 +177,12 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class HomeTop extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _HomeTop createState() => _HomeTop();
+  _HomePage createState() => _HomePage();
 }
 
-class _HomeTop extends State<HomeTop> {
+class _HomePage extends State<HomePage> {
   String dailyQuote = "";
   @override
   void initState() {
@@ -215,289 +207,252 @@ class _HomeTop extends State<HomeTop> {
     });
   }
 
+  /////////////////////// MAIN UI PAGE /////////////////////////////////////
+  /////////////////////// MAIN UI PAGE /////////////////////////////////////
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        ClipPath(
-          clipper: Clipper08(),
-          child: Container(
-            height: 450, //400
-            decoration: BoxDecoration(
+    return Stack(children: <Widget>[
+      Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(5),
+            child: Container(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
-              appTheme.primaryColor,
-              appTheme.secondaryHeaderColor
-            ])),
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 55,
-                ),
-                Image.asset(
-                  'assets/images/YFSWellnessCentreLogo.png',
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    // decoration: BoxDecoration(
-                    //   borderRadius: BorderRadius.circular(15),
-                    //   color: Colors.black.withOpacity(0.1),
-                    // ),
-                    width: double.infinity,
-                    child: Text(
-                      dailyQuote,
-                      style: textStyle(
-                          24, Color.fromRGBO(0, 80, 67, 0.85), FontWeight.bold),
-                      textAlign: TextAlign.center,
+                  appTheme.primaryColor,
+                  appTheme.secondaryHeaderColor
+                ]),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Image.asset(
+                    'assets/images/YFSWellnessCentreLogo.png',
+                    width: 200,
+                    height: 100,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Container(
+                      child: Text(
+                        dailyQuote,
+                        style: textStyle(24, Color.fromRGBO(0, 80, 67, 0.85),
+                            FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                )
+                  SizedBox(height: 30),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Column(
+              //mainAxisSize: MainAxisSize.max,
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Upcoming Events",
+                  style: textStyle(
+                      24, Color.fromRGBO(0, 80, 67, 1), FontWeight.bold),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  "Check out our selections of events and remember to save them on your calender so you dont miss out!",
+                  style: textStyle(14, Color.fromRGBO(0, 80, 67, 1)),
+                ),
               ],
             ),
           ),
-        )
-      ],
-    );
-  }
-}
-
-class Clipper08 extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final Path path = Path();
-    path.lineTo(0.0, size.height);
-    // ignore: non_constant_identifier_names
-    var End = Offset(size.width / 2, size.height - 30.0);
-    // ignore: non_constant_identifier_names
-    var Control = Offset(size.width / 4, size.height - 50.0);
-
-    path.quadraticBezierTo(Control.dx, Control.dy, End.dx, End.dy);
-    // ignore: non_constant_identifier_names
-    var End2 = Offset(size.width, size.height - 80.0);
-    // ignore: non_constant_identifier_names
-    var Control2 = Offset(size.width * .75, size.height - 10.0);
-
-    path.quadraticBezierTo(Control2.dx, Control2.dy, End2.dx, End2.dy);
-    path.lineTo(size.width, 0.0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper oldClipper) {
-    return true;
-  }
-}
-
-class Choice08 extends StatefulWidget {
-  final IconData? icon;
-  final String? text;
-  final bool? selected;
-  Choice08({this.icon, this.text, this.selected});
-  @override
-  _Choice08State createState() => _Choice08State();
-}
-
-class _Choice08State extends State<Choice08>
-    with SingleTickerProviderStateMixin {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-      decoration: widget.selected!
-          ? BoxDecoration(
-              color: Colors.white.withOpacity(.30),
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            )
-          : null,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Icon(
-            widget.icon,
-            size: 20,
-            color: Colors.white,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: GestureDetector(
+                onTap: () {
+                  // Navigate to the events page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Event(),
+                    ),
+                  );
+                },
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 400,
+                      maxHeight: 250,
+                    ),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color of the box
+                        borderRadius:
+                            BorderRadius.circular(10), // Border radius
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     color: Colors.grey.withOpacity(.85), // Shadow color
+                        //     spreadRadius: 5,
+                        //     blurRadius: 7,
+                        //     offset: Offset(5, 5), // Changes position of shadow
+                        //   ),
+                        // ],
+                      ),
+                      child: Image.asset(
+                        "assets/images/stockEvents.png",
+                        fit: BoxFit.contain, // Adjust to your needs
+                      ),
+                    ),
+                  ),
+                )),
           ),
           SizedBox(
-            width: width! * .025,
+            height: 20,
           ),
-          Text(
-            widget.text!,
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-var viewallstyle =
-    TextStyle(fontSize: 14, color: appTheme.primaryColor //Colors.teal
-        );
-
-class homeDown extends StatefulWidget {
-  @override
-  _homeDownState createState() => _homeDownState();
-}
-
-class _homeDownState extends State<homeDown> {
-  List<Document> events = [];
-
-  @override
-  void initState() {
-    refresh();
-    super.initState();
-  }
-
-  void refresh() {
-    getAllEvents().then((value) {
-      setState(() {
-        events = value;
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // children: <Widget>[
-            //   // Text(
-            //   //   "Upcoming Events",
-            //   //   style: textStyle(17, Colors.black87, FontWeight.bold),
-            //   // ),
-            // ],
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            // Navigate to the events page
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Event(),
-              ),
-            );
-          },
-          child: Center(
-              child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 400,
-              maxHeight: 250,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Column(
+              //mainAxisSize: MainAxisSize.max,
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Wellness At York",
+                  style: textStyle(
+                      24, Color.fromRGBO(0, 80, 67, 1), FontWeight.bold),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  "A selection of activities on campus to help you relax and rejuvenate.",
+                  style: textStyle(14, Color.fromRGBO(0, 80, 67, 1)),
+                ),
+              ],
             ),
-            child: Image.asset("assets/images/EventsImage.png"),
-          )),
-        ),
-        Container(
-          height: 25,
-          child: ListView.builder(
-            itemBuilder: (context, index) =>
-                EventContainer(data: events[index]),
-            shrinkWrap: true,
-            padding: EdgeInsets.all(0.0),
-            itemCount: events.length,
-            scrollDirection: Axis.horizontal,
           ),
-        ),
-      ],
-    );
-  }
-}
-
-/////////////////////////Contact US/////////////////////////////////////////////////
-
-class ContactUsContainer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 0.0),
-      color: Colors.white.withOpacity(0.7), // Background color
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CircularButton(
-                icon: Icons.facebook,
-                onPressed: () async {
-                  launchUrl(Uri.parse('https://www.facebook.com/yfslocal68'));
-
-                  // Handle Pinterest button press
-                  // Add your navigation logic or URL launch here
+          SizedBox(height: 10),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10), // Add padding here
+            child: Container(
+              height: 200, // Adjust the height as needed
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  // Add spacing between cards
+                  return Container(
+                    margin: EdgeInsets.only(
+                      left: 10,
+                      right: 10,
+                      bottom: 0,
+                    ), // Adjust spacing as needed
+                    child: WellnessActivityCard(wellnessActivities[index]),
+                  );
                 },
+                shrinkWrap: true,
+                itemCount: wellnessActivities.length,
+                scrollDirection: Axis.horizontal,
               ),
-              CircularButton(
-                icon: CustomIcons.twitter,
-                onPressed: () async {
-                  launchUrl(
-                      Uri.parse('https://twitter.com/yfslocal68?lang=en'));
-                  // Handle Twitter button press
-                  // Add your navigation logic or URL launch here
-                },
+            ),
+          ),
+          Column(
+            children: <Widget>[
+              SizedBox(height: 0),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: InkWell(
+                  onTap: () {
+                    showContactPopup(context); // Handle onTap event
+                  },
+                  child: Container(
+                    width: double.infinity, // Expand to available width
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20), // Adjust padding
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                        appTheme.primaryColor,
+                        appTheme.secondaryHeaderColor
+                      ]), // Solid border
+                      borderRadius:
+                          BorderRadius.circular(20), // Rounded corners
+                    ),
+                    child: Text(
+                      'CONTACT US',
+                      style: textStyle(
+                        24,
+                        Color.fromRGBO(0, 80, 67, 1),
+                        FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
               ),
-              CircularButton(
-                icon: CustomIcons.pinterest_circled,
-                onPressed: () {
-                  launchUrl(Uri.parse('https://www.pinterest.ca/YFSWellness/'));
-                  // Handle Spotify button press
-                  // Add your navigation logic or URL launch here
-                },
-              ),
-              CircularButton(
-                icon: CustomIcons.instagram,
-                onPressed: () async {
-                  launchUrl(Uri.parse('https://www.instagram.com/yfswellness'));
-                  // Handle Instagram button press
-                  // Add your navigation logic or URL launch here
-                },
-              ),
-              CircularButton(
-                icon: CustomIcons.spotify,
-                onPressed: () {
-                  launchUrl(Uri.parse(
-                      'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed'));
-                  // Handle Instagram button press
-                  // Add your navigation logic or URL launch here
-                },
-              ),
+              SizedBox(height: 30),
             ],
           ),
-          SizedBox(
-              height:
-                  20.0), // Add spacing between buttons and additional information
-          Text(
-            'Contact Us',
-            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-          ),
-          SelectableText(
-            'Email: wellness@yfs.ca',
-            style: TextStyle(fontSize: 16.0),
-          ),
-          SelectableText(
-            'Phone: (416)-736-2100 x44872',
-            style: TextStyle(fontSize: 16.0),
-          ),
-          SelectableText(
-            'York University, Second Student Centre Rm:341',
-            style: TextStyle(fontSize: 16.0),
-          ),
-          SelectableText(
-            'Address: 15 Library Ln, North York, ON M3J 2S5',
-            style: TextStyle(fontSize: 16.0),
-          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircularButton(
+                    icon: Icons.facebook,
+                    onPressed: () async {
+                      launchUrl(
+                          Uri.parse('https://www.facebook.com/yfslocal68'));
 
-          // Add more information as needed
+                      // Handle Pinterest button press
+                      // Add your navigation logic or URL launch here
+                    },
+                  ),
+                  CircularButton(
+                    icon: CustomIcons.twitter,
+                    onPressed: () async {
+                      launchUrl(
+                          Uri.parse('https://twitter.com/yfslocal68?lang=en'));
+                      // Handle Twitter button press
+                      // Add your navigation logic or URL launch here
+                    },
+                  ),
+                  CircularButton(
+                    icon: CustomIcons.pinterest_circled,
+                    onPressed: () {
+                      launchUrl(
+                          Uri.parse('https://www.pinterest.ca/YFSWellness/'));
+                      // Handle Spotify button press
+                      // Add your navigation logic or URL launch here
+                    },
+                  ),
+                  CircularButton(
+                    icon: CustomIcons.instagram,
+                    onPressed: () async {
+                      launchUrl(
+                          Uri.parse('https://www.instagram.com/yfswellness'));
+                      // Handle Instagram button press
+                      // Add your navigation logic or URL launch here
+                    },
+                  ),
+                  CircularButton(
+                    icon: CustomIcons.spotify,
+                    onPressed: () {
+                      launchUrl(Uri.parse(
+                          'https://open.spotify.com/user/31nzfhtefa7yv6qdzzxth5t5ab7y?si=f698aa73a0e74660&nd=1&dlsi=823dd4afed534aed'));
+                      // Handle Instagram button press
+                      // Add your navigation logic or URL launch here
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(height: 20.0),
+            ],
+          ),
         ],
       ),
-    );
+    ]);
   }
 }
 
@@ -511,7 +466,7 @@ class CircularButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
-      borderRadius: BorderRadius.circular(30.0),
+      borderRadius: BorderRadius.circular(5.0),
       child: Container(
         height: 45.0,
         width: 45.0,
@@ -534,39 +489,6 @@ class CircularButton extends StatelessWidget {
 /////////////////////-Wellness Activities-//////////////////////////
 
 //This part is for the wellness box/widgets
-class WellnessActivitiesSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                "Wellness Activities At York",
-                style: textStyle(17, Colors.black87, FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          height: 170, // Adjust the height as needed
-          child: ListView.builder(
-            itemBuilder: (context, index) =>
-                WellnessActivityCard(wellnessActivities[index]),
-            shrinkWrap: true,
-            padding: EdgeInsets.all(0.0),
-            itemCount: wellnessActivities.length,
-            scrollDirection: Axis.horizontal,
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 class WellnessActivityCard extends StatelessWidget {
   final WellnessActivity wellnessActivity;
@@ -587,66 +509,50 @@ class WellnessActivityCard extends StatelessWidget {
       },
       child: Column(
         children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+          Container(
+            height: 150,
+            width: 200,
             child: Stack(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
+              children: [
+                Positioned.fill(
                   child: Container(
-                    height: height! * .137 < 160 ? height! * .137 : 160,
-                    width: width! * .5 < 250 ? width! * .5 : 250,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(wellnessActivity.image),
                         fit: BoxFit.fill,
                       ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  height: 60,
-                  width: width! * .5 < 250 ? width! * .5 : 250,
-                  left: 5,
-                  bottom: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.black, Colors.black12],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              wellnessActivity.name,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          spreadRadius: 4,
+                          blurRadius: 4,
+                          offset: Offset(5, 5), // Shadow position
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  left: 10,
-                  bottom: 10,
-                  right: 15,
-                )
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  height: 60,
+                  child: Container(
+                    color: Colors.white, // Solid white section
+                    child: Padding(
+                      padding: const EdgeInsets.all(17.0),
+                      child: Text(
+                        wellnessActivity.name, // Add your text here
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(0, 80, 67, 0.85),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
