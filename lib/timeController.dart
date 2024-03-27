@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+//import 'package:percent_indicator/percent_indicator.dart';
 import 'timerService.dart';
 
 class TimeController extends StatefulWidget {
