@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+//import 'main.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 TextStyle textStyle(double size, [Color? color, FontWeight? fw]) {
   return GoogleFonts.montserrat(fontSize: size, color: color, fontWeight: fw);
@@ -109,6 +111,148 @@ void showInfoPopup(BuildContext context) {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
                     Colors.greenAccent,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+void showContactPopup(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Dialog(
+        backgroundColor: Colors.deepOrange[200],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  'Email',
+                  style: textStyle(25, Colors.white, FontWeight.w800),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Container(
+                height: 5,
+                width: 250,
+                color: Colors.white.withOpacity(0.5),
+                padding: EdgeInsets.symmetric(horizontal: 100),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 20.0, bottom: 0, right: 20, left: 20),
+                child: Column(
+                  children: [
+                    SelectableText(
+                      'wellness@yfs.ca',
+                      style: textStyle(18, Colors.white, FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  'Phone',
+                  style: textStyle(25, Colors.white, FontWeight.w800),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Container(
+                height: 5,
+                width: 250,
+                color: Colors.white.withOpacity(0.5),
+                padding: EdgeInsets.symmetric(horizontal: 100),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 20.0, bottom: 0, right: 20, left: 20),
+                child: SelectableText(
+                  "(416)-736-2100 x44872",
+                  style: textStyle(18, Colors.white, FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  'Address',
+                  style: textStyle(25, Colors.white, FontWeight.w800),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Container(
+                height: 5,
+                width: 250,
+                color: Colors.white.withOpacity(0.5),
+                padding: EdgeInsets.symmetric(horizontal: 100),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SelectableText(
+                  'York University, Second Student Center Room 341 \n'
+                  '15 Library Ln, North York, ON \n'
+                  'M3J 2S5',
+                  style: textStyle(18, Colors.white, FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+
+              Container(
+                height: 5,
+                width: 250,
+                color: Colors.white.withOpacity(0.5),
+                padding: EdgeInsets.symmetric(horizontal: 100),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    await launchUrl(
+                        Uri.parse('https://www.yfswellness.ca/contact'));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    backgroundColor: Colors.blue, // Change color as needed
+                  ),
+                  child: Text(
+                    "More Info",
+                    style: textStyle(20, Colors.white, FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              Container(
+                height: 5,
+                width: 250,
+                color: Colors.white.withOpacity(0.5),
+                padding: EdgeInsets.symmetric(horizontal: 100),
+              ),
+              SizedBox(height: 10), // Add some space between text sections
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Close',
+                  style: textStyle(15, Colors.white, FontWeight.bold),
+                ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Colors.lightBlueAccent,
                   ),
                 ),
               ),
