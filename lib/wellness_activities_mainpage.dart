@@ -185,6 +185,14 @@ Widget _buildDescription(BuildContext context, String item) {
       },
       child: Text('More Information'),
     );
+  } else if (item.startsWith('Find a podcast:')) {
+    String url = item.substring('Find a podcast:'.length).trim();
+    return ElevatedButton(
+      onPressed: () {
+        _launchURL(Uri.parse(url)); // Call the function to open the URL
+      },
+      child: Text('Find a Podcast'),
+    );
   } else {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),

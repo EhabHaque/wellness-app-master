@@ -9,7 +9,7 @@ class ResourcesPage extends StatelessWidget {
       appBar: AppBar(
           title: Text(
         'RESOURCES',
-        style: textStyle(25, Colors.black87, FontWeight.bold),
+        style: textStyle(25, Colors.black87, FontWeight.w700),
       )),
       body: ListView.builder(
         itemCount: 9, // Switch Back to 10 if adding videos.
@@ -142,8 +142,7 @@ class ResourceDetailPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: MentalHealthPage(resourceName)
-            ),
+            child: MentalHealthPage(resourceName)),
       ),
     );
   }

@@ -294,14 +294,14 @@ class _HomePage extends State<HomePage> {
                         color: Colors.white, // Background color of the box
                         borderRadius:
                             BorderRadius.circular(10), // Border radius
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //     color: Colors.grey.withOpacity(.85), // Shadow color
-                        //     spreadRadius: 5,
-                        //     blurRadius: 7,
-                        //     offset: Offset(5, 5), // Changes position of shadow
-                        //   ),
-                        // ],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 143, 142, 142),
+                            // spreadRadius: 4,
+                            blurRadius: 4,
+                            offset: Offset(0, 0), // Shadow position
+                          ),
+                        ],
                       ),
                       child: Image.asset(
                         "assets/images/stockEvents.png",
@@ -375,8 +375,8 @@ class _HomePage extends State<HomePage> {
                         appTheme.primaryColor,
                         appTheme.secondaryHeaderColor
                       ]), // Solid border
-                      borderRadius:
-                          BorderRadius.circular(20), // Rounded corners
+                      borderRadius: BorderRadius.circular(20),
+                      // Rounded corners
                     ),
                     child: Text(
                       'CONTACT US',
@@ -403,7 +403,9 @@ class _HomePage extends State<HomePage> {
                     icon: Icons.facebook,
                     onPressed: () async {
                       launchUrl(
-                          Uri.parse('https://www.facebook.com/yfslocal68'));
+                          Uri.parse(
+                              'https://www.facebook.com/yfslocal68/about'),
+                          webViewConfiguration: WebViewConfiguration());
 
                       // Handle Pinterest button press
                       // Add your navigation logic or URL launch here
@@ -412,8 +414,7 @@ class _HomePage extends State<HomePage> {
                   CircularButton(
                     icon: CustomIcons.twitter,
                     onPressed: () async {
-                      launchUrl(
-                          Uri.parse('https://twitter.com/yfslocal68?lang=en'));
+                      launchUrl(Uri.parse('https://x.com/yfslocal68?lang=en'));
                       // Handle Twitter button press
                       // Add your navigation logic or URL launch here
                     },
@@ -523,10 +524,10 @@ class WellnessActivityCard extends StatelessWidget {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 4,
+                          color: Color.fromARGB(255, 143, 142, 142),
+                          // spreadRadius: 4,
                           blurRadius: 4,
-                          offset: Offset(5, 5), // Shadow position
+                          offset: Offset(0, 0), // Shadow position
                         ),
                       ],
                     ),

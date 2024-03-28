@@ -34,7 +34,7 @@ class _EventState extends State<Event> {
       appBar: AppBar(
         // title: Text("Events", style: GoogleFonts.getFont("Montserrat")),
         title: Text("EVENTS",
-            style: textStyle(25, Colors.black87, FontWeight.bold)),
+            style: textStyle(25, Colors.black87, FontWeight.w700)),
       ),
       body: CustomScrollView(
         slivers: [
