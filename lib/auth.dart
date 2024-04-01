@@ -4,8 +4,7 @@ import 'package:appwrite/appwrite.dart';
 
 Client client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('65e8cf7ac9881d2098c3')
-    .setSelfSigned(
-        status: true); // For self signed certificates, only use for development
+    .setProject('65e8cf7ac9881d2098c3');
+    
 
 
