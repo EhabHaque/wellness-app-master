@@ -10,7 +10,7 @@
   </intent>
 </queries>
    <application
-        android:label="Wellness Centre"
+        android:label="YFS Wellness Centre"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
