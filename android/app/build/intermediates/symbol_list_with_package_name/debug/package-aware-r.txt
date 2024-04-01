@@ -1,4 +1,4 @@
-com.example.tutvideo
+com.yfs.YFSwellness
 attr activityAction
 attr activityName
 attr alpha
