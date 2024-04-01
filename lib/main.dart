@@ -218,10 +218,14 @@ class _HomePage extends State<HomePage> {
             padding: EdgeInsets.all(5),
             child: Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  appTheme.primaryColor,
-                  appTheme.secondaryHeaderColor
-                ]),
+                gradient: LinearGradient(
+                  colors: [
+                    appTheme.primaryColor,
+                    appTheme.secondaryHeaderColor,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Column(
@@ -362,21 +366,26 @@ class _HomePage extends State<HomePage> {
               SizedBox(height: 0),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
-                child: InkWell(
-                  onTap: () {
-                    showContactPopup(context); // Handle onTap event
+                child: GestureDetector(
+                  onTap: () async {
+                    await launchUrl(
+                        Uri.parse('https://www.yfswellness.ca/contact'));
                   },
                   child: Container(
                     width: double.infinity, // Expand to available width
                     padding:
                         EdgeInsets.symmetric(vertical: 20), // Adjust padding
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        appTheme.primaryColor,
-                        appTheme.secondaryHeaderColor
-                      ]), // Solid border
-                      borderRadius: BorderRadius.circular(20),
-                      // Rounded corners
+                      gradient: LinearGradient(
+                        colors: [
+                          appTheme.primaryColor,
+                          appTheme.secondaryHeaderColor
+                        ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                      ), // Solid border
+                      borderRadius:
+                          BorderRadius.circular(20), // Rounded corners
                     ),
                     child: Text(
                       'CONTACT US',
