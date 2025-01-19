@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+     <!-- Loading Page -->
+     <div class="terminal-loader">
+      <div class="terminal-header">
+        <div class="terminal-title">Status</div>
+        <div class="terminal-controls">
+          <div class="control close"></div>
+          <div class="control minimize"></div>
+          <div class="control maximize"></div>
+        </div>
+      </div>
+      <div class="text">Loading...</div>
+    </div>
+    
+    <nav id="desktop-nav">
+      <div class="logo">Ehab Haque</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Ehab Haque</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Main Page-->
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/profile-pic.jpeg" alt="Ehab Haque profile picture" />
+      </div>
+      <div class="section__text">
+        <h1 class="title">Ehab Haque</h1>
+        <p class="section__text__p2">Electrical Engineer/IT Specialist</p>
+        <div class="btn-container">
+          <button class="btn btn-color-2" onclick="window.open('./assets/Ehab_Haque_IT_Resume.pdf')">
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='#contact'">
+            Contact Info
+          </button>
+        </div>
+        
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            title="Visit my LinkedIn profile"
+            onclick="window.open('https://www.linkedin.com/in/ehab-haque-986500182/', '_blank')"
+          />
+          <img
+          src="./assets/tech.jpg"
+          alt="Tech Rehab"
+          class="icon"
+          title="Visit my Business website"
+          onclick="window.open('https://techrehab.ca/', '_blank')"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            title="Visit my Github profile"
+            class="icon"
+            onclick="window.open('https://github.com/EhabHaque', '_blank')"
+          />
+   
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Me -->
+    <section id="about" class="fade-in">
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>5+ years - IT Specialist</p>
+              <p>2+ years - Electrical Systems Designer</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p> Bachelor's Degree, B.Eng <br> Electrical Engineering With Honours </p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              With a degree in Electrical Engineering, over two years of experience as an Electrical System Designer, and more than five years of hands-on IT expertise, 
+              I offer a solid technical foundation in troubleshooting, network setup, and project coordination. Currently working in IT support, I am seeking 
+              new opportunities to apply my skills in both engineering and IT, focusing on innovative, high-impact projects. Passionate about technology and 
+              sustainable solutions, I aim to contribute to teams that prioritize problem-solving, adaptability, and continuous learning.
+              <br><br>
+              In response to the challenges of the pandemic, I founded TechRehab to provide reliable technical support during uncertain times. What began as a small business 
+              quickly grew, gaining the trust of residential, small business, and corporate clients throughout the Greater Toronto Area. As TechRehab's reputation for quality 
+              service spread, we secured subcontracting opportunities with other companies, expanding our reach and expertise. 
+              This venture not only sharpened my technical skills but also provided invaluable experience as a small business owner, teaching me essential lessons 
+              in customer service, project management, and navigating a fast-changing market.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!--Experience-->
+    <section id="experience">
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        
+          <!-- Coding Development Section -->
+          <div class="details-container">
+            <h2 class="experience-sub-title">Coding Development</h2>
+            <div class="article-container">
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>HTML5/CSS3</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Python3</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Java</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Dart</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>C/C++</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Linux</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Bash</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>MATLAB</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>JavaScript</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Git</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+            </div>
+          </div>
+    
+          <!-- IT Section -->
+          <div class="details-container">
+            <h2 class="experience-sub-title">Technical Expertise</h2>
+            <div class="article-container">
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>VoIP</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>DNS</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Cloud Solutions</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Office 365</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>TCP/IP</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Firewalls</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>CCTV</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Windows/Apple</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Backup & Storage</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Domain Management</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+            </div>
+          </div>
+    
+          <!-- Certificates Section -->
+          <div class="details-container">
+            <h2 class="experience-sub-title">Certificates</h2>
+            <div class="article-container">
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Learn Python 3 Course</h3>
+                  <p>Codecademy</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>AutoCAD Essentials Course</h3>
+                  <p>SourceCAD</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Project Management Fundamentals</h3>
+                  <p>LinkedIn Learning</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Learn Java Course</h3>
+                  <p>Codecademy</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Learn HTML Course</h3>
+                  <p>Codecademy</p>
+                </div>
+              </article>
+              <article class="experience-item">
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>Enterprise Design Thinking Practitioner</h3>
+                  <p>IBM</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        
+      </div>
+    </section>
+    
+    <!---Projects123---->
+    <h1 class="titlep">Projects</h1>
+    <section id="projects">
+      <div class="project-details-container">
+        <!-- Horizontal Scroll Container -->
+        <div class="about-containers scroll-container">
+          <!-- Project 1 -->
+          <div class="details-container color-container">
+            <div class="article-container">
+              <div class="project-box">
+                <img src="./assets/project-1.png" alt="Project 1" class="project-img" />
+                <div class="description-overlay">
+                  <p class="project-description">
+                    ● Led the development of a custom app for the YFS Wellness Centre at York University, increasing student engagement by
+                    25% by implementing features such as a Google Calendar for upcoming events, a Database for updating resources, a
+                    Pomodoro timer, and interactive games.<br><br>
+                    ● Managed end-to-end design and deployment on iOS and Android, ensuring broad accessibility and smooth functionality. <br><br>
+                    ● Collaborated with team members to drive discussions and deliver presentations, ensuring a timely, high-quality delivery.
+
+                  </p>
+                </div>
+              </div>
+            </div>
+            <h2 class="experience-sub-title project-title">Capstone: YFS Wellness Centre App</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/EhabHaque/wellness-app-master', '_blank')">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://drive.google.com/drive/folders/1v2vTXaWY_EV8_EBzAgJ4f_N2PTmpTMS4?usp=sharing', '_blank')">Files</button>
+            </div>
+          </div>
+          
+          <!-- Project 2 -->
+          <div class="details-container color-container">
+           <div class="article-container">
+             <div class="project-box">
+              <img src="./assets/project-2.png" alt="Project 2" class="project-img" />
+              <div class="description-overlay">
+                <p class="project-description">
+                  ● These drafting projects have honed my 2D drafting skills, allowing me to practice precision, 
+                    accuracy, and meticulous attention to detail. Each project challenges me to transform concepts 
+                    into clear and measurable designs, enhancing my proficiency with drafting tools and software while strengthening my technical expertise. 
+                </p>
+              </div>
+             </div>
+            </div>
+            <h2 class="experience-sub-title project-title">AutoCAD 2D Drafting<br><br></h2>
+            <div class="btn-container">        
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://drive.google.com/drive/folders/1iMyg1PMOAanwgooH6mApYz7r-Kma3g31?usp=sharing', '_blank')">Files</button>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="details-container color-container">
+            <div class="article-container">
+              <div class="project-box">
+                <img src="./assets/project-3.png" alt="Project 3" class="project-img" />
+                <div class="description-overlay">
+                  <p class="project-description">
+                    ● Designed a smart EV charging system for YorkU’s Arboretum Parking Garage for 60+ EVs daily, focusing on efficient energy use and reduced peak-time costs. <br><br>
+                    ● Integrated wind turbines using SAM(Wind Power- System Advisor Model) to support EV charging needs, ensuring
+                      energy surplus could supply the Arboretum Parking Garage or power grid, lowering operational costs.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <h2 class="experience-sub-title project-title">Tesla Charger & Wind Turbine Implementation</h2>
+            <div class="btn-container">        
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://drive.google.com/drive/folders/19SHhWNoQCSfJ9ctmXeaDYrWEMAlRbvyl?usp=sharing', '_blank')">Files</button>
+            </div>
+          </div>
+          <!-- Project 4 -->
+          <div class="details-container color-container">
+            <div class="article-container">
+              <div class="project-box">
+                <img src="./assets/project-4.jpg" alt="Project 4" class="project-img" />
+                <div class="description-overlay">
+                  <p class="project-description">
+                    ● Collaborated in designing and prototyping two custom PCBs in KiCAD, integrating a microcontroller to enable
+                    I2C/UART to CAN communication between GPS, compass modules, and the central control module. <br><br>
+                    ● Collaborated on embedded C code development for the microcontroller, facilitating I2C and UART data transmission
+                    from external modules.<br><br>
+                    ● Engaged proactively in team discussions, brainstorming sessions, and collaborative problem-solving activities
+                  </p>
+                </div>
+              </div>
+            </div>
+            <h2 class="experience-sub-title project-title">YURS Rover Team Custom PCB <br><br></h2>
+            <div class="btn-container">        
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://drive.google.com/drive/folders/1dYC4KCAIyTPpE4Ujb9_DPIq199_tZuZH?usp=sharing', '_blank')">Files</button>
+            </div>
+          </div>
+          <!-- Project 5 -->
+          <div class="details-container color-container">
+            <div class="article-container">
+              <div class="project-box">
+                <img src="./assets/project-5.jpeg" alt="Project 5" class="project-img" />
+                <div class="description-overlay">
+                  <p class="project-description">
+                    ● Participated in developing key vehicle components related to power distribution, telemetry, and control systems.<br><br>
+                    ● Researched data acquisition methods to enhance system performance and reliability.<br><br>
+                    ● Created comprehensive documentation and schematics for electrical systems, including wiring diagrams, component
+                    specifications, and system configurations.
+                    
+                  </p>
+                </div>
+              </div>
+            </div>
+            <h2 class="experience-sub-title project-title">Lassonde Motorsports ECU Wiring<br></h2>
+            <div class="btn-container">        
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://drive.google.com/drive/folders/1uaLsCPBkfAvacTEssd3pKVI7Q3g2URqC?usp=sharing', '_blank')">Files</button>
+            </div>
+          </div>
+          <!-- Project 6 -->
+          <div class="details-container color-container">
+            <div class="article-container">
+              <div class="project-box">
+                <img src="./assets/project-10.jpeg" alt="Project 10" class="project-img" />
+                <div class="description-overlay">
+                  <p class="project-description">
+                    ● I have worked on various IT projects, including system design, network deployment, software development, and technical documentation. 
+                    My experience includes optimizing network performance, implementing innovative solutions, and enhancing user engagement through well-designed tools and applications. 
+                    I use Power BI to communicate project insights and timelines effectively, ensuring client satisfaction and successful project delivery.
+                    
+                  </p>
+                </div>
+              </div>
+            </div>
+            <h2 class="experience-sub-title project-title">IT Projects<br><br><br></h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://drive.google.com/drive/folders/1QMlwfBIHwYmpIMpEA1ohRJ58qbWwBhIm?usp=sharing', '_blank')">Files</button>        
+            </div>
+           </div>
+            <!-- Project 7 -->
+            <div class="details-container color-container">
+              <div class="article-container">
+                <div class="project-box">
+                  <img src="./assets/project-7.png" alt="Project 7" class="project-img" />
+                  <div class="description-overlay">
+                    <p class="project-description">
+                      ● Built a smart Magic Mirror using a Raspberry Pi, coding custom open-source modules to display real-time data like
+                      weather, calendar, and Toronto traffic. Designed and constructed a custom frame and assembled the entire hardware
+                      system.                      
+                      
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <h2 class="experience-sub-title project-title">Smart Mirror<br><br><br></h2>
+              <div class="btn-container">
+                <button class="btn btn-color-2 project-btn" onclick="window.open('https://drive.google.com/drive/folders/1lQXc-oyk6iXJla4bIhjbtv5yXsOfEPqK?usp=sharing', '_blank')">Files</button>        
+              </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="details-container color-container">
+              <div class="article-container">
+                <div class="project-box">
+                  <img src="./assets/project-8.jpeg" alt="Project 8" class="project-img" />
+                  <div class="description-overlay">
+                    <p class="project-description">
+                      ● I’ve worked on diverse automotive projects, including engine swaps, electrical wiring, and system debugging. 
+                        These hands-on experiences enhanced my skills in vehicle mechanics, diagnosing issues, and optimizing performance, while fueling my passion for automotive and electrical
+                        engineering.
+                      
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <h2 class="experience-sub-title project-title">Automotive Projects<br><br></h2>
+              <div class="btn-container">
+                <button class="btn btn-color-2 project-btn" onclick="window.open('https://drive.google.com/drive/folders/10N5jnFkGM8W3sBKfGgpqGmmhQvIhCgct?usp=sharing', '_blank')">Files</button>        
+              </div>
+            </div>
+            
+            <!-- Project 9 -->
+            <div class="details-container color-container">
+              <div class="article-container">
+                <div class="project-box">
+                  <img src="./assets/project-6.jpg" alt="Project 6" class="project-img" />
+                  <div class="description-overlay">
+                    <p class="project-description">
+                      ● TechRehab.ca is a professional website I developed for my small business, designed to offer seamless navigation and a user-friendly experience. 
+                        Built using HTML, CSS, and JavaScript, it features responsive design elements, service details, and an easy-to-navigate interface to connect with clients effectively.
+                      
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <h2 class="experience-sub-title project-title">Business Website: TechRehab.ca<br></h2>
+              <div class="btn-container">
+                <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/EhabHaque/wellness-app-master', '_blank')">Github</button>        
+                <button class="btn btn-color-2 project-btn" onclick="window.open('https://techrehab.ca/', '_blank')">Website</button>
+              </div>
+            </div>
+            
+
+            <!-- Project 10 -->
+                       
+            <div class="details-container color-container">
+              <div class="article-container">
+                <div class="project-box">
+                  <img src="./assets/project-9.png" alt="Project 9" class="project-img" />
+                  <div class="description-overlay">
+                    <p class="project-description">
+                      ● My portfolio website showcases my skills, projects, and professional achievements. Using HTML, CSS, 
+                      and JavaScript, I created a sleek, modern design with interactive features that highlight my expertise and creativity. 
+                      The site is fully responsive, ensuring an engaging experience across all devices.
+                      
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <h2 class="experience-sub-title project-title">Portfolio Website<br><br><br></h2>
+              <div class="btn-container">
+                <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/EhabHaque/PortfolioWebsite', '_blank')">Github</button>        
+              </div>
+            </div>
+           
+        </div>
+      </div>
+    </section>
+   
+    <!--Contact-->
+    <section id="contact">
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:examplemail@gmail.com">ehabhaque1@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://www.linkedin.com/in/ehab-haque-986500182/" target="_blank">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer>
+      <p>Copyright &#169; 2025 Ehab Haque. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

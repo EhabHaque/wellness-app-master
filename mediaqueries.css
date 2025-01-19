@@ -1,0 +1,321 @@
+@media screen and (max-width: 1000px) {
+
+  #profile {
+    height: 83vh;
+    margin-bottom: 6rem;
+  }
+  .about-containers {
+    flex-wrap: wrap;
+  }
+  #contact,
+  #projects {
+    height: fit-content;
+  }
+  
+  .section__pic-container {
+    display: flex;
+    height: 250px;
+    width: 250px;
+    margin: auto 0;
+  }
+
+/* Experience */
+
+
+
+/* Projects */
+
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 1rem; /* Space to show scrollbar */
+  justify-content: flex-start; /* Projects aligned to the left */
+  gap: 2rem; /* Space between project containers */
+  box-sizing: border-box; /* Ensure padding doesn't affect layout */
+  margin-left: 20;
+  margin-right: 20;
+  margin-top: 0;
+  margin-bottom: 30px; /* Adjust the bottom margin if needed */
+
+}
+
+.scroll-container {
+  display: flex; /* Make the container a flexbox */
+  flex-direction: column; /* Stack child elements vertically (optional, based on your design needs) */
+  justify-content: center; /* Vertically center child elements */
+  align-items: center; /* Horizontally center child elements */
+  height: 100vh; /* Ensure the container takes the full height of the viewport */
+  padding: 20px; /* Optional: Add padding for spacing inside the container */
+  box-sizing: border-box; /* Make sure padding doesn't overflow the container */
+  overflow-y: hidden; /* Allow scrolling if content overflows vertically */
+  overflow-x: scroll;
+}
+
+/* Controls the individual project box's width */
+#projects .details-container {
+  position: relative;
+  justify-content: center;
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 1rem;
+  background: rgb(250, 250, 250);
+  padding: 1rem;
+  flex-shrink: 0; /* Prevent projects from shrinking */
+  height: auto; /* Maintain natural height */
+  
+  
+}
+
+#projects .project-img {
+  border-radius: 2rem;
+  justify-content: space-around;
+  width: 250px; /* Ensure images fit within project cards */
+  height: auto; /* Preserve image aspect ratio */
+  transition: opacity 0.3s ease; /* Smooth transition when image fades out */
+  object-fit: contain; /* Ensure the image doesn't stretch */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+
+#projects .details-container .color-container{
+  justify-content: center;
+  display: flex; /* Make sure flexbox is applied to center content */
+  
+}
+
+/* This let me change the spacing in the image */
+#projects .project-box {
+  position: relative;
+  width: 94%;
+}
+
+
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 800px) {
+  #profile {
+    height: 83vh;
+    margin-bottom: 6rem;
+  }
+  .about-containers {
+    flex-wrap: wrap;
+  }
+  #contact,
+  #projects {
+    height: fit-content;
+  }
+  
+  .section__pic-container {
+    display: flex;
+    height: 250px;
+    width: 250px;
+    margin: auto 0;
+  }
+
+  .experience-sub-title {
+    color: rgb(85, 85, 85);
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .experience-details-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .article-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Single column by default */
+    gap: 1rem;
+    justify-content: center;
+    justify-items: center;
+    text-align: initial;
+  }
+  
+  article {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  article .icon {
+    cursor: default;
+  }
+
+  .article-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+  }
+
+
+/* Certificates Section Only Changing box layouts*/
+.details-container:last-of-type .article-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three items per row */
+  gap: 1.5rem; /* Space between items */
+  justify-items: center; /* Center each article in its grid cell */
+}
+
+.details-container:last-of-type article {
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  align-items: center; /* Vertically align icon and text */
+  justify-content: flex-start; /* Ensure items stay aligned to the left within the article */
+  gap: 1rem; /* Space between icon and text */
+  width: 100%; /* Make articles take the full width of their grid cell */
+}
+
+.details-container:last-of-type .article-container > article div {
+  text-align: left; /* Ensure text is aligned to the left */
+}
+
+/* Projects */
+
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 1rem; /* Space to show scrollbar */
+  justify-content: flex-start; /* Projects aligned to the left */
+  gap: 2rem; /* Space between project containers */
+  box-sizing: border-box; /* Ensure padding doesn't affect layout */
+  margin-left: 20;
+  margin-right: 20;
+  margin-top: 0;
+  margin-bottom: 30px; /* Adjust the bottom margin if needed */
+
+}
+
+.scroll-container {
+  display: flex; /* Make the container a flexbox */
+  flex-direction: column; /* Stack child elements vertically (optional, based on your design needs) */
+  justify-content: center; /* Vertically center child elements */
+  align-items: center; /* Horizontally center child elements */
+  height: 100vh; /* Ensure the container takes the full height of the viewport */
+  padding: 20px; /* Optional: Add padding for spacing inside the container */
+  box-sizing: border-box; /* Make sure padding doesn't overflow the container */
+  overflow-y: hidden; /* Allow scrolling if content overflows vertically */
+  overflow-x: scroll;
+}
+
+/* Controls the individual project box's width */
+#projects .details-container {
+  position: relative;
+  justify-content: center;
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 1rem;
+  background: rgb(250, 250, 250);
+  padding: 1rem;
+  flex-shrink: 0; /* Prevent projects from shrinking */
+  height: auto; /* Maintain natural height */
+  
+  
+}
+
+#projects .project-img {
+  border-radius: 2rem;
+  justify-content: space-around;
+  width: 250px; /* Ensure images fit within project cards */
+  height: auto; /* Preserve image aspect ratio */
+  transition: opacity 0.3s ease; /* Smooth transition when image fades out */
+  object-fit: contain; /* Ensure the image doesn't stretch */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+
+#projects .details-container .color-container{
+  justify-content: center;
+  display: flex; /* Make sure flexbox is applied to center content */
+  
+}
+
+/* This let me change the spacing in the image */
+#projects .project-box {
+  position: relative;
+  width: 94%;
+}
+
+}
+
+@media screen and (max-width: 400px) {
+  #contact,
+  footer {
+    height: 40vh;
+  }
+  #profile {
+    height: 83vh;
+    margin-bottom: 0;
+  }
+
+  article {
+    font-size: 1rem;
+  }
+  footer nav {
+    height: fit-content;
+    margin-bottom: 2rem;
+  }
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+    
+  }
+  .contact-info-container {
+    margin: 0;
+  }
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .section__pic-container {
+    width: auto;
+    height: 46vw;
+    justify-content: center;
+  }
+  .section__text__p2 {
+    font-size: 1.25rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .text-container {
+    text-align: justify;
+  }
+
+  .menu-links {
+    display: none; /* Hide the menu */
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Show the menu when the hamburger icon is clicked */
+  .menu-links.open {
+    display: flex; /* Show the menu */
+  }
+
+  .hamburger-icon {
+    display: block; /* Ensure the hamburger icon is visible */
+  }
+
+}
+
+
+
+
+/* */
